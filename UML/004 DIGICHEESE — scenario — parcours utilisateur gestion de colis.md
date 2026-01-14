@@ -17,7 +17,21 @@ Je te propose ci-dessous :
 
 ---
 
+
+
+
+
+
+
+
 ## 1) Scénario textuel — Gestion des colis (scénario nominal)
+
+les acteurs de ce scenarion:
+"Client final (externe)" 
+"Opérateur colis (interne SI)" 
+"La Poste (système externe)" 
+"Opérateur stock (connexe)" 
+
 
 ### Objectif
 
@@ -42,19 +56,29 @@ Réception d’un courrier client contenant points + choix goodies + chèque (fr
 ### Scénario nominal (Happy path)
 
 1. L’opérateur colis ouvre le courrier et relève les informations (client, adresse, choix goodies, éléments de paiement).
+
+
 2. Dans Access, il recherche le client :
 
    * s’il existe : il ouvre la fiche
    * sinon : il crée la fiche client.
+      mise a jours de la BDD
 3. L’opérateur saisit la demande et crée/complète la commande “en cours” (lignes goodies, commentaires).
+    si les information et le payement sont bon, il passe a la suite
+    sinon, il s'arrete et envoye une erreur
 4. Il lance le calcul de conditionnement :
 
    * le système détermine l’emballage,
    * calcule le poids total (emballage + contenu).
+
 5. Le système calcule l’affranchissement à partir des tarifs postaux.
+
 6. L’opérateur prépare le colis et valide l’expédition.
+
 7. Le système enregistre l’expédition et historise le mouvement (traçabilité).
+
 8. La commande est mise à jour (statut “expédiée” / clôture selon règles).
+
 
 ### Postconditions
 
@@ -63,60 +87,8 @@ Réception d’un courrier client contenant points + choix goodies + chèque (fr
 
 ---
 
-## 2) Diagramme de séquence (PlantUML) — scénario nominal
 
-👉 Copie/colle :
 
-```plantuml
-@startuml
-title DIGICHEESE — Séquence : gestion des colis (scénario nominal)
-autonumber
-skinparam shadowing false
-
-actor "Client final" as Client
-actor "Opérateur colis" as Op
-participant "SI Gestion des colis\n(Access 2000)" as SI
-participant "La Poste" as Poste
-
-== Déclenchement (hors SI) ==
-Client -> Op : Envoie un courrier\n(points + choix + chèque)
-Op -> Op : Réceptionne et ouvre le courrier
-
-== Saisie / création ==
-Op -> SI : Rechercher client (nom/adresse)
-alt Client existant
-  SI --> Op : Fiche client trouvée
-else Nouveau client
-  Op -> SI : Créer / compléter fiche client
-  SI --> Op : Fiche client enregistrée
-end
-
-Op -> SI : Saisir demande et créer commande "en cours"
-SI --> Op : Commande enregistrée (id, statut)
-
-== Conditionnement & affranchissement ==
-Op -> SI : Lancer calcul conditionnement
-SI -> SI : Déterminer emballage\n+ calculer poids total
-SI --> Op : Emballage + poids total
-
-SI -> SI : Calculer affranchissement (poids -> tarif)
-SI --> Op : Montant affranchissement enregistré
-
-== Expédition ==
-Op -> SI : Valider expédition
-SI -> Poste : Expédier via La Poste
-Poste --> SI : Confirmation dépôt (optionnelle)
-SI -> SI : Historiser mouvement / statut
-SI --> Op : Statut commande = expédiée
-
-@enduml
-```
-
-✅ Ce diagramme montre bien :
-
-* la **responsabilité** (opérateur déclenche, SI calcule/enregistre)
-* les **interactions** SI ↔ La Poste
-* l’alternative “client existant / nouveau client”
 
 ---
 

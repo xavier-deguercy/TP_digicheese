@@ -3,12 +3,9 @@ left to right direction
 skinparam actorStyle awesome
 skinparam shadowing false
 skinparam wrapWidth 220
-title DIGICHEESE — UC Gestion des colis — Access 2000
-édier le colis" as UC06_Exp
-  usecase "Tracer le traitement\n(historisation mouvements)" as UC07_Traca
-  usecase "Communiquer avec le client\n(mailing / email)" as UC08_Comm
 
-  '--- Variantes (o
+title DIGICHEESE — UC Exploitation (Gestion des colis) — Access 2000
+
 '========================
 ' Acteurs
 '========================
@@ -28,7 +25,11 @@ rectangle "Système de gestion des colis\n(ancien système Access 2000)" {
   usecase "Enregistrer / mettre à jour\nla commande" as UC03_Commande
   usecase "Calculer conditionnement\n& choisir emballage" as UC04_Cond
   usecase "Calculer affranchissement\n(poids -> tarif)" as UC05_Aff
-  usecase "Expptionnelles)
+  usecase "Expédier le colis" as UC06_Exp
+  usecase "Tracer le traitement\n(historisation mouvements)" as UC07_Traca
+  usecase "Communiquer avec le client\n(mailing / email)" as UC08_Comm
+
+  '--- Variantes (optionnelles)
   usecase "Variante : demande sur papier libre\n(sans collecteur)" as UC09_PapierLibre
   usecase "Variante : envoi en lettre suivie\n(saisie n° de suivi)" as UC10_Suivi
 }
