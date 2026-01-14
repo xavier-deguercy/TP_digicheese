@@ -9,6 +9,7 @@
 * Adresse : ligne1, ligne2, code postal, ville
 * Email (optionnel mais cité dans les fonctionnalités)
 * Historique : commandes passées (relation, pas un champ)
+* Tous les champs sont obligatoires sauf : Adresse N°2, Adresse N°3 et email et newsletter
 
 ➡️ Source : “gestion des clients”, “email personnalisé”, “code postal → ville proposée”.
 
@@ -60,9 +61,12 @@ Données d’un **Colis** :
 ### F. Goodie / Article (référentiel)
 
 * Id goodie
-* Nom
+* designation
+* prix unitaire
 * Poids unitaire
-* (Optionnel) volume / fragilité / catégorie, si utile pour conditionnement
+* Conditionnement
+* Points
+
 
 ### G. Tarifs postaux (référentiel)
 
@@ -115,32 +119,4 @@ Donc une classe :
 * `StatutCommande { EN_COURS, EN_ATTENTE, EXPEDIEE }`
 * `ModeExpedition { STANDARD, LETTRE_SUIVIE }` (si tu le gardes)
 
----
 
-## 3) Ce qu’il me manque pour figer définitivement le diagramme (et éviter d’inventer)
-
-Tu m’as demandé “recueillir les data nécessaires”. Donc je te liste **les décisions à prendre** (tu peux répondre en 2 minutes avec des choix simples) :
-
-1. **Commande vs Demande (courrier)** : tu veux une classe `DemandeCourrier` ou tu simplifies en “la commande représente la demande” ?
-la commande représente la demande , il n'y a rien dans le systeme avan la reception du courrier
-2. **Multi-colis** : tu confirmes `Commande 1..* Colis` (recommandé vu ton scénario) ?
-oui
-3. **Affranchissement** : tu le stockes :
-
-   * au niveau **Colis** seulement (plus logique)
-   * ou aussi au niveau **Commande** (somme des colis) ?
-   au niveau **Colis** seulement
-4. **Traçabilité** : tu veux historiser :
-
-   * uniquement les statuts de commande
-
-
----
-
-## 4) Si tu veux, je passe directement au diagramme de classes PlantUML
-
-Dès que tu me dis tes choix (même juste : “1) pas de Demande, 2) oui multi-colis, 3) affranchissement au colis, 4) traçabilité commande”), je te fournis :
-
-* le **diagramme de classes complet en PlantUML**
-* avec cardinalités propres
-* * une version “simple” si ton prof préfère éviter les référentiels tarifaires détaillés.
