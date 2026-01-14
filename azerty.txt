@@ -1,0 +1,32 @@
+New-Item -ItemType Directory -Force -Path `
+  "src",
+  "src\models",
+  "src\repositories",
+  "src\services",
+  "src\routes",
+  "src\conf",
+  "src\utils",
+  "tests" | Out-Null
+  "UML"
+  
+
+
+New-Item -ItemType File -Force -Path `
+  ".env",
+  "requirements.txt",
+  "README.md",
+  ".gitignore",
+  "src\__init__.py",
+  "src\models\__init__.py",
+  "src\repositories\__init__.py",
+  "src\services\__init__.py",
+  "src\routes\__init__.py",
+  "src\conf\__init__.py",
+  "src\utils\__init__.py",
+  "src\main.py",
+  "UML\README.md",
+  "tests\conftest.py",
+  "tests\test_health.py" | Out-Null
+
+# ---------- 2) Venv (version prof) ----------
+python -m venv .venv
