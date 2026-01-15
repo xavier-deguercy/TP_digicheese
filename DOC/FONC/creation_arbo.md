@@ -1,3 +1,35 @@
+# Création de l’arborescence projet (bootstrap PowerShell)
+
+## Objectif
+Ce script initialise l’arborescence complète du projet DIGICHEESE (code + tests + documentation),
+sur le modèle “repo prof”, **sans doublons** et **en conservant** les dossiers `UML/` et `docs_cours/`.
+
+- Une seule commande PowerShell
+- Création des dossiers `src/` (couches), `tests/`, `DOC/` (FONC/TECH/UTILISATION), `UML/`, `docs_cours/`
+- Création des fichiers racine (README, requirements, docker, env)
+- Préparation de la venv `.venv` (à ignorer dans Git)
+
+---
+
+## Pré-requis
+- Windows + PowerShell
+- Python installé (commande `python` disponible)
+
+> Si l’exécution des scripts est bloquée, lancer PowerShell en admin :
+> `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`
+
+---
+
+## Utilisation
+1. Ouvrir PowerShell **à la racine** du dépôt.
+2. Copier-coller le script ci-dessous.
+3. Vérifier que l’arborescence est créée dans l’explorateur / VS Code.
+
+---
+
+## Script — Bootstrap complet
+
+```powershell
 # ============================================================
 # Digicheese — Bootstrap complet (src cours + DOC + repo prof)
 # - Une seule commande PowerShell
