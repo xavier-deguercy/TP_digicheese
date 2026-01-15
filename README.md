@@ -67,10 +67,7 @@ Créer l’environnement virtuel :
 ```bash
 python -m venv .venv
 ```
-
-
-
-
+------------------------------------
 
 # Organisation projet API
 
@@ -109,4 +106,11 @@ python -m venv .venv
 8. Définir les étapes de devs
 9. Assignation des taches (sprint backlog)
 
- 
+
+#### A. Github
+
+- main / prod / dev / test : on n’y touche jamais directement
+
+- chacun travaille sur sa branche personnelle
+
+- on envoie une Pull Request vers dev
