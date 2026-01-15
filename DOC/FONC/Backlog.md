@@ -35,7 +35,7 @@ Une US est “Done” si :
 - S3 — Docker/Docker-compose reproductible
 
 ### COULD (option)
-- C1 — CRUD Clients (OP-colis)
+- C1 — CRUD Clients (OP-colis) - CRUD de l’acteur « Opérateur de Colis » : Gestion des clients
 - C2 — Sécurité simple (auth basique / roles) si temps
 - C3 — Monitoring “simple” (KPIs & alertes définis + doc)
 
