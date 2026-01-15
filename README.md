@@ -66,7 +66,7 @@ de développement exploitable (architecture, tests, exécution).
 Créer l’environnement virtuel :
 ```bash
 python -m venv .venv
-
+```
 
 
 
