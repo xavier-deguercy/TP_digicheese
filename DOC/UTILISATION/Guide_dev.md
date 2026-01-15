@@ -98,8 +98,12 @@ source : feature/...
 
 cible : dev
 
+<<<<<<< HEAD
 attendre la validation avant merge par le GitMaster
 
 ## Résumé : Je crée ma branche → je code → je push → je fais une PR vers dev
 
 ---------------------------------------
+=======
+attendre la validation avant merge par le GitMaster 
+>>>>>>> 63710e8e174f58272ab6743aa4f34010fa92c338
