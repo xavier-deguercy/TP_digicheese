@@ -1,4 +1,3 @@
-
 # DIGICHEESE — TP Diginamic (UML + socle dev)
 
 ## Contexte
