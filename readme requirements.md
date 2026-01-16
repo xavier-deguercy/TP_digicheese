@@ -13,6 +13,4 @@ ruff
 Mise à jour pip + install :
 
 python -m pip install --upgrade pip
-pip install fastapi sqlmodel "uvicorn[standard]"
-pip install python-dotenv pymysql
-pip install pytest httpx ruff
+pip install -r requirements.txt
