@@ -85,11 +85,11 @@ class Objet(SQLModel, table=True):
     puobj: Decimal = Field(default=Decimal("0.0000"), nullable=False)
     poidsobj: Decimal = Field(default=Decimal("0.0000"), nullable=False)
     indispobj: int = Field(default=0)
-    o_imp: int = Field(default=0)
-    o_aff: int = Field(default=0)
-    o_cartp: int = Field(default=0)
+    o_imp: int = Field(default=0) # o_ permet de faire de la config
+    o_aff: int = Field(default=0)  # affichage
+    o_cartp: int = Field(default=0) # carte postale
     points: int = Field(default=0)
-    o_ordre_aff: int = Field(default=0)
+    o_ordre_aff: int = Field(default=0) # ordre d'affichage des objets dans la fromagerie
     
     condit: List["ObjetCond"] = Relationship(back_populates="objets")
 
