@@ -6,6 +6,6 @@ class Role(Base):
     """Table représentant les rôles dans le système."""
     __tablename__ = "t_role"
 
-    id_role = Column(int, primary_key=True)
+    id_role = Column(Integer, primary_key=True)
     libelle_role = Column(String)
     utilisateurs = relationship("Utilisateur", back_populates="role")
