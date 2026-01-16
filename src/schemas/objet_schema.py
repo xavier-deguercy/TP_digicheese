@@ -1,6 +1,8 @@
 from pydantic import BaseModel
 from typing import Optional
 
+from sqlalchemy import Column
+
 
 # ObjetBase : champs communs
 class ObjetBase(BaseModel):
@@ -9,7 +11,7 @@ class ObjetBase(BaseModel):
     prix_obj: Optional[float] = 0.0
     poids_obj: Optional[float] = 0.0
     indisp_obj: Optional[int] = 0
-    points_obj
+    
 
 
     #nom_obj = Column(String(50), nullable=False)                     # nom objet
@@ -17,7 +19,7 @@ class ObjetBase(BaseModel):
    # prix_obj = Column(Numeric(10, 4), nullable=False, default=0)       # prix unitaire objet
     #poids_obj = Column(Numeric(10, 4), nullable=False, default=0)    # poids objet
     #indisp_obj = Column(Boolean, nullable=False, default=0)          # 0/1
-    points = Column(Integer, nullable=False, default=0)             #  
+    #points = Column(Integer, nullable=False, default=0)             #  
 
 
 
