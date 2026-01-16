@@ -8,7 +8,7 @@ class Objet(Base):
     
     __tablename__ = "t_objet"
 
-    codobj = Column(Integer, primary_key=True)                       # code objet
+    codobj = Column(Integer, primary_key=True)                      # code objet
     libobj = Column(String(50), nullable=False)                     # nom objet
     tailleobj = Column(String(50), nullable=True)                   # taille objet
     puobj = Column(Numeric(10, 4), nullable=False, default=0)       # prix unitaire objet
@@ -21,4 +21,4 @@ class Objet(Base):
     o_cartp = Column(Integer, nullable=False, default=0)            # 0/1
     o_ordre_aff = Column(Integer, nullable=False, default=0)        # ordre d'affichage des objets dans la fromagerie
 
-    condit = relationship("objet_cond", back_populates="objets") # relation avec la table des conditionnements
+    condit = relationship("objet_cond", back_populates="objets")    # relation avec la table des conditionnements
