@@ -17,12 +17,3 @@ class Objet(Base):
     points_obj = Column(Integer, nullable=False, default=0)             #  
         
 
-# on ne prend pas en compte les o_ ( c'est pour la config) dans cette version
-    # o_imp = Column(Integer, nullable=False, default=0)              # 0/1
-    # o_aff = Column(Integer, nullable=False, default=0)              # 0/1
-    # o_cartp = Column(Integer, nullable=False, default=0)            # 0/1
-    # o_ordre_aff = Column(Integer, nullable=False, default=0)        # ordre d'affichage des objets dans la fromagerie
-
-#relation
-    condit = relationship("objet_cond", back_populates="objets")    # relation avec la table des conditionnements
-#pas de methode ici, ce sera dans les routes
