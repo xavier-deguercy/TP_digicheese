@@ -14,7 +14,7 @@ class Departement(SQLModel, table=True):
     
     communes: List["Commune"] = Relationship(back_populates="departement")
 
-class Commune(SQLModel, table=True):
+class Commune(SQLModel, table=True): # on a 
     """Table représentant les communes associées à un département."""
     
     __tablename__ = "t_communes"
@@ -26,7 +26,7 @@ class Commune(SQLModel, table=True):
     
     departement: Departement | None = Relationship(back_populates="communes")
 
-class Client(SQLModel, table=True):
+class Client(SQLModel, table=True): # on a 
     """Table représentant les clients de la fidélisation de la fromagerie."""
     
     __tablename__ = "t_client"
@@ -44,7 +44,7 @@ class Client(SQLModel, table=True):
     portcli: str | None = Field(default=None, max_length=10, nullable=True)
     newsletter: int | None = Field(default=None, nullable=True)
 
-class Commande(SQLModel, table=True):
+class Commande(SQLModel, table=True): # on a 
     """Table représentant les commandes passées par les clients."""
     
     __tablename__ = "t_entcde"
@@ -61,7 +61,7 @@ class Commande(SQLModel, table=True):
     barchive: int = Field(default=0)
     bstock: int = Field(default=0)
 
-class Conditionnement(SQLModel, table=True):
+class Conditionnement(SQLModel, table=True): # on a 
     """Table représentant les conditionnements disponibles pour les objets."""
 
     __tablename__ = "t_conditionnement"
@@ -85,11 +85,11 @@ class Objet(SQLModel, table=True):
     puobj: Decimal = Field(default=Decimal("0.0000"), nullable=False)
     poidsobj: Decimal = Field(default=Decimal("0.0000"), nullable=False)
     indispobj: int = Field(default=0)
-    o_imp: int = Field(default=0)
-    o_aff: int = Field(default=0)
-    o_cartp: int = Field(default=0)
+    o_imp: int = Field(default=0) # o_ permet de faire de la config
+    o_aff: int = Field(default=0)  # affichage
+    o_cartp: int = Field(default=0) # carte postale
     points: int = Field(default=0)
-    o_ordre_aff: int = Field(default=0)
+    o_ordre_aff: int = Field(default=0) # ordre d'affichage des objets dans la fromagerie
     
     condit: List["ObjetCond"] = Relationship(back_populates="objets")
 
@@ -137,7 +137,7 @@ class Enseigne(SQLModel, table=True):
     ville_enseigne: str | None = Field(default=None, max_length=50, nullable=True)
     dept_enseigne: int = Field(default=0)
 
-class Poids(SQLModel, table=True):
+class Poids(SQLModel, table=True): # on a 
     """Table représentant les poids et timbres associés aux commandes."""
     
     __tablename__ = "t_poids"
@@ -146,7 +146,7 @@ class Poids(SQLModel, table=True):
     valmin: Decimal | None = Field(default=Decimal("0"), nullable=True)
     valtimbre: Decimal | None = Field(default=Decimal("0"), nullable=True)
     
-class Vignette(SQLModel, table=True):
+class Vignette(SQLModel, table=True): # on a 
     """Table représentant les vignettes (timbre) avec leurs prix pour un certain poids."""
     
     __tablename__ = "t_poidsv"
@@ -159,12 +159,12 @@ class Vignette(SQLModel, table=True):
 class Role(SQLModel, table=True):
     """Table représentant les rôles dans le système."""
     
-    __tablename__ = "t_role"
+    __tablename__ = "t_role" #
     
-    codrole: int | None = Field(default=None, primary_key=True)
-    librole: str | None = Field(default=None, max_length=25, nullable=True)
+    codrole: int | None = Field(default=None, primary_key=True)                     # clé primaire
+    librole: str | None = Field(default=None, max_length=25, nullable=True)         # nom du rôle
 
-class Utilisateur(SQLModel, table=True):
+class Utilisateur(SQLModel, table=True): # on a 
     """Table représentant les utilisateurs dans le système."""
     
     __tablename__ = "t_utilisateur"

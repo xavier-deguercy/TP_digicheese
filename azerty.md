@@ -111,29 +111,29 @@ Objectif : repartir sur une base à jour, sans divergence.
 #### Si je travaille sur du DEV (code)
 
 ```bash
-git fetch --all --prune
+git fetch --all --prune               # récupérer les mises à jour
 
-git checkout dev
-git pull origin dev
+git checkout dev                      # basculer sur dev
+git pull origin dev                   # mettre dev à jour
 
-git checkout dev/<prenom>
-git rebase dev
+git checkout dev/<prenom>             # basculer sur ma branche perso
+git rebase dev                        # permet de “rejouer” mes commits au-dessus de dev
 
-git push --force-with-lease
+git push --force-with-lease           # mettre à jour ma branche perso
 ```
 
 #### Si je travaille sur du FUNC (docs)
 
 ```bash
-git fetch --all --prune
+git fetch --all --prune               # récupérer les mises à jour
 
-git checkout main
-git pull origin main
+git checkout main                     # basculer sur main
+git pull origin main                  # mettre main à jour
 
-git checkout func/<prenom>
-git rebase main
+git checkout func/<prenom>            # basculer sur ma branche perso
+git rebase main                       # permet de “rejouer” mes commits au-dessus de main
 
-git push --force-with-lease
+git push --force-with-lease           # mettre à jour ma branche perso
 ```
 
 ### 4.2 Routine “MIDI” (checkpoint)
@@ -143,33 +143,33 @@ Objectif : sécuriser et limiter les conflits.
 #### DEV (code)
 
 ```bash
-git status
-git add .
-git commit -m "WIP: <courte-description>"
-git push
+git status                            # vérifier l’état
+git add .                             # ajouter les changements
+git commit -m "WIP: <courte-description>" # commiter les changements
+git push                              # pousser vers la branche perso
 
-git fetch --all --prune
-git checkout dev
-git pull origin dev
-git checkout dev/<prenom>
-git rebase dev
-git push --force-with-lease
+git fetch --all --prune               # récupérer les mises à jour
+git checkout dev                      # basculer sur dev
+git pull origin dev                   # mettre dev à jour
+git checkout dev/<prenom>             # basculer sur ma branche perso
+git rebase dev                        # rebaser sur dev
+git push --force-with-lease           # mettre à jour ma branche perso
 ```
 
 #### FUNC (docs)
 
 ```bash
-git status
-git add .
-git commit -m "docs: <courte-description>"
-git push
+git status                            # vérifier l’état
+git add .                             # ajouter les changements
+git commit -m "docs: <courte-description>"   # commiter les changements
+git push                              # pousser vers la branche perso
 
-git fetch --all --prune
-git checkout main
-git pull origin main
-git checkout func/<prenom>
-git rebase main
-git push --force-with-lease
+git fetch --all --prune               # récupérer les mises à jour
+git checkout main                     # basculer sur main
+git pull origin main                  # mettre main à jour
+git checkout func/<prenom>            # basculer sur ma branche perso
+git rebase main                       # rebaser sur main
+git push --force-with-lease           # mettre à jour ma branche perso
 ```
 
 ### 4.3 Routine “SOIR” (fin de journée)
@@ -215,13 +215,13 @@ git push --force-with-lease
 ### 4.4 Matin / Midi / Soir en MERGE (DEV)
 
 ```bash
-git fetch --all --prune
-git checkout dev
-git pull origin dev
+git fetch --all --prune           # récupérer les mises à jour
+git checkout dev                  # basculer sur dev
+git pull origin dev               # mettre dev à jour
 
-git checkout dev/<prenom>
-git merge dev
-git push
+git checkout dev/<prenom>         # basculer sur ma branche perso
+git merge dev                     # intégrer les changements de dev
+git push                          # mettre à jour ma branche perso
 ```
 
 ### 4.5 Matin / Midi / Soir en MERGE (FUNC)
