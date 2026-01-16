@@ -2,7 +2,7 @@ from sqlmodel import SQLModel, Field, Relationship
 from typing import List
 from datetime import date
 from decimal import Decimal
-
+ 
 class Departement(SQLModel, table=True):
     """Table représentant les départements français."""
     
