@@ -32,7 +32,7 @@ Une US est “Done” si :
 - **M10** — Documentation (DOC/ + TECH/ + UTILISATION/)
 
 ### SHOULD (fortement recommandé)
-- **S1** — Healthcheck + version
+- **S1** — Healthcheck + version  
 - **S2** — Lint/qualité (ruff) + conventions
 - **S3** — Docker/Docker-compose reproductible
 
