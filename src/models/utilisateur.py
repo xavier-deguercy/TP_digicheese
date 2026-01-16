@@ -4,6 +4,7 @@ from .base import Base
 from datetime import datetime, timezone
 
 class Utilisateur(Base):
+    """Table représentant les utilisateurs dans le système."""
     __tablename__ = "t_utilisateur"
 
     id_user = Column(Integer, primary_key=True)

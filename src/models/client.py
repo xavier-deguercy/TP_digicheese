@@ -3,6 +3,7 @@ from sqlalchemy.orm import relationship
 from .base import Base
 
 class Client(Base):
+    """Table représentant les clients de la fidélisation de la fromagerie."""
     __tablename__ = "t_client"
 
     id_client = Column(Integer, primary_key=True)
