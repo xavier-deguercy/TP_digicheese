@@ -11,14 +11,14 @@
 Après le clone ou quand de nouvelles branches ont été push :
 
 ```bash
-git fetch
-git branch -a
+git fetch                   # récupérer les mises à jour
+git branch -a               # lister les branches locales et distantes
 ```
 Se placer sur dev :
 
 ```bash
-git checkout dev
-git pull origin dev
+git checkout dev            # basculer sur dev
+git pull origin dev         # mettre dev à jour
 ```
 
 ### (Optionnel) Naviguer entre les branches
@@ -26,13 +26,13 @@ git pull origin dev
 Afficher les branches locales :
 
 ```bash
-git branch
+git branch                 # lister les branches locales
 ```
 
 Changer de branche
 
 ```bash
-git checkout nom-de-la-branche
+git checkout nom-de-la-branche # basculer sur une autre branche
 ```
 
 ### 2. Créer une branche de travail

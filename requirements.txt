@@ -6,3 +6,4 @@ pymysql
 pytest
 httpx
 ruff
+sqlalchemy

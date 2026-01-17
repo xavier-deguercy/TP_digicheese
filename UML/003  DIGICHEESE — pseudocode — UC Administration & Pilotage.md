@@ -18,15 +18,14 @@ actor "Direction / management\n(connexe)" as A_Direction
 '========================
 rectangle "Système de gestion des colis\n(ancien système Access 2000)" {
 
-  usecase "nAdministrer / paramétrer\nle système" as UC11_Admin
+  usecase "Administrer / paramétrer\nle système" as UC11_Admin
 
-  usecase "nGérer référentiel emballages" as UC12_Emb
-  usecase "nGérer référentiel goodies\n(poids, caractéristiques)" as UC13_Goodies
-  usecase "nMettre à jour tarifs postaux\n(annuels)" as UC14_Tarifs
+  usecase "Gérer référentiel emballages" as UC12_Emb
+  usecase "Gérer référentiel goodies\n(poids, caractéristiques)" as UC13_Goodies
+  usecase "Mettre à jour tarifs postaux\n(annuels)" as UC14_Tarifs
 
-  usecase "nGérer stocks goodies" as UC15_Stocks
-  usecase "nRéaliser inventaire" as UC16_Inventaire
-
+  usecase "Gérer stocks goodies" as UC15_Stocks
+  usecase "Réaliser inventaire" as UC16_Inventaire
   usecase "Générer statistiques /\nreporting" as UC17_Reporting
   usecase "Fournir un rapport\nà la Direction" as UC18_Fournir
 }
