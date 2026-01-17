@@ -11,7 +11,6 @@
 * Historique : commandes passées (relation, pas un champ)
 * Tous les champs sont obligatoires sauf : Adresse N°2, Adresse N°3 et email et newsletter
 
-➡️ Source : “gestion des clients”, “email personnalisé”, “code postal → ville proposée”.
 
 ### B. Données Demande / Commande (dossier métier)
 
