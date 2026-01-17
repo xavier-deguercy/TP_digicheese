@@ -21,21 +21,21 @@ capacité a analyser structurer et modeliser la problematique et les solutions
 
 
 
+#####
+➢###Déterminer les acteurs et décrire leurs rôles respectifs.
 
-➢Déterminer les acteurs et décrire leurs rôles respectifs.
-
-
+#####
 ➢Réaliser un schéma global de l’architecture du système (acteurs et grandes fonctionnalités) avec les interactions des acteurs.
 
 ___ realyser un Diagramme de composants
 
-
+#####
 ➢003 Représenter les acteurs et le système sous forme de diagrammes de UCs
 _ uml use case
 
 
-
-➢004 Décrire (textuellement) le scénario de la gestion des coliset le représenter à l’aide des diagrammes de séquence et d’activité.
+#####
+➢004 Décrire (textuellement) le scénario de la gestion des colis et le représenter à l’aide des diagrammes de séquence et d’activité.
 
 
 ___ parcours utilisateur ? UX
