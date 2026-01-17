@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DIGICHEESE — Recherche</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container">
+      <div class="brand">
+        <span>🧀 DIGICHEESE</span>
+        <span class="badge">Gestion des colis</span>
+      </div>
+      <nav class="nav">
+        <a href="dashboard.html">Dashboard</a>
+        <a class="active" href="recherche.html">Recherche</a>
+        <a href="dossier.html">Dossier</a>
+        <a href="colis.html">Colis</a>
+        <a href="login.html">Déconnexion</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="page-title">
+      <div>
+        <h1>Recherche client / collecteur</h1>
+        <p>Retrouver un client (collecteur, nom, référence).</p>
+      </div>
+      <span class="pill warn">E03</span>
+    </div>
+
+    <div class="grid cols-2">
+      <section class="card">
+        <h2>Critères</h2>
+        <p>Les champs sont décoratifs (pas de recherche réelle).</p>
+        <hr class="sep" />
+        <div class="form">
+          <div class="field">
+            <label for="ref">Référence collecteur</label>
+            <input id="ref" type="text" placeholder="ex. COL-2026-000481" />
+          </div>
+          <div class="field">
+            <label for="nom">Nom client</label>
+            <input id="nom" type="text" placeholder="ex. Martin" />
+          </div>
+          <div class="field">
+            <label for="cp">Code postal</label>
+            <input id="cp" type="text" placeholder="ex. 34000" />
+          </div>
+          <div class="actions">
+            <span class="btn disabled" aria-disabled="true">Rechercher</span>
+            <a class="btn primary" href="dossier.html">Ouvrir dossier (démo)</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Résultats (exemple)</h2>
+        <p>Table illustrative.</p>
+        <hr class="sep" />
+        <table class="table">
+          <thead>
+            <tr><th>Client</th><th>Collecteur</th><th>Points</th><th>Action</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Claire Martin</td>
+              <td>COL-2026-000481</td>
+              <td><span class="pill ok">120</span></td>
+              <td><a class="btn" href="dossier.html">Ouvrir</a></td>
+            </tr>
+            <tr>
+              <td>Jean Dupont</td>
+              <td>COL-2026-000327</td>
+              <td><span class="pill warn">60</span></td>
+              <td><a class="btn" href="dossier.html">Ouvrir</a></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <hr class="sep" />
+        <div class="actions">
+          <a class="btn" href="dashboard.html">Retour dashboard</a>
+          <a class="btn primary" href="dossier.html">Aller au dossier</a>
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
