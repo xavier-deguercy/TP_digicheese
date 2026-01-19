@@ -8,28 +8,28 @@ Router (HTTP) -> Service (métier) -> Repository (DB)
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
-from src.bd.database import get_db                                                  # aa ajuster
+from src.db.database import get_db                                                  # aa ajuster
 from src.schemas.conditionnement_schema import (
     ConditionnementPost,
     ConditionnementPatch,
-    ConditionnementOut,
+    ConditionnementInDB ,
 )
-from src.services.conditionnement_services import ConditionnementServices
+from src.services.conditionnement_sevices import ConditionnementService
 
 router = APIRouter(
     prefix="/api/v1/admin/conditionnements",
     tags=["Admin - Conditionnements"]
 )
 
-service = ConditionnementServices()
+service = ConditionnementService()
 
 
-@router.get("/", response_model=list[ConditionnementOut], status_code=200)
+@router.get("/", response_model=list[ConditionnementInDB], status_code=200)
 def get_conditionnements(db: Session = Depends(get_db)):
     return service.get_all_conditionnements(db)
 
 
-@router.get("/{condit_id}", response_model=ConditionnementOut, status_code=200)
+@router.get("/{condit_id}", response_model=ConditionnementInDB, status_code=200)
 def get_conditionnement(condit_id: int, db: Session = Depends(get_db)):
     cond = service.get_conditionnement_by_id(db, condit_id)
     if cond is None:
@@ -37,12 +37,12 @@ def get_conditionnement(condit_id: int, db: Session = Depends(get_db)):
     return cond
 
 
-@router.post("/", response_model=ConditionnementOut, status_code=201)
+@router.post("/", response_model=ConditionnementInDB, status_code=201)
 def create_conditionnement(payload: ConditionnementPost, db: Session = Depends(get_db)):
     return service.create_conditionnement(db, payload)
 
 
-@router.patch("/{condit_id}", response_model=ConditionnementOut, status_code=200)
+@router.patch("/{condit_id}", response_model=ConditionnementInDB, status_code=200)
 def patch_conditionnement(condit_id: int, payload: ConditionnementPatch, db: Session = Depends(get_db)):
     cond = service.get_conditionnement_by_id(db, condit_id)
     if cond is None:
@@ -50,7 +50,7 @@ def patch_conditionnement(condit_id: int, payload: ConditionnementPatch, db: Ses
     return service.patch_conditionnement(db, condit_id, payload)
 
 
-@router.delete("/{condit_id}", response_model=ConditionnementOut, status_code=200)
+@router.delete("/{condit_id}", response_model=ConditionnementInDB, status_code=200)
 def delete_conditionnement(condit_id: int, db: Session = Depends(get_db)):
     cond = service.get_conditionnement_by_id(db, condit_id)
     if cond is None:

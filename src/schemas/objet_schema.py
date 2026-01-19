@@ -1,13 +1,7 @@
 # src/schemas/objet_schema.py
 from decimal import Decimal
-from typing import Optional
-
-from pydantic import BaseModel, ConfigDict, Field, condecimal, conint
-
-# Types réutilisables (lisibilité + cohérence)
-PrixType = condecimal(max_digits=10, decimal_places=4, ge=0)
-PoidsType = condecimal(max_digits=10, decimal_places=4, ge=0)
-PointsType = conint(ge=0)
+from typing import Optional, Optional
+from pydantic import BaseModel, ConfigDict, Field
 
 
 class ObjetPost(BaseModel):
@@ -19,11 +13,10 @@ class ObjetPost(BaseModel):
     nom_obj: Optional[str] = Field(None, max_length=50)
     taille_obj: Optional[str] = Field(None, max_length=50)
 
-    prix_obj: Optional[condecimal(max_digits=10, decimal_places=4, ge=0)] = None                
-    poids_obj: Optional[condecimal(max_digits=10, decimal_places=4, ge=0)] = None               
+    prix_obj: Optional[int] = None                
+    poids_obj: Optional[int] = None               
     indisp_obj: Optional[bool] = None
-    points_obj: Optional[conint(ge=0)] = None                                                  
-
+    points_obj: Optional[int] = None                                                  
 
 class ObjetPatch(BaseModel):
     """
@@ -34,12 +27,11 @@ class ObjetPatch(BaseModel):
     nom_obj: Optional[str] = Field(None, max_length=50)
     taille_obj: Optional[str] = Field(None, max_length=50)
 
-    prix_obj: Optional[PrixType] = None 
-    poids_obj: Optional[PoidsType] = None 
+    prix_obj: Optional[int] = None 
+    poids_obj: Optional[int] = None 
 
     indisp_obj: Optional[bool] = None
-    points_obj: Optional[PointsType] = None
-
+    points_obj: Optional[int] = None
 
 class ObjetOut(BaseModel):
     """

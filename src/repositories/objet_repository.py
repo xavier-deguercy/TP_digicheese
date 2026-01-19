@@ -1,12 +1,19 @@
-from ..models import Objet # import the Objet model
+from ..models.objet import Objet # import the Objet model
 from sqlalchemy.orm import Session
 from pydantic import BaseModel
-from typing import Optional 
+from typing import Optional
+
+from src.models import objet 
 
 
 class ObjetRepository:
     def __init__(self, session):
         self.session = session
+    def get_all_objet(self, db: Session):
+        return list(db.query(Objet).all())
+    
+    def get_objet_by_id(self, db: Session, id: int):
+        return db.query(Objet).get(id)
 
     def get_objet(self, objet_id: int) -> Optional[Objet]:
         return self.session.query(Objet).filter(Objet.id_objet == objet_id).first()
