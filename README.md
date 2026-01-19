@@ -1,6 +1,20 @@
 
 # DIGICHEESE — TP Diginamic (UML + socle dev)
 
+## Équipe projet refonte SI DIGICHEESE
+Thi Thu Hien NGUYEN
+
+Imen KHAMMASSI
+
+Stanislas DELANNOY
+
+Xavier DEGUERCY
+
+
+
+
+
+
 ## Contexte
 DIGICHEESE est une fromagerie régionale (≈ 130 salariés), entreprise familiale de plus d’un siècle,
 qui vend ses produits :
