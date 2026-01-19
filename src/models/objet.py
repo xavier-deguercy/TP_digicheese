@@ -8,12 +8,14 @@ class Objet(Base):
     
     __tablename__ = "t_objet" # table des objets
 #attributs
-    id_objet = Column(Integer, primary_key=True)                      # code objet
-    nom_obj = Column(String(50), nullable=False)                     # nom objet
-    taille_obj = Column(String(50), nullable=True)                   # taille objet
-    prix_obj = Column(Numeric(10, 4), nullable=False, default=0)       # prix unitaire objet
-    poids_obj = Column(Numeric(10, 4), nullable=False, default=0)    # poids objet
-    indisp_obj = Column(Boolean, nullable=False, default=0)          # 0/1
-    points_obj = Column(Integer, nullable=False, default=0)             #  
+    id_objet = Column(Integer, primary_key=True, autoincrement=True, index=True)
+    nom_obj = Column(String(50), nullable=False)
+    taille_obj = Column(String(50), nullable=True)
+
+    prix_obj = Column(Numeric(10, 4), nullable=False, default=0)
+    poids_obj = Column(Numeric(10, 4), nullable=False, default=0)
+
+    indisp_obj = Column(Boolean, nullable=False, default=False)
+    points_obj = Column(Integer, nullable=False, default=0) 
         
 
