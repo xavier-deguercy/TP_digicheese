@@ -16,14 +16,13 @@ class ObjetPost(BaseModel):
     -> nom_obj requis (car nullable=False en DB)
     -> le reste a des défauts propres et validés.
     """
-    nom_obj: str = Field(..., max_length=50)
+    nom_obj: Optional[str] = Field(None, max_length=50)
     taille_obj: Optional[str] = Field(None, max_length=50)
 
-    prix_obj: PrixType = Decimal("0")
-    poids_obj: PoidsType = Decimal("0")
-
-    indisp_obj: bool = False
-    points_obj: PointsType = 0
+    prix_obj: Optional[condecimal(max_digits=10, decimal_places=4, ge=0)] = None                
+    poids_obj: Optional[condecimal(max_digits=10, decimal_places=4, ge=0)] = None               
+    indisp_obj: Optional[bool] = None
+    points_obj: Optional[conint(ge=0)] = None                                                  
 
 
 class ObjetPatch(BaseModel):
@@ -35,8 +34,8 @@ class ObjetPatch(BaseModel):
     nom_obj: Optional[str] = Field(None, max_length=50)
     taille_obj: Optional[str] = Field(None, max_length=50)
 
-    prix_obj: Optional[PrixType] = None
-    poids_obj: Optional[PoidsType] = None
+    prix_obj: Optional[PrixType] = None 
+    poids_obj: Optional[PoidsType] = None 
 
     indisp_obj: Optional[bool] = None
     points_obj: Optional[PointsType] = None

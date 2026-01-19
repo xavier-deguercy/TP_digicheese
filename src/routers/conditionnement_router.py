@@ -8,20 +8,20 @@ Router (HTTP) -> Service (métier) -> Repository (DB)
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
-from src.bd.database import get_db  # ajuste si ton get_db est ailleurs
+from src.bd.database import get_db                                                  # aa ajuster
 from src.schemas.conditionnement_schema import (
     ConditionnementPost,
     ConditionnementPatch,
     ConditionnementOut,
 )
-from src.services.conditionnement_service import ConditionnementService
+from src.services.conditionnement_services import ConditionnementServices
 
 router = APIRouter(
     prefix="/api/v1/admin/conditionnements",
     tags=["Admin - Conditionnements"]
 )
 
-service = ConditionnementService()
+service = ConditionnementServices()
 
 
 @router.get("/", response_model=list[ConditionnementOut], status_code=200)
