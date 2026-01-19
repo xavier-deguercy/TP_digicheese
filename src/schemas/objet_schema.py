@@ -1,43 +1,60 @@
-from pydantic import BaseModel
+# src/schemas/objet_schema.py
+from decimal import Decimal
 from typing import Optional
 
-from sqlalchemy import Column
+from pydantic import BaseModel, ConfigDict, Field, condecimal, conint
+
+# Types réutilisables (lisibilité + cohérence)
+PrixType = condecimal(max_digits=10, decimal_places=4, ge=0)
+PoidsType = condecimal(max_digits=10, decimal_places=4, ge=0)
+PointsType = conint(ge=0)
 
 
-# ObjetBase : champs communs
-class ObjetBase(BaseModel):
-    nom_obj: Optional[str] = None
-    taille_obj: Optional[str] = None
-    prix_obj: Optional[float] = 0.0
-    poids_obj: Optional[float] = 0.0
-    indisp_obj: Optional[int] = 0
-    
+class ObjetPost(BaseModel):
+    """
+    Schéma pour POST (création).
+    -> nom_obj requis (car nullable=False en DB)
+    -> le reste a des défauts propres et validés.
+    """
+    nom_obj: str = Field(..., max_length=50)
+    taille_obj: Optional[str] = Field(None, max_length=50)
+
+    prix_obj: PrixType = Decimal("0")
+    poids_obj: PoidsType = Decimal("0")
+
+    indisp_obj: bool = False
+    points_obj: PointsType = 0
 
 
-    # nom_obj = Column(String(50), nullable=False)                     # nom objet
-    # taille_obj = Column(String(50), nullable=True)                   # taille objet
-    # prix_obj = Column(Numeric(10, 4), nullable=False, default=0)       # prix unitaire objet
-    # poids_obj = Column(Numeric(10, 4), nullable=False, default=0)    # poids objet
-    # indisp_obj = Column(Boolean, nullable=False, default=0)          # 0/1
-    # points = Column(Integer, nullable=False, default=0)             #  
+class ObjetPatch(BaseModel):
+    """
+    Schéma pour PATCH (mise à jour partielle).
+    -> tout optionnel
+    -> on utilisera model_dump(exclude_unset=True) côté service.
+    """
+    nom_obj: Optional[str] = Field(None, max_length=50)
+    taille_obj: Optional[str] = Field(None, max_length=50)
+
+    prix_obj: Optional[PrixType] = None
+    poids_obj: Optional[PoidsType] = None
+
+    indisp_obj: Optional[bool] = None
+    points_obj: Optional[PointsType] = None
 
 
+class ObjetOut(BaseModel):
+    """
+    Schéma de sortie (GET/POST/PATCH/DELETE).
+    from_attributes=True permet de sérialiser directement un objet SQLAlchemy.
+    """
+    model_config = ConfigDict(from_attributes=True)
 
-# ObjetPost : création (sans codobj)
-class ObjetPost(ObjetBase):
-    pass
+    id_objet: int
+    nom_obj: str
+    taille_obj: Optional[str]
 
-# ObjetPatch : update partiel (tous optionnels)
-class ObjetPatch(ObjetBase):
-    pass # tous les champs sont optionnels pour le patch
+    prix_obj: Decimal
+    poids_obj: Decimal
 
-# ObjetOut : réponse (avec codobj)
-class ObjetOut(ObjetBase):
-    codobj: int
-
-
-#Validations à faire ici :
-
-#libobj max 50 (Pydantic le fera si tu utilises max_length=50)
-
-#puobj >= 0, poidsobj >= 0, points >= 0, o_ordre_aff >= 0 (minimum)
+    indisp_obj: bool
+    points_obj: int
