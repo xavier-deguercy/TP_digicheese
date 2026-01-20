@@ -8,7 +8,7 @@ Router (HTTP) -> Service (métier) -> Repository (DB)
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
-from ..db.database import get_db
+from src.database import get_db
 from ..schemas.conditionnement_schema import (
     ConditionnementPost,
     ConditionnementPatch,
