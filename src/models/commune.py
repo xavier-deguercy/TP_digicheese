@@ -9,12 +9,6 @@ class Commune(Base):
     dep = Column(String(40))
     cp = Column(String(40))
     ville = Column(String(40))
-    
-  
-    adresse = relationship("Adresse", back_populates="commune") 
-    """ La table Adresse et Communes ont la relation: 1..n """
 
 
-   
-
-    
+    adresses = relationship("Adresse", back_populates="commune")

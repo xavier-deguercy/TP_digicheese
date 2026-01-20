@@ -16,6 +16,5 @@ class Client(Base):
     code_postal_client = Column(String(5), nullable=True)
     telephone_client = Column(String(10), nullable=True)
 
-    commande = relationship("Commande", back_populates="client")
-    adresse1 = relationship("Adresse", foreign_keys="adresse1_client")
-    adresse2 = relationship("Adresse", foreign_keys="adresse2_client")
+    adresse1 = relationship("Adresse", foreign_keys=[adresse1_client], back_populates="clients_adresse1")
+    adresse2 = relationship("Adresse", foreign_keys=[adresse2_client], back_populates="clients_adresse2")
