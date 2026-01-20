@@ -1,15 +1,17 @@
+from src.models.base import Base
 from fastapi import FastAPI
-from src.routers.role_router import router as role_router
-from src.routers.utilisateur_router import router as utilisateur_router
-from src.routers.poids_router import router as poids_router
-from src.routers.poidsv_router import router as poidsv_router
+from .models import *
+from .database import engine
+from .routers import commune_router
 
-app = FastAPI(
-    title="DigiCheese API",
-    version="0.1.0",
-)
+# Create the FastAPI app and include the router
+app = FastAPI()
+app.include_router(commune_router)
 
-app.include_router(role_router)
-app.include_router(utilisateur_router)
-app.include_router(poids_router)
-app.include_router(poidsv_router)
+# Import the models to create the tables in the database
+Base.metadata.create_all(engine)
+
+#Define a simple root endpoints to check the connection
+@app.get("/")
+def read_root():
+    return{"message": "Connected to the database"}
