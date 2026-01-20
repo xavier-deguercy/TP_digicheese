@@ -1,43 +1,48 @@
-from pydantic import BaseModel
+# src/schemas/objet_schema.py
+from decimal import Decimal
+from pydantic import BaseModel, Field, ConfigDict
 from typing import Optional
 
-from sqlalchemy import Column
 
+#class ObjetPost(BaseModel):
+class ObjetCreate(BaseModel):
+    nom_obj: str = Field(..., max_length=50)
+    taille_obj: Optional[str] = Field(None, max_length=50)
+    prix_obj: Decimal = Decimal("0")
+    poids_obj: Decimal = Decimal("0")
+    indisp_obj: bool = False
+    points_obj: int = 0                                                  
 
-# ObjetBase : champs communs
-class ObjetBase(BaseModel):
-    nom_obj: Optional[str] = None
-    taille_obj: Optional[str] = None
-    prix_obj: Optional[float] = 0.0
-    poids_obj: Optional[float] = 0.0
-    indisp_obj: Optional[int] = 0
+class ObjetPatch(BaseModel):
+    """
+    Schéma pour PATCH (mise à jour partielle).
+    -> tout optionnel
+    -> on utilisera model_dump(exclude_unset=True) côté service.
+    """
+    nom_obj: Optional[str] = Field(None, max_length=50)
+    taille_obj: Optional[str] = Field(None, max_length=50)
+
+    prix_obj: Optional[float] = None 
+    poids_obj: Optional[float] = None 
+
+    indisp_obj: Optional[bool] = None
+    points_obj: Optional[int] = None
+
+class ObjetOut(BaseModel):
+    """
+    Schéma de sortie (GET/POST/PATCH/DELETE).
+    from_attributes=True permet de sérialiser directement un objet SQLAlchemy.
+    """
+    model_config = ConfigDict(from_attributes=True)
+
+    id_objet: int
+    nom_obj: str
+    taille_obj: Optional[str]
+
+    prix_obj: float
+    poids_obj: float
+
+    indisp_obj: bool
+    points_obj: int
     
-
-
-    #nom_obj = Column(String(50), nullable=False)                     # nom objet
-    #taille_obj = Column(String(50), nullable=True)                   # taille objet
-   # prix_obj = Column(Numeric(10, 4), nullable=False, default=0)       # prix unitaire objet
-    #poids_obj = Column(Numeric(10, 4), nullable=False, default=0)    # poids objet
-    #indisp_obj = Column(Boolean, nullable=False, default=0)          # 0/1
-    #points = Column(Integer, nullable=False, default=0)             #  
-
-
-
-# ObjetPost : création (sans codobj)
-class ObjetPost(ObjetBase):
-    pass
-
-# ObjetPatch : update partiel (tous optionnels)
-class ObjetPatch(ObjetBase):
-    pass # tous les champs sont optionnels pour le patch
-
-# ObjetOut : réponse (avec codobj)
-class ObjetOut(ObjetBase):
-    codobj: int
-
-
-#Validations à faire ici :
-
-#libobj max 50 (Pydantic le fera si tu utilises max_length=50)
-
-#puobj >= 0, poidsobj >= 0, points >= 0, o_ordre_aff >= 0 (minimum)
+    
