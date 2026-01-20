@@ -7,5 +7,5 @@ class Role(Base):
     __tablename__ = "t_role"
 
     id_role = Column(Integer, primary_key=True)
-    libelle_role = Column(String)
+    libelle_role = Column(String(50), nullable=False)
     utilisateurs = relationship("Utilisateur", back_populates="role")
