@@ -8,9 +8,9 @@ Router (HTTP) -> Service (métier) -> Repository (DB)
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
-from src.db.database import get_db
-from src.schemas.objet_schema import ObjetCreate, ObjetPatch, ObjetOut
-from src.services.objet_services import ObjetService
+from ..database import get_db
+from ..schemas.objet_schema import ObjetCreate, ObjetPatch, ObjetOut
+from ..services.objet_services import ObjetService
 
 # Create a router for objet-related endpoints
 router = APIRouter(
