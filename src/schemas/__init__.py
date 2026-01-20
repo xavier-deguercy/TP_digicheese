@@ -1,1 +1,0 @@
-from .objet_schema import ClientPost, ClientPatch, ClientInDB

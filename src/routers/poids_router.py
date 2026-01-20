@@ -1,12 +1,6 @@
-"""
-References all client-related endpoints in the FastAPI application.
-
-Receives requests from the client router, transform in client schema and processes them using the ClientService.
-"""
-
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from src.DB.database import get_db
+from src.database import get_db
 from src.schemas.poids_schema import PoidsInDB, PoidsPatch, PoidsPost
 from src.services.poids_service import PoidsService
 
@@ -20,7 +14,7 @@ service = PoidsService()
 @router.get("/", status_code=200, response_model=list[PoidsInDB])
 def get_poids_list(db: Session=Depends(get_db)):
     return service.get_all_poids(db)
-    
+
 
 @router.get("/{poids_id}", status_code=200, response_model=PoidsInDB)
 def get_poids_by_id(poids_id: int, db: Session=Depends(get_db)):
