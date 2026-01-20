@@ -1,4 +1,4 @@
-from sqlmodel import Session
+from sqlalchemy.orm import Session
 from src.repositories.poids_repository import PoidsRepository
 from src.schemas.poids_schema import PoidsPatch, PoidsPost
 
@@ -24,15 +24,15 @@ class PoidsService:
     
     
     def create_poids(self, db: Session, new_poids: PoidsPost):
-        new_poids = new_poids.model_dump()
-        new_poids = self.__traitement(new_poids)
-        return self.repository.create_poids(db, new_poids)
+        data = new_poids.model_dump()
+        data = self.__traitement(data)
+        return self.repository.create_poids(db,data)
     
     
     def patch_poids(self, db: Session, poids_id: int, poids: PoidsPatch):
-        poids = poids.model_dump(exclude_unset=True)
-        poids = self.__traitement(poids)
-        return self.repository.patch_poids(db, poids_id, poids)
+        data = poids.model_dump(exclude_unset=True)
+        data = self.__traitement(data)
+        return self.repository.patch_poids(db, poids_id, data)
     
     
     def delete_poids(self, db: Session, poids_id: int):

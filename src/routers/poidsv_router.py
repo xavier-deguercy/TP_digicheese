@@ -18,12 +18,12 @@ router = APIRouter(prefix="/poidsv", tags=["poidsv"])
 service = PoidsvService()
 
 @router.get("/", status_code=200, response_model=list[PoidsvInDB])
-def get_poidsv(db: Session=Depends(get_db)):
+def get_poidsv_list(db: Session=Depends(get_db)):
     return service.get_all_poidsv(db)
     
 
 @router.get("/{poidsv_id}", status_code=200, response_model=PoidsvInDB)
-def get_poidsv(poidsv_id: int, db: Session=Depends(get_db)):
+def get_poidsv_by_id(poidsv_id: int, db: Session=Depends(get_db)):
     poidsv = service.get_poidsv_by_id(db, poidsv_id)
     if poidsv is None:
         raise HTTPException(status_code=404, detail="Poids des vignettes non trouvé")

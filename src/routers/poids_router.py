@@ -18,12 +18,12 @@ router = APIRouter(prefix="/poids", tags=["poids"])
 service = PoidsService()
 
 @router.get("/", status_code=200, response_model=list[PoidsInDB])
-def get_poids(db: Session=Depends(get_db)):
+def get_poids_list(db: Session=Depends(get_db)):
     return service.get_all_poids(db)
     
 
 @router.get("/{poids_id}", status_code=200, response_model=PoidsInDB)
-def get_poids(poids_id: int, db: Session=Depends(get_db)):
+def get_poids_by_id(poids_id: int, db: Session=Depends(get_db)):
     poids = service.get_poids_by_id(db, poids_id)
     if poids is None:
         raise HTTPException(status_code=404, detail="Poids non trouvé")

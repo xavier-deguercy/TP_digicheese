@@ -1,4 +1,5 @@
-from sqlmodel import Session
+from sqlalchemy.orm import Session
+from src.models import poidsv
 from src.repositories.poidsv_repository import PoidsvRepository
 from src.schemas.poidsv_schema import PoidsvPatch, PoidsvPost
 
@@ -24,17 +25,16 @@ class PoidsvService:
         return self.repository.get_poidsv_by_id(db, poidsv_id)
     
     
-    def create_poidsv(self, db: Session, new_poids: PoidsvPost):
-        new_poidsv = new_poidsv.model_dump()
-        new_poidsv = self.__traitement(new_poidsv)
-        return self.repository.create_poidsv(db, new_poidsv)
+    def create_poidsv(self, db: Session, new_poidsv: PoidsvPost):
+        data = new_poidsv.model_dump()
+        data = self.__traitement(data)
+        return self.repository.create_poidsv(db,data)
     
     
     def patch_poidsv(self, db: Session, poidsv_id: int, poids: PoidsvPatch):
-        poidsv = poidsv.model_dump(exclude_unset=True)
-        poidsv = self.__traitement(poidsv)
-        return self.repository.patch_poidsv(db, poidsv_id, poidsv)
-    
+        data = poidsv.model_dump(exclude_unset=True)
+        data = self.__traitement(data)
+        return self.repository.patch_poidsv(db, poidsv_id, data)
     
     def delete_poidsv(self, db: Session, poidsv_id: int):
         return self.repository.delete_poidsv(db, poidsv_id)
