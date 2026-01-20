@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from src.schemas.adresse_schema import AdresseInDB, AdressePatch, AdressePost
 from src.services.adresse_service import AdresseService
-from ..database import get_db
+from src.database import get_db
 
 
 """ Reference all adresse-related endpoints in the FastAPI application.

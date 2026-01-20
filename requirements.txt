@@ -8,4 +8,3 @@ httpx
 ruff
 sqlalchemy
 datetime
-docker 

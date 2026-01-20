@@ -2,9 +2,8 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from src.schemas.commune_schema import CommuneInDB, CommunePatch, CommunePost
 from src.services.commune_service import CommuneService
-#from ..schemas import CommunePost, CommunePatch, CommuneInDB
-from ..database import get_db
-#from ..services import CommuneService 
+from src.database import get_db
+
 
 """ Reference all commune-related endpoints in the FastAPI application.
 

@@ -24,11 +24,11 @@ class CommuneService:
     def create_commune(self,db: Session,new_commune: CommunePost):
         new_commune = new_commune.model_dump()
         new_commune = self.__traitement(new_commune)
-        return self.repository.creat_commune(db, new_commune)
+        return self.repository.create_commune(db, new_commune)
     
     def patch_commune(self, db: Session, id_commune: int, commune: CommunePatch):
         commune = commune.model_dump(exclude_unset = True)
-        commune = self. __traitement(commune)
+        commune = self.__traitement(commune)
         return self.repository.patch_commune(db, id_commune, commune)
     
     def delete_commune(self, db: Session, id_commune: int):

@@ -10,8 +10,9 @@ class AdresseBase(BaseModel):
 class AdressePost(AdresseBase):
     """Schema for creating a new adresse."""
     pass
+    id_commune = int
 
-class AdressePatch(AdresseBase):
+class AdressePatch(BaseModel):
     """Schema for updating an existing adresse."""
     rue: Optional[str] = None
     compAdresse: Optional[str] = None

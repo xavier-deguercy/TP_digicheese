@@ -10,7 +10,7 @@ class AdresseRepository:
         return list(db.query(Adresse).all())
     
     def get_adresse_by_id(self, db: Session, id_adresse: int):
-        return db.query(Adresse).get(id_adresse)
+        return db.get(Adresse, id_adresse)
     
     def create_adresse(self, db: Session, donnees_adresse: dict):
         adresse = Adresse(**donnees_adresse)
@@ -20,7 +20,9 @@ class AdresseRepository:
         return adresse
     
     def patch_adresse(self,db: Session, id_adresse: int, donnees_adresse: dict):
-        adresse = db.query(Adresse).get(id_adresse)
+        adresse = db.get(Adresse, id_adresse)
+        if not adresse:
+            return None
         for key, value in donnees_adresse.items():
             setattr(adresse, key, value)
         db.commit()
@@ -28,8 +30,8 @@ class AdresseRepository:
         return adresse
     
     def delete_adresse(self, db: Session, id_adresse: int):
-        adresse = db.query(Adresse).get(id_adresse)
+        adresse = db.get(Adresse, id_adresse)
         db.delete(adresse)
-        db.commit
+        db.commit()
         return adresse
     

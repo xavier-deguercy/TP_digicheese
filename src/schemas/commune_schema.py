@@ -10,10 +10,11 @@ class CommuneBase(BaseModel):
 class CommunePost(CommuneBase):
     """Schema for creating a new commune."""
     pass
+    id_commune: int
 
-class CommunePatch(CommuneBase):
+class CommunePatch(BaseModel):
     """Schema for updating an existing commune."""
-    dept: Optional[str] = None
+    dep: Optional[str] = None
     cp: Optional[str] = None
     ville: Optional[str] = None
 
