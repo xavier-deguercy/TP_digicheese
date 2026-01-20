@@ -16,29 +16,25 @@ class ObjetRepository:
     def get_objet_by_id(self, db: Session, id: int):
         return db.query(Objet).get(id)
 
-    ##def get_objet(self, objet_id: int) -> Optional[Objet]:
-    #    return self.session.query(Objet).filter(Objet.id_objet == objet_id).first()
-
-    def create_objet(self, objet_data: BaseModel) -> Objet:
-        new_objet = Objet(**donnees_objet)
-        self.session.add(new_objet)
-        self.session.commit()
-        self.session.refresh(new_objet)
+    
+    def create_objet(self, db: Session, objet_data: BaseModel) -> Objet:
+        new_objet = Objet(**objet_data)
+        db.add(new_objet)
+        db.commit()
+        db.refresh(new_objet)
         return new_objet
 
-    def update_objet(self, objet_id: int, objet_data: BaseModel) -> Optional[Objet]:
+    def update_objet(self, db: Session, objet_id: int, objet_data: BaseModel) -> Optional[Objet]:
         objet = self.get_objet(objet_id)
         if objet:
             for key, value in objet_data.dict(exclude_unset=True).items():
                 setattr(objet, key, value)
-            self.session.commit()
-            self.session.refresh(objet)
+            db.commit()
+            db.refresh(objet)
         return objet
 
-    def delete_objet(self, objet_id: int) -> bool:
-        objet = self.get_objet(objet_id)
-        if objet:
-            self.session.delete(objet)
-            self.session.commit()
-            return True
-        return False
+    def delete_objet(self, db: Session, id: int):
+        objet = db.query(Objet).get(id)
+        db.delete(objet)
+        db.commit()
+        return objet

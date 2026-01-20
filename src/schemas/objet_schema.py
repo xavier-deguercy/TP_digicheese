@@ -1,18 +1,17 @@
 # src/schemas/objet_schema.py
 from decimal import Decimal
-from typing import Optional, Optional
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, Field, ConfigDict
+from typing import Optional
 
 
 #class ObjetPost(BaseModel):
-class ObjetBase(BaseModel): 
-    nom_obj: Optional[str] = Field(None, max_length=50)
+class ObjetCreate(BaseModel):
+    nom_obj: str = Field(..., max_length=50)
     taille_obj: Optional[str] = Field(None, max_length=50)
-
-    prix_obj: Optional[int] = None                
-    poids_obj: Optional[int] = None               
-    indisp_obj: Optional[bool] = None
-    points_obj: Optional[int] = None                                                  
+    prix_obj: Decimal = Decimal("0")
+    poids_obj: Decimal = Decimal("0")
+    indisp_obj: bool = False
+    points_obj: int = 0                                                  
 
 class ObjetPatch(BaseModel):
     """
@@ -45,3 +44,6 @@ class ObjetOut(BaseModel):
 
     indisp_obj: bool
     points_obj: int
+    
+    class Config:
+        from_attributes = True
