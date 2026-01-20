@@ -30,7 +30,7 @@ def create_poidsv(donnees_poidsv: PoidsvPost, db: Session=Depends(get_db)):
 
 
 @router.patch("/{poidsv_id}", status_code=200, response_model=PoidsvInDB)
-def patch_poidsv(poidsv_id: int, donnees_poids: PoidsvPatch, db: Session=Depends(get_db)):
+def patch_poidsv(poidsv_id: int, donnees_poidsv: PoidsvPatch, db: Session=Depends(get_db)):
     poidsv = service.get_poidsv_by_id(db, poidsv_id)
     if poidsv is None:
         raise HTTPException(status_code=404, detail="Poids des vignettes non trouvé")
