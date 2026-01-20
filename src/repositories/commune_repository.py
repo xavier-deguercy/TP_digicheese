@@ -9,8 +9,8 @@ class CommuneRepository:
     def get_all_communes(self, db: Session):
         return list(db.query(Commune).all())
     
-    def get_commune_by_id(self, db: Session, id: int):
-        return db.query(Commune).get(id)
+    def get_commune_by_id(self, db: Session, id_commune: int):
+        return db.query(Commune).get(id_commune)
     
     def create_commune(self, db: Session, donnees_commune: dict):
         commune = Commune(**donnees_commune)
@@ -19,16 +19,16 @@ class CommuneRepository:
         db.refresh(commune)
         return commune
     
-    def patch_commune(self,db: Session, id: int, donnees_commune: dict):
-        commune = db.query(Commune).get(id)
+    def patch_commune(self,db: Session, id_commune: int, donnees_commune: dict):
+        commune = db.query(Commune).get(id_commune)
         for key, value in donnees_commune.items():
             setattr(commune, key, value)
         db.commit()
         db.refresh(commune)
         return commune
     
-    def delete_commune(self, db: Session, id: int):
-        commune = db.query(Commune).get(id)
+    def delete_commune(self, db: Session, id_commune: int):
+        commune = db.query(Commune).get(id_commune)
         db.delete(commune)
         db.commit
         return commune

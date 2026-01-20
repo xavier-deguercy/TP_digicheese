@@ -5,7 +5,7 @@ from .base import Base
 class Commune(Base):
     __tablename__ = "t_commune"
 
-    id_Commune = Column(Integer, primary_key = True)
+    id_commune = Column(Integer, primary_key = True)
     dep = Column(String(40))
     cp = Column(String(40))
     ville = Column(String(40))

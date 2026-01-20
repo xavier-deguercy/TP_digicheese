@@ -19,8 +19,10 @@ class CommunePatch(CommuneBase):
 
 class CommuneInDB(CommuneBase):
     """Schema for commune data stored in the database."""
-    id: int
+    id_commune: int
     
     class Config:
         from_attributes = True
+
+        
 

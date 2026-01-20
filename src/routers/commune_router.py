@@ -20,9 +20,9 @@ service = CommuneService()
 def get_communes(db: Session=Depends(get_db)):
     return service.get_all_communes(db)
 
-@router.get("/{id}", status_code=200,response_model=CommuneInDB)
-def get_commune(id: int, db: Session=Depends(get_db)):
-    commune = service.get_commune_by_id(db,id)
+@router.get("/{id_commune}", status_code=200,response_model=CommuneInDB)
+def get_commune(id_commune: int, db: Session=Depends(get_db)):
+    commune = service.get_commune_by_id(db,id_commune)
     if commune is None:
         raise HTTPException(status_code=404, detail="Commune non trouvé")
     return commune
@@ -31,19 +31,19 @@ def get_commune(id: int, db: Session=Depends(get_db)):
 def create_commune(donnees_commune: CommunePost, db: Session=Depends(get_db)):
     return service.create_commune(db, donnees_commune)
 
-@router.patch("/{id}", status_code=200, response_model=CommuneInDB)
-def patch_commune(id: int, donnees_commune: CommunePatch, db: Session=Depends(get_db)):
-    commune = service.get_commune_by_id(db, id)
+@router.patch("/{id_commune}", status_code=200, response_model=CommuneInDB)
+def patch_commune(id_commune: int, donnees_commune: CommunePatch, db: Session=Depends(get_db)):
+    commune = service.get_commune_by_id(db, id_commune)
     if commune is None:
         raise HTTPException(status_code= 404, detail="Commune non trouvé")
-    return service.patch_commune(db,id,donnees_commune)
+    return service.patch_commune(db,id_commune,donnees_commune)
 
-@router.delete("/{id}", status_code=200,response_model=CommuneInDB)
-def delete_commune(id: int, db: Session=Depends(get_db)):
-    commune = service.get_commune_by_id(db,id)
+@router.delete("/{id_commune}", status_code=200,response_model=CommuneInDB)
+def delete_commune(id_commune: int, db: Session=Depends(get_db)):
+    commune = service.get_commune_by_id(db,id_commune)
     if commune is None:
         raise HTTPException(status_code=404, detail="Commune non trouvé")
-    return service.delete_commune(db, id)
+    return service.delete_commune(db, id_commune)
 
 
 
