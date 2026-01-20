@@ -1,33 +1,32 @@
 # creation du service pour les objets
 from sqlalchemy.orm import Session
-from ..repositories import objet_repository as objet_repo
-from ..schemas import objet_schema as objet_schema
-from typing import Optional
+from ..repositories.objet_repository import ObjetRepository 
+from ..schemas.objet_schema import ObjetBase, ObjetPatch
+
 
 
 class ObjetService:
     def __init__(self, db: Session):
-        self.repository = objet_repo.ObjetRepository(db)
+        self.repository = ObjetRepository(db)
 
-    def __traitement(self, client: dict):
-        return client
+    def __traitement(self, objet: dict):
+        return objet
     
-    def get_objet(self, objet_id: int) -> Optional[objet_schema.ObjetOut]:
-        objet = self.repository.get_objet(objet_id)
-        if objet:
-            return objet_schema.ObjetOut.from_orm(objet)
-        return None
-
-    def create_objet(self, objet_data: objet_schema.ObjetPost) -> objet_schema.ObjetOut:
-        new_objet = self.repository.create_objet(objet_data)
-        return objet_schema.ObjetOut.from_orm(new_objet)
-
+    def get_all_objet(self, db: Session):
+        return self.repository.get_all_objet(db)
     
-       
-    def create_objet(self, db: Session, new_objet: ClientPost):
+    def get_objet_by_id(self, db: Session, objet_id: int):
+        return self.repository.get_objet_by_id(db, objet_id)   
+  
+    def create_objet(self, db: Session, new_objet: ObjetBase):
         new_objet = new_objet.model_dump()
         new_objet = self.__traitement(new_objet)
         return self.repository.create_objet(db, new_objet)    
 
-    def delete_objet(self, objet_id: int) -> bool:
-        return self.repository.delete_objet(objet_id)
+    def patch_objet(self, db: Session, objet_id: int, objet: ObjetPatch):
+        objet = objet.model_dump(exclude_unset=True)
+        objet = self.__traitement(objet)
+        return self.repository.patch_objet(db, objet_id, objet)
+
+    def delete_objet(self, db: Session, objet_id: int):
+        return self.repository.delete_objet(db, objet_id)

@@ -14,14 +14,9 @@ class ConditionnementService:
     def __init__(self):
         self.repository = ConditionnementRepository()
 
-    def __traitement(self, donnees: dict):
-        # Exemples si tu veux durcir :
-        # - normaliser libellé (strip)
-        # - forcer prix >= 0 (déjà fait par validation)
-        if "lib_condit" in donnees and donnees["lib_condit"] is not None:
-            donnees["lib_condit"] = donnees["lib_condit"].strip()
-        return donnees
-
+    def __traitement(self, Conditionnement: dict):
+        return Conditionnement
+    
     def get_all_conditionnements(self, db: Session):
         return self.repository.get_all_conditionnements(db)
 

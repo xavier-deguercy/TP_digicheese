@@ -9,17 +9,18 @@ from src.models import objet
 class ObjetRepository:
     def __init__(self, session):
         self.session = session
+
     def get_all_objet(self, db: Session):
         return list(db.query(Objet).all())
     
     def get_objet_by_id(self, db: Session, id: int):
         return db.query(Objet).get(id)
 
-    def get_objet(self, objet_id: int) -> Optional[Objet]:
-        return self.session.query(Objet).filter(Objet.id_objet == objet_id).first()
+    ##def get_objet(self, objet_id: int) -> Optional[Objet]:
+    #    return self.session.query(Objet).filter(Objet.id_objet == objet_id).first()
 
     def create_objet(self, objet_data: BaseModel) -> Objet:
-        new_objet = Objet(**objet_data.dict())
+        new_objet = Objet(**donnees_objet)
         self.session.add(new_objet)
         self.session.commit()
         self.session.refresh(new_objet)

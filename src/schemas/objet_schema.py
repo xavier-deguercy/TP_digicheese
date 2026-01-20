@@ -4,12 +4,8 @@ from typing import Optional, Optional
 from pydantic import BaseModel, ConfigDict, Field
 
 
-class ObjetPost(BaseModel):
-    """
-    Schéma pour POST (création).
-    -> nom_obj requis (car nullable=False en DB)
-    -> le reste a des défauts propres et validés.
-    """
+#class ObjetPost(BaseModel):
+class ObjetBase(BaseModel): 
     nom_obj: Optional[str] = Field(None, max_length=50)
     taille_obj: Optional[str] = Field(None, max_length=50)
 
