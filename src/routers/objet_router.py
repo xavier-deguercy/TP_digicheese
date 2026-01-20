@@ -12,11 +12,14 @@ from src.db.database import get_db
 from src.schemas.objet_schema import ObjetBase, ObjetPatch, ObjetOut
 from src.services.objet_services import ObjetService
 
-router = APIRouter(prefix="/api/v1/admin/objets", tags=["Admin - Objets"])
-
+router = APIRouter(
+    prefix="objets", 
+    tags=["Admin - Objets"]
+)
 
 @router.get("/", response_model=list[ObjetOut], status_code=200)
 def get_objets(db: Session = Depends(get_db)):
+
     """
     Liste tous les objets.
     """

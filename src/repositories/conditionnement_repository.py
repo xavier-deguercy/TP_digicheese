@@ -16,16 +16,16 @@ class ConditionnementRepository:
     def get_conditionnement_by_id(self, db: Session, id: int):
         return db.query(Conditionnement).get(id)
 
-    def create_conditionnement(self, db: Session, donnees: dict):
-        cond = Conditionnement(**donnees)
+    def create_conditionnement(self, db: Session, donnees_conditionnement: dict):
+        cond = Conditionnement(**donnees_conditionnement)
         db.add(cond)
         db.commit()
         db.refresh(cond)
         return cond
 
-    def patch_conditionnement(self, db: Session, id: int, donnees: dict):
+    def patch_conditionnement(self, db: Session, id: int, donnees_conditionnement: dict):
         cond = db.query(Conditionnement).get(id)
-        for key, value in donnees.items():
+        for key, value in donnees_conditionnement.items():
             setattr(cond, key, value)
         db.commit()
         db.refresh(cond)

@@ -11,13 +11,6 @@ class ConditionnementBase(BaseModel):
     ordre_imp: Optional[bool] = None
 
 class ConditionnementPost(ConditionnementBase):
-    """
-    POST : création.
-    -> lib_condit optionnel (nullable=True en DB)
-    -> poids_condit optionnel (nullable=True en DB)
-    -> prix_condit requis (default=0 en DB)
-    -> ordre_imp optionnel (nullable=True en DB)
-    """
     pass
 
 class ConditionnementPatch(ConditionnementBase):
@@ -42,4 +35,7 @@ class ConditionnementInDB(ConditionnementBase):
     poids_condit: Optional[int]
     prix_condit: Decimal
     ordre_imp: Optional[int]
- 
+    
+    
+    class Config:
+        from_attributes = True 

@@ -1,6 +1,6 @@
 # src/models/conditionnement.py
 
-from sqlalchemy import Column, ForeignKey, Integer, String, Numeric     
+from sqlalchemy import Column, Integer, String, Numeric     
 from sqlalchemy.orm import relationship
 from .base import Base
 
