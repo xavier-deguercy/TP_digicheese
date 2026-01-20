@@ -22,8 +22,8 @@ class ObjetPatch(BaseModel):
     nom_obj: Optional[str] = Field(None, max_length=50)
     taille_obj: Optional[str] = Field(None, max_length=50)
 
-    prix_obj: Optional[int] = None 
-    poids_obj: Optional[int] = None 
+    prix_obj: Optional[float] = None 
+    poids_obj: Optional[float] = None 
 
     indisp_obj: Optional[bool] = None
     points_obj: Optional[int] = None
@@ -39,11 +39,10 @@ class ObjetOut(BaseModel):
     nom_obj: str
     taille_obj: Optional[str]
 
-    prix_obj: Decimal
-    poids_obj: Decimal
+    prix_obj: float
+    poids_obj: float
 
     indisp_obj: bool
     points_obj: int
     
-    class Config:
-        from_attributes = True
+    

@@ -9,7 +9,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
 from src.db.database import get_db
-from src.schemas.objet_schema import ObjetBase, ObjetPatch, ObjetOut
+from src.schemas.objet_schema import ObjetCreate, ObjetPatch, ObjetOut
 from src.services.objet_services import ObjetService
 
 # Create a router for objet-related endpoints
@@ -34,13 +34,13 @@ def get_objet(objet_id: int, db: Session = Depends(get_db)):
     
     # Récupère un objet par son id.
     
-    objet = ObjetService(db).get_objet_by_id(objet_id)
+    objet = service.get_objet_by_id(db, objet_id)
     if objet is None:
         raise HTTPException(status_code=404, detail="Objet non trouvé")
     return objet
 
 @router.post("/", status_code=201, response_model=ObjetOut)
-def create_objet(payload: ObjetBase, db: Session = Depends(get_db)):
+def create_objet(payload: ObjetCreate, db: Session = Depends(get_db)):
     """
     Crée un nouvel objet.
     """

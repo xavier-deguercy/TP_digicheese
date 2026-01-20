@@ -1,4 +1,5 @@
 # src/services/conditionnement_service.py
+
 from sqlalchemy.orm import Session
 
 from src.repositories.conditionnement_repository import ConditionnementRepository
@@ -14,9 +15,10 @@ class ConditionnementService:
     def __init__(self):
         self.repository = ConditionnementRepository()
 
-    def __traitement(self, Conditionnement: dict):
-        return Conditionnement
-    
+    def __traitement(self, conditionnement: dict):
+        # Ici tu pourras ajouter des règles métier (normalisation, calculs, contrôles, etc.)
+        return conditionnement
+
     def get_all_conditionnements(self, db: Session):
         return self.repository.get_all_conditionnements(db)
 
@@ -24,7 +26,7 @@ class ConditionnementService:
         return self.repository.get_conditionnement_by_id(db, condit_id)
 
     def create_conditionnement(self, db: Session, payload: ConditionnementPost):
-        donnees = payload.model_dump()
+        donnees = payload.model_dump(exclude_none=True)
         donnees = self.__traitement(donnees)
         return self.repository.create_conditionnement(db, donnees)
 
