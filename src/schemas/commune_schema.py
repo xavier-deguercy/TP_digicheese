@@ -9,7 +9,6 @@ class CommuneBase(BaseModel):
 
 class CommunePost(CommuneBase):
     """Schema for creating a new commune."""
-    pass
     id_commune: int
 
 class CommunePatch(BaseModel):

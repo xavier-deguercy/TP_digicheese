@@ -30,6 +30,6 @@ class CommuneRepository:
     def delete_commune(self, db: Session, id_commune: int):
         commune = db.get(Commune,id_commune)
         db.delete(commune)
-        db.commit
+        db.commit()
         return commune
     
