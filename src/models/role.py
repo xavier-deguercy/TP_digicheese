@@ -8,4 +8,5 @@ class Role(Base):
 
     id_role = Column(Integer, primary_key=True)
     libelle_role = Column(String(50), nullable=False)
+    
     utilisateurs = relationship("Utilisateur", back_populates="role")
