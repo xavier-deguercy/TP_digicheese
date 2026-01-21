@@ -5,6 +5,7 @@ class AdresseBase(BaseModel):
     """Base schema for adresse data"""
     rue: str
     compAdresse: str
+    id_commune: int
 
 
 class AdressePost(AdresseBase):
@@ -15,6 +16,7 @@ class AdressePatch(BaseModel):
     """Schema for updating an existing adresse."""
     rue: Optional[str] = None
     compAdresse: Optional[str] = None
+    id_commune: Optional[str] = None
 
 
 class AdresseInDB(AdresseBase):
