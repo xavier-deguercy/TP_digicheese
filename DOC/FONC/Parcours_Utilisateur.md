@@ -1,56 +1,68 @@
-# Parcours utilisateur (sans IHM) — utilisation via Swagger
+# Parcours utilisateur (sans IHM) — validation via Swagger
 
 ## Principe
-L’IHM n’est pas développée dans le TP7.  
-Les parcours sont donc validés via **Swagger UI** (OpenAPI), qui simule le front.
+Dans le cadre du TP7, l’IHM n’est pas développée.  
+Les parcours sont donc **validés via Swagger UI** (OpenAPI), qui simule les appels du front.
+
+- Swagger : `http://127.0.0.1:8000/docs`
+
+> Remarque importante : certains endpoints sont regroupés sous des tags Swagger (ex. « Admin - Objets »).
+> Ce sont des **tags de documentation** ; les **URLs** restent à la racine (ex. `/objets/`).
 
 ---
 
 ## Parcours 1 — Admin : gérer un référentiel (CRUD “Objets”)
+
 ### Acteur
 Administrateur
 
 ### Préconditions
 - API en cours d’exécution
 - Base MySQL accessible
-- Endpoint `/api/v1/admin/objets` disponible dans Swagger
+- Endpoints Objets visibles dans Swagger :
+  - `GET /objets/`
+  - `POST /objets/`
+  - `GET /objets/{objet_id}`
+  - `PATCH /objets/{objet_id}`
+  - `DELETE /objets/{objet_id}`
 
-### Scénario nominal
-1. L’admin ouvre Swagger UI.
-2. Il consulte la liste des objets (GET).
-3. Il crée un nouvel objet (POST) avec les champs requis.
-4. Il vérifie la présence du nouvel objet dans la liste (GET).
-5. Il met à jour l’objet (PUT/PATCH).
-6. Il supprime l’objet (DELETE) ou le rend indisponible (si suppression logique choisie).
+### Scénario nominal (démo “phare”)
+1. **Lister** les objets : `GET /objets/`  
+2. **Créer** un objet : `POST /objets/` (payload ci-dessous)  
+3. **Relire** l’objet créé : `GET /objets/{objet_id}`  
+4. **Mettre à jour partiellement** : `PATCH /objets/{objet_id}` (ex. points + indisponible)  
+5. **Supprimer** : `DELETE /objets/{objet_id}`  
+6. **Contrôle post-suppression** : relancer `GET /objets/{objet_id}` → attendu : **404**
 
-### Postconditions
-- Les données sont persistées en base.
-- Les réponses HTTP sont cohérentes (200/201/204, 400/404…).
+### Exemples de payload (Swagger)
+**POST /objets/**
+```json
+{
+  "nom_obj": "Mug DigiCheese",
+  "taille_obj": "Standard",
+  "prix_obj": 9.90,
+  "poids_obj": 0.25,
+  "indisp_obj": false,
+  "points_obj": 120
+}
+```
+
+**PATCH /objets/{objet_id}**
+```json
+{
+  "points_obj": 150,
+  "indisp_obj": true
+}
+```
+
+### Critères de validation (parcours)
+- Le parcours est exécutable “bout-à-bout” via Swagger.
+- Les codes HTTP attendus sont cohérents (200/201/204, 404 en cas d’ID inexistant).
+- Les schémas request/response sont exposés (Swagger) et exploitables par un front ultérieur.
 
 ---
 
-## Parcours 2 — Admin : gérer les communes (CRUD “Communes”)
-Même structure que Parcours 1, appliquée à `/api/v1/admin/communes`.
+## Parcours optionnels (si exposés dans Swagger)
+Selon l’avancement, d’autres ressources peuvent être démontrées avec le **même pattern CRUD** (référentiels : conditionnements, poids, communes, adresses, utilisateurs, rôles…).
 
----
-
-## Parcours 3 — OP-colis (option) : créer et maintenir un client
-### Acteur
-Opérateur colis
-
-### Préconditions
-- Option “CRUD Clients” activée
-- Endpoint `/api/v1/op-colis/clients` disponible
-
-### Scénario nominal
-1. L’opérateur ouvre Swagger UI.
-2. Il crée un client (POST) avec identité + contact + adresse.
-3. Il recherche le client (GET avec filtres éventuels).
-4. Il met à jour les coordonnées (PUT/PATCH).
-5. (option) Il supprime/désactive le client (DELETE/flag).
-
----
-
-## Critères de validation (parcours)
-- L’ensemble des parcours est testable “bout-à-bout” via Swagger.
-- Chaque endpoint a un exemple de payload request/response (Swagger).
+> Pour la soutenance, la démo se concentre sur **Objets** (parcours 1) afin de rester fiable et maîtrisée.
