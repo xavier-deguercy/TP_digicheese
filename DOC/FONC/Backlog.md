@@ -57,11 +57,13 @@ Une US est “Done” si :
 ## Conventions communes (à verrouiller dès J1)
 > Objectif : éviter les conflits Git + faciliter le travail en parallèle.
 
-- Base path : `/api/v1`
+- Base URL : `/` (routes à la racine — pas de préfixe global `/api/v1`)
 - Structure endpoint CRUD :
   - GET collection, POST collection
   - GET item, PUT/PATCH item, DELETE item
 - Conventions réponse :
+> Note : certains endpoints sont regroupés sous des tags « Admin - … » dans Swagger ; les URLs restent à la racine (ex. `/objets/`).
+
   - 200/201/204 nominal, 400 validation, 404 absent
 - Pattern technique :
   - `routes/<ressource>.py`
