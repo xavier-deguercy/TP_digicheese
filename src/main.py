@@ -1,3 +1,4 @@
+# src/main.py
 from fastapi import FastAPI
 
 from src.routers.role_router import router as role_router
@@ -19,3 +20,7 @@ app.include_router(objet_router)
 app.include_router(poids_router)
 app.include_router(poidsv_router)
 app.include_router(conditionnement_router)
+
+@app.get("/health")
+def health():
+    return {"status": "ok"}
