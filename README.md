@@ -1,4 +1,3 @@
-
 # DIGICHEESE — TP Diginamic (UML + socle dev)
 
 ## Contexte
@@ -67,10 +66,7 @@ Créer l’environnement virtuel :
 ```bash
 python -m venv .venv
 ```
-
-
-
-
+------------------------------------
 
 # Organisation projet API
 
@@ -108,5 +104,3 @@ python -m venv .venv
 7. Relevé des paramètres (classes, methodes)
 8. Définir les étapes de devs
 9. Assignation des taches (sprint backlog)
-
- 
