@@ -1,6 +1,6 @@
 # src/models/conditionnement.py
 
-from sqlalchemy import Column, Integer, String, Numeric     
+from sqlalchemy import Column, Integer, String, Numeric
 from sqlalchemy.orm import relationship
 from .base import Base
 
@@ -14,6 +14,5 @@ class Conditionnement(Base):
     poids_condit = Column(Integer, nullable=True)                               # poids conditionnement
     prix_condit = Column(Numeric(10, 4), nullable=False, default=0)             # prix unitaire conditionnement
     ordre_imp = Column(Integer, nullable=True)                                  # ordre d'impression conditionnement
-#relation
-    objet_cond = relationship("ObjetCond", back_populates="condit")             # relation avec la table des objets
+#relation          
 #pas de methode ici, ce sera dans les routes
