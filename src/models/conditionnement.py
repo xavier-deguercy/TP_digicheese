@@ -14,6 +14,5 @@ class Conditionnement(Base):
     poids_condit = Column(Integer, nullable=True)                               # poids conditionnement
     prix_condit = Column(Numeric(10, 4), nullable=False, default=0)             # prix unitaire conditionnement
     ordre_imp = Column(Integer, nullable=True)                                  # ordre d'impression conditionnement
-#relation
-
+#relation          
 #pas de methode ici, ce sera dans les routes
