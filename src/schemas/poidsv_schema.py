@@ -4,24 +4,23 @@ from typing import Optional
 
 class PoidsvBase(BaseModel):
     """Base schema for PoidsV data."""
-    id: int
-    valmin: float
-    valmax: float
+    valminv: float
+    valmaxv: float
 
 class PoidsvPost(PoidsvBase):
     """Schema for creating a new PoidsV."""
     pass
 
 
-class PoidsvPatch(PoidsvBase):
+class PoidsvPatch(BaseModel):
     """Schema for updating an existing PoidsV."""
-    valmin: Optional[float] = None
-    valmax: Optional[float] = None
+    valminv: Optional[float] = None
+    valmaxv: Optional[float] = None
 
 
 class PoidsvInDB(PoidsvBase):
     """Schema for PoidsV data stored in the database."""
-    codPoidsV: int
-    
+    id: int
+
     class Config:
         from_attributes = True

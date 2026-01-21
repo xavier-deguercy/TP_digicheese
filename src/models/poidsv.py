@@ -6,6 +6,5 @@ class Poidsv(Base) :
     __tablename__ = "t_poidsv"
 
     id = Column(Integer, default=None, primary_key=True)
-    valmin = Column(DECIMAL, default=DECIMAL("0"), nullable=True)
-    valtimbre = Column(DECIMAL, default=DECIMAL("0"), nullable=True)
-   
+    valminv = Column(DECIMAL, default=DECIMAL("0"), nullable=True)
+    valmaxv = Column(DECIMAL, default=DECIMAL("0"), nullable=True)

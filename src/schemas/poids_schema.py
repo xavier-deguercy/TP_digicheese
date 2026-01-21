@@ -4,7 +4,6 @@ from typing import Optional
 
 class PoidsBase(BaseModel):
     """Base schema for Poids data."""
-    id: int
     valmin: float
     valmax: float
 
@@ -13,7 +12,7 @@ class PoidsPost(PoidsBase):
     pass
 
 
-class PoidsPatch(PoidsBase):
+class PoidsPatch(BaseModel):
     """Schema for updating an existing Poids."""
     valmin: Optional[float] = None
     valmax: Optional[float] = None
@@ -21,7 +20,7 @@ class PoidsPatch(PoidsBase):
 
 class PoidsInDB(PoidsBase):
     """Schema for Poids data stored in the database."""
-    codPoids: int
-    
+    id: int
+
     class Config:
         from_attributes = True
