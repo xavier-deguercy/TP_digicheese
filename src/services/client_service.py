@@ -37,10 +37,10 @@ class ClientService:
         raise HTTPException(status_code=400, detail="email_client: déjà utilisé")
 
     def get_all(self, db: Session, skip: int = 0, limit: int = 100):
-        return self.repository.get_all(db, skip=skip, limit=limit)
-
+        return self.repository.get_all_detailed(db, skip=skip, limit=limit)
+    
     def get_by_id(self, db: Session, id_client: int):
-        client = self.repository.get_by_id(db, id_client)
+        client = self.repository.get_by_id_detailed(db, id_client)
         if client is None:
             raise HTTPException(status_code=404, detail="Client non trouvé")
         return client

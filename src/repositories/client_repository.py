@@ -1,16 +1,25 @@
 from typing import Optional, List
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session, selectinload
 from sqlalchemy import select
 
-from models.client import Client
-from schemas.client_schema import ClientPost, ClientPatch
+from src.models.client import Client
+from src.models.adresse import Adresse
+from src.schemas.client_schema import ClientPost, ClientPatch
 
 
 class ClientRepository:
 
     @staticmethod
-    def get_all(db: Session, skip: int = 0, limit: int = 100) -> List[Client]:
-        stmt = select(Client).offset(skip).limit(limit)
+    def get_all_detailed(db: Session, skip: int = 0, limit: int = 100) -> List[Client]:
+        stmt = (
+            select(Client)
+            .offset(skip)
+            .limit(limit)
+            .options(
+                selectinload(Client.adresse1).selectinload(Adresse.commune),
+                selectinload(Client.adresse2).selectinload(Adresse.commune),
+            )
+        )
         return list(db.scalars(stmt).all())
 
     @staticmethod
@@ -21,6 +30,18 @@ class ClientRepository:
     @staticmethod
     def get_by_email(db: Session, email_client: str) -> Optional[Client]:
         stmt = select(Client).where(Client.email_client == email_client)
+        return db.scalars(stmt).first()
+
+    @staticmethod
+    def get_by_id_detailed(db: Session, id_client: int) -> Optional[Client]:
+        stmt = (
+            select(Client)
+            .where(Client.id_client == id_client)
+            .options(
+                selectinload(Client.adresse1).selectinload(Adresse.commune),
+                selectinload(Client.adresse2).selectinload(Adresse.commune),
+            )
+        )
         return db.scalars(stmt).first()
 
     @staticmethod

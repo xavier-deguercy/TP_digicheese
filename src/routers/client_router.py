@@ -4,7 +4,7 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
 from ..database import get_db
-from ..schemas.client_schema import ClientOut, ClientPost, ClientPatch
+from ..schemas.client_schema import ClientOutDetailed, ClientOut, ClientPost, ClientPatch
 from ..services.client_service import ClientService
 
 router = APIRouter(
@@ -15,12 +15,11 @@ router = APIRouter(
 service = ClientService()
 
 
-@router.get("/", response_model=List[ClientOut])
+@router.get("/", response_model=List[ClientOutDetailed])
 def get_clients(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     return service.get_all(db, skip=skip, limit=limit)
 
-
-@router.get("/{id_client}", response_model=ClientOut)
+@router.get("/{id_client}", response_model=ClientOutDetailed)
 def get_client(id_client: int, db: Session = Depends(get_db)):
     return service.get_by_id(db, id_client)
 
