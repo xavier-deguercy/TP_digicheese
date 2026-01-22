@@ -9,6 +9,7 @@ from src.routers.objet_router import router as objet_router
 from src.routers.poids_router import router as poids_router
 from src.routers.poidsv_router import router as poidsv_router
 from src.routers.conditionnement_router import router as conditionnement_router
+from src.routers.client_router import router as client_router
 
 app = FastAPI(title="DigiCheese API", version="1.0.0")
 
@@ -20,6 +21,7 @@ app.include_router(objet_router)
 app.include_router(poids_router)
 app.include_router(poidsv_router)
 app.include_router(conditionnement_router)
+app.include_router(client_router)
 
 @app.get("/health")
 def health():
