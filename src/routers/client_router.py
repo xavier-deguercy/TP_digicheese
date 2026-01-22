@@ -22,12 +22,7 @@ def get_clients(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
 
 @router.get("/{id_client}", response_model=ClientOut)
 def get_client(id_client: int, db: Session = Depends(get_db)):
-    client = service.get_by_id(db, id_client)
-    if client is None:
-        from fastapi import HTTPException
-        raise HTTPException(status_code=404, detail="Client non trouvé")
-    return client
-
+    return service.get_by_id(db, id_client)
 
 @router.post("/", response_model=ClientOut, status_code=201)
 def create_client(payload: ClientPost, db: Session = Depends(get_db)):

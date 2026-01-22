@@ -20,7 +20,6 @@ class ClientService:
         return db.scalars(stmt).first() is not None
 
     def __validate_adresses(self, db: Session, adresse1_id: Optional[int], adresse2_id: Optional[int]) -> None:
-        # adresse1 obligatoire en POST (nullable=False côté modèle)
         if adresse1_id is not None and not self.__adresse_exists(db, adresse1_id):
             raise HTTPException(status_code=400, detail="adresse1_client: adresse inconnue")
 
@@ -41,7 +40,10 @@ class ClientService:
         return self.repository.get_all(db, skip=skip, limit=limit)
 
     def get_by_id(self, db: Session, id_client: int):
-        return self.repository.get_by_id(db, id_client)
+        client = self.repository.get_by_id(db, id_client)
+        if client is None:
+            raise HTTPException(status_code=404, detail="Client non trouvé")
+        return client
 
     def create(self, db: Session, payload: ClientPost):
         # validations FK + email
@@ -51,27 +53,21 @@ class ClientService:
         return self.repository.create(db, payload)
 
     def patch(self, db: Session, id_client: int, payload: ClientPatch):
-        # On récupère le client pour :
-        # - vérifier existence (sinon 404)
-        # - gérer l'unicité email en excluant l'id courant
         client = self.repository.get_by_id(db, id_client)
         if client is None:
             raise HTTPException(status_code=404, detail="Client non trouvé")
 
         data = payload.model_dump(exclude_unset=True)
 
-        # validations FK uniquement si champs présents dans le patch
         self.__validate_adresses(
             db,
             data.get("adresse1_client"),
             data.get("adresse2_client"),
         )
 
-        # unicité email uniquement si fourni
         if "email_client" in data:
             self.__validate_email_unique(db, data.get("email_client"), exclude_id=id_client)
 
-        # Repo patch attend (client, payload)
         return self.repository.patch(db, client, payload)
 
     def delete(self, db: Session, id_client: int):
