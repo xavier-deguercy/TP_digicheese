@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DIGICHEESE — Connexion</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="center-wrap">
+    <div class="card auth-card">
+      <div class="row" style="justify-content:space-between; align-items:center;">
+        <div class="brand">
+          <span>🧀 DIGICHEESE</span>
+          <span class="badge">Prototype UI</span>
+        </div>
+        <span class="pill warn">E01</span>
+      </div>
+
+      <hr class="sep" />
+
+      <h2 style="margin:0 0 4px;">Connexion</h2>
+      <p style="margin:0 0 12px; color:var(--muted);">Accès opérateur colis / administrateur (sans backend).</p>
+
+      <div class="form">
+        <div class="field">
+          <label for="email">Identifiant</label>
+          <input id="email" type="text" placeholder="prenom.nom / email / matricule" />
+        </div>
+
+        <div class="field">
+          <label for="pwd">Mot de passe</label>
+          <input id="pwd" type="password" placeholder="••••••••" />
+          <small>Ce formulaire est décoratif : seul le bouton de navigation fonctionne.</small>
+        </div>
+
+        <div class="actions">
+          <a class="btn primary" href="dashboard.html" role="button">Se connecter</a>
+          <span class="btn disabled" aria-disabled="true">Mot de passe oublié</span>
+        </div>
+      </div>
+
+      <p class="footer-note">Navigation : Login → Dashboard.</p>
+    </div>
+  </div>
+</body>
+</html>
