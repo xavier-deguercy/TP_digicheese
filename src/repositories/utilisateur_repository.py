@@ -1,4 +1,6 @@
+from sqlalchemy import select
 from sqlalchemy.orm import Session
+from typing import Optional
 from ..models.utilisateur import Utilisateur
 
 
@@ -8,8 +10,14 @@ class UtilisateurRepository:
     def get_all(self, db: Session):
         return list(db.query(Utilisateur).all())
 
+    @staticmethod
     def get_by_id(self, db: Session, user_id: int):
         return db.get(Utilisateur, user_id)
+
+    @staticmethod
+    def get_by_api_key(db: Session, api_key: str) -> Optional[Utilisateur]:
+        stmt = select(Utilisateur).where(Utilisateur.api_key == api_key)
+        return db.scalars(stmt).first()
 
     def create(self, db: Session, data: dict):
         user = Utilisateur(**data)

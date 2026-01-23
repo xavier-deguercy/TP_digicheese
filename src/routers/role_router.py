@@ -4,8 +4,9 @@ from sqlalchemy.orm import Session
 from ..database import get_db
 from ..services.role_service import RoleService
 from ..schemas.role import RolePost, RolePatch, RoleOut
+from src.utils.dependencies import require_roles
 
-router = APIRouter(prefix="/roles", tags=["admin-roles"])
+router = APIRouter(prefix="/roles", tags=["admin-roles"], dependencies=[Depends(require_roles("Admin"))])
 service = RoleService()
 
 

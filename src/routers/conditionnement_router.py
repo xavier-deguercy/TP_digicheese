@@ -15,11 +15,13 @@ from ..schemas.conditionnement_schema import (
     ConditionnementInDB,
 )
 from src.services.conditionnement_services import ConditionnementService
+from src.utils.dependencies import require_roles
 
 # Create a router for conditionnement-related endpoints
 router = APIRouter(
     prefix="/conditionnements",
-    tags=["Admin - Conditionnements"]
+    tags=["Admin - Conditionnements"],
+    dependencies=[Depends(require_roles("Admin"))]
 )
 
 # Initialize the conditionnement service to have access to client operations

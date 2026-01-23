@@ -7,7 +7,7 @@ class Client(Base):
     __tablename__ = "t_client"
 
     id_client = Column(Integer, primary_key=True)
-    email_client = Column(String(255), nullable=True, index=True)
+    email_client = Column(String(255), nullable=True, unique=True)
     nom_client = Column(String(40), nullable=True)
     prenom_client = Column(String(30), nullable=True)
     adresse1_client = Column(Integer, ForeignKey("t_adresse.id_adresse"), nullable=False)

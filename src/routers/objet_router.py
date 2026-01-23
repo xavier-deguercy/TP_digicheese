@@ -11,11 +11,13 @@ from sqlalchemy.orm import Session
 from src.database import get_db
 from src.schemas.objet_schema import ObjetCreate, ObjetPatch, ObjetOut
 from src.services.objet_services import ObjetService
+from src.utils.dependencies import require_roles
 
 # Create a router for objet-related endpoints
 router = APIRouter(
     prefix="/objets",
-    tags=["Admin - Objets"]
+    tags=["Admin - Objets"],
+    dependencies=[Depends(require_roles("Admin"))]
 )
 # Initialize the objet service to have access to objet operations
 service = ObjetService()
