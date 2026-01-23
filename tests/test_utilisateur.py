@@ -18,7 +18,6 @@ def user_data():
         "prenom_user": "John",
         "username": "john.doe",
         "password": "secret123",
-        # id_role ajouté après création du role
     }
 
 
@@ -43,8 +42,6 @@ def test_create_user(client: TestClient, role_data, user_data):
     assert data["nom_user"] == user_data["nom_user"]
     assert data["prenom_user"] == user_data["prenom_user"]
     assert data["username"] == user_data["username"]
-
-    # sécurité : on ne doit jamais renvoyer password/hashed_password
     assert "password" not in data
     assert "hashed_password" not in data
 

@@ -30,7 +30,6 @@ def client_data():
         "nom_client": "Didier",
         "prenom_client": "Francis",
         "telephone_client": "0627000000",
-        # adresse2_client optionnel
     }
 
 
@@ -55,7 +54,6 @@ def test_get_all_clients_empty(client: TestClient):
 
 
 def test_create_client(client: TestClient, commune_data, adresse_data, client_data):
-    # créer une commune + adresse (FK obligatoire pour adresse, puis adresse obligatoire pour client)
     commune = _create_commune(client, commune_data)
     id_commune = commune["id_commune"]
 

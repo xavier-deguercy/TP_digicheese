@@ -35,6 +35,7 @@ class UtilisateurOut(UtilisateurBase):
         from_attributes = True
 
 class UtilisateurOutWithApiKey(UtilisateurOut):
+    """Schéma retourné par l'API avec la clé API."""
     api_key: Optional[str] = None
 
     class Config:

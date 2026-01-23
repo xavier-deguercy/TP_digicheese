@@ -26,14 +26,14 @@ def create_tables():
 def seed_roles_and_admin():
     db: Session = SessionLocal()
     try:
-        # roles
+        # Seed des roles
         for libelle in DEFAULT_ROLES:
             exists = db.scalars(select(Role).where(Role.libelle_role == libelle)).first()
             if not exists:
                 db.add(Role(libelle_role=libelle))
         db.commit()
 
-        # admin
+        # Seed de l'admin
         admin_role = db.scalars(select(Role).where(Role.libelle_role == "Admin")).first()
         existing_admin = db.scalars(
             select(Utilisateur).where(Utilisateur.id_role == admin_role.id_role)

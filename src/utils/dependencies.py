@@ -1,4 +1,3 @@
-from typing import Callable
 import os
 from typing import Optional
 from fastapi import Depends, HTTPException, status
@@ -38,7 +37,7 @@ def get_current_user_api_key(
 def require_roles(*allowed_roles: str):
     def dependency(current_user=Depends(get_current_user_api_key)):
         if os.getenv("DISABLE_AUTH", "false").lower() == "true":
-            return current_user  # ou même return None si tu préfères
+            return current_user
 
         role_name = current_user.role.libelle_role
         if role_name not in allowed_roles:
