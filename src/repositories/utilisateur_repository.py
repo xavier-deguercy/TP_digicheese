@@ -10,6 +10,7 @@ class UtilisateurRepository:
     def get_all(self, db: Session):
         return list(db.query(Utilisateur).all())
 
+    @staticmethod
     def get_by_id(self, db: Session, user_id: int):
         return db.get(Utilisateur, user_id)
 
