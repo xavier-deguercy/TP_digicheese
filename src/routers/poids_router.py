@@ -10,7 +10,7 @@ from src.utils.dependencies import require_roles
 
 
 # Create a router for poids-related endpoints
-router = APIRouter(prefix="/poids", tags=["poids"], dependencies=[Depends(require_roles("Admin"))])
+router = APIRouter(prefix="/poids", tags=["CRUD Poids (Admin)"], dependencies=[Depends(require_roles("Admin"))])
 
 # Initialize the poids service to have access to poids operations
 service = PoidsService()

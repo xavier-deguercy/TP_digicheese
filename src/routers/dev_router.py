@@ -4,7 +4,7 @@ from sqlalchemy.orm import Session
 from ..database import get_db
 from ..models.utilisateur import Utilisateur
 
-router = APIRouter(prefix="/dev", tags=["Dev"])
+router = APIRouter(prefix="/dev", tags=["Get API Key (Dev)"])
 
 
 @router.get("/api-key/{user_id}")

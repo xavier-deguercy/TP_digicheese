@@ -11,7 +11,7 @@ from src.utils.dependencies import require_roles
 Receives requestes from the commune router, transform in commune schema and process them using CommuneService"""
 
 # create a router for communes-related endpoints
-router = APIRouter(prefix="/commune", tags=["commune"], dependencies=[Depends(require_roles("Admin", "OP-colis"))])
+router = APIRouter(prefix="/commune", tags=["CRUD Commune (OP-Colis, Admin)"], dependencies=[Depends(require_roles("Admin", "OP-colis"))])
 
 # Initialize the commune service to have access to commune operations
 service = CommuneService()

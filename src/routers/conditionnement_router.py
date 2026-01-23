@@ -20,7 +20,7 @@ from src.utils.dependencies import require_roles
 # Create a router for conditionnement-related endpoints
 router = APIRouter(
     prefix="/conditionnements",
-    tags=["Admin - Conditionnements"],
+    tags=["CRUD Conditionnements (Admin)"],
     dependencies=[Depends(require_roles("Admin"))]
 )
 

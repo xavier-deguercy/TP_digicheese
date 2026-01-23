@@ -16,7 +16,7 @@ from src.utils.dependencies import require_roles
 # Create a router for objet-related endpoints
 router = APIRouter(
     prefix="/objets",
-    tags=["Admin - Objets"],
+    tags=["CRUD Objets (Admin)"],
     dependencies=[Depends(require_roles("Admin"))]
 )
 # Initialize the objet service to have access to objet operations

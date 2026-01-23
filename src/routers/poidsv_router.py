@@ -9,7 +9,7 @@ from src.utils.dependencies import require_roles
 """ Reference all poidsvignettes-related endpoints in the FastAPI application."""
 
 # Create a router for poids-Vignettes-related endpoints
-router = APIRouter(prefix="/poidsv", tags=["poidsv"], dependencies=[Depends(require_roles("Admin"))])
+router = APIRouter(prefix="/poidsv", tags=["CRUD Poids vignette (Admin)"], dependencies=[Depends(require_roles("Admin"))])
 
 # Initialize the poids-vignettes service to have access to poids-vignettes operations
 service = PoidsvService()

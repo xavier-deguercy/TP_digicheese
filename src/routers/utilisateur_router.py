@@ -5,7 +5,7 @@ from ..services.utilisateur_service import UtilisateurService
 from ..schemas.utilisateur import UtilisateurPost, UtilisateurPatch, UtilisateurOut, UtilisateurOutWithApiKey
 from src.utils.dependencies import require_roles
 
-router = APIRouter(prefix="/utilisateurs", tags=["admin-utilisateurs"], dependencies=[Depends(require_roles("Admin"))])
+router = APIRouter(prefix="/utilisateurs", tags=["CRUD User (Admin)"], dependencies=[Depends(require_roles("Admin"))])
 service = UtilisateurService()
 
 # Get users

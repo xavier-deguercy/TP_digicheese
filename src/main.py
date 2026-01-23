@@ -20,19 +20,20 @@ from src.routers.dev_router import router as dev_router
 async def lifespan(app: FastAPI):
     create_tables()
     yield
-    
+
 app = FastAPI(title="DigiCheese API", version="1.0.0", lifespan=lifespan)
 
 app.include_router(dev_router)
-app.include_router(role_router)
 app.include_router(utilisateur_router)
+app.include_router(role_router)
 app.include_router(commune_router)
 app.include_router(adresse_router)
+app.include_router(client_router)
 app.include_router(objet_router)
 app.include_router(poids_router)
 app.include_router(poidsv_router)
 app.include_router(conditionnement_router)
-app.include_router(client_router)
+
 
 @app.get("/health")
 def health():

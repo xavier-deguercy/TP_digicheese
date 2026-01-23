@@ -6,7 +6,7 @@ from ..schemas.client_schema import ClientOutDetailed, ClientOut, ClientPost, Cl
 from ..services.client_service import ClientService
 from src.utils.dependencies import require_roles
 
-router = APIRouter(prefix="/clients", tags=["Clients"], dependencies=[Depends(require_roles("Admin", "OP-colis"))])
+router = APIRouter(prefix="/clients", tags=["CRUD Client (OP-Colis, Admin)"], dependencies=[Depends(require_roles("Admin", "OP-colis"))])
 service = ClientService()
 
 # Get clients

@@ -89,7 +89,7 @@ de développement exploitable (architecture, tests, exécution).
 > Un dossier contenant la documentation technique (contenant l’architecture, les éléments changés selon le cahier des charges fournis, la description des serveurs virtuels python)
 >
 > Le détail du backlog, des rôles et des conventions est dans : DOC/README.md et DOC/UTILISATION/Guide_dev.md.
-> 
+>
 > Le périmètre et les règles métier sont dans : DOC/FONC/*.
 
 #### b. Mise en place
@@ -109,7 +109,7 @@ de développement exploitable (architecture, tests, exécution).
 ### 🚀 Quickstart (VS Code Terminal — PowerShell)
 
 > Nous utilisons le terminal intégré de VS Code, généralement PowerShell sous Windows.
-> Si tu utilises **Git Bash**, l’activation de l’environnement virtuel change 
+> Si tu utilises **Git Bash**, l’activation de l’environnement virtuel change
 
 ### a) 🧰 Pré-requis
 - Python 3.x
@@ -182,33 +182,35 @@ Pour une représentation graphique, vous avez également accès à un serveur ph
 uvicorn src.main:app --reload
 ```
 
-#### Créer les tables dans la base de données:
+#### Créer un Admin User et les rôles
 Ouvrir un autre terminal, et lancer la commande :
- 
+
 ```bash
 python -m src.utils.create_db
 ```
 
 ### i) Navigation dans Swagger
-Ouvrir un autre terminal, et lancer la commande :
-
-```bash
-python -m src.utils.create_db
-```
 
 **Liste des rôles :**
   - Admin (id = 1)
   - OP-COLIS (id = 2)
   - OP-STOCK (id = 3)
 
-Rendez-vous sur Swagger : http://localhost:8000/docs
+**Rendez-vous sur Swagger** : http://localhost:8000/docs
 
-Tout en haut de swagger, vous avez une route ```get_api_key```.
-Vous pouvez récupérer l'api_key de l'admin (**id_user = 1**)
+>Tout en haut de swagger, vous avez une route ```get_api_key```.
+>Vous pouvez récupérer l'api_key de l'admin (**id_user = 1**)
 
 Copier coller cet API_KEY dans l'encart Authorize tout en haut de la fenêtre swagger.
 
 ![Authorize](DOC/swagger.png)
+
+> ⚠️ Important — Authentification Swagger
+>
+> L’API est protégée par une authentification Swagger.
+> Après avoir **exécuté le script ci-dessus**, utilisez impérativement le token générée par le script (copier-coller exact) pour accéder aux routes Swagger.
+>
+> 👉 **L’authentification ne fonctionnera pas n'utilisez pas le token.**
 
 Votre session est désormais activée avec le rôle Admin. Vous pouvez maintenant créer un utilisateur, avec un autre rôle, et refaire de même pour utiliser une session OP-COLIS par exemple.
 

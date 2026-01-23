@@ -5,7 +5,7 @@ from src.services.adresse_service import AdresseService
 from src.database import get_db
 from src.utils.dependencies import require_roles
 
-router = APIRouter(prefix="/adresse", tags=["adresse"], dependencies=[Depends(require_roles("Admin", "OP-colis"))])
+router = APIRouter(prefix="/adresse", tags=["CRUD Adresse (OP-Colis, Admin)"], dependencies=[Depends(require_roles("Admin", "OP-colis"))])
 service = AdresseService()
 
 @router.get("/", status_code=200, response_model=list[AdresseInDB])
