@@ -1,4 +1,5 @@
 import pytest
+import os
 from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -31,6 +32,11 @@ engine = create_engine(
 
 TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
+@pytest.fixture(autouse=True, scope="session")
+def disable_auth_for_tests():
+    os.environ["DISABLE_AUTH"] = "true"
+    yield
+    os.environ.pop("DISABLE_AUTH", None)
 
 @pytest.fixture(scope="function", autouse=True)
 def setup_database():
