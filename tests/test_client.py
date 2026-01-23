@@ -3,8 +3,8 @@ from fastapi.testclient import TestClient
 import pytest
 
 CLIENT_ENDPOINT = "/clients"
-ADRESSE_ENDPOINT = "/adresses"
-COMMUNE_ENDPOINT = "/communes"
+ADRESSE_ENDPOINT = "/adresse"
+COMMUNE_ENDPOINT = "/commune"
 
 @pytest.fixture
 def commune_data():
