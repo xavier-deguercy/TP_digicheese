@@ -164,7 +164,7 @@ uvicorn src.main:app --reload
 Ouvrir un autre terminal, et lancer la commande :
 
 ```bash
-python -c "from src.utils.create_db import seed_roles_and_admin; seed_roles_and_admin()"
+python -m src.utils.create_db
 ```
 
 #### e. Navigation dans Swagger
