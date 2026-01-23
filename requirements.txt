@@ -1,9 +1,0 @@
-fastapi
-sqlmodel
-uvicorn[standard]
-python-dotenv
-pymysql
-pytest
-httpx
-ruff
-sqlalchemy

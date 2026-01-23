@@ -1,109 +1,158 @@
-# A. Github
+# DigiCheese – Guide de travail (Git, Docker, API)
 
-- main / prod / dev / test : on n’y touche jamais directement
+## 1. Workflow Git (travail en équipe)
 
-- chacun travaille sur sa branche personnelle
+### a. Travailler sur une feature
 
-- on envoie une Pull Request vers dev
-
-### 1. Récupérer les branches du repo
-
-Après le clone ou quand de nouvelles branches ont été push :
+1. Se placer sur sa branche :
 
 ```bash
-git fetch                   # récupérer les mises à jour
-git branch -a               # lister les branches locales et distantes
+git checkout ma-branche
 ```
-Se placer sur dev :
+
+2. Développer la feature
+
+**Quand la feature est fonctionnelle et propre :**
 
 ```bash
-git checkout dev            # basculer sur dev
-git pull origin dev         # mettre dev à jour
+git add .
+git commit -m "ex: ajout CRUD poids"
+git push origin ma-branche
 ```
 
-### (Optionnel) Naviguer entre les branches
+✅ Quand faire un commit ?
 
-Afficher les branches locales :
+- feature terminée ou étape logique finie
+- code qui fonctionne
+- pas de print, pas de code commenté inutile
+- indentation propre, fichiers sauvegardés
+
+### b. Pull Request (PR)
+
+Créer une Pull Request vers **dev** sur GitHub
+
+*Quelqu'un s'occupe de faire les corrections*
+
+Corriger les retours éventuels
+
+Pour chaque correction :
 
 ```bash
-git branch                 # lister les branches locales
+git add .
+git commit -m "fix: corrections review poids"
+git push origin ma-branche
 ```
 
-Changer de branche
+### c. Après merge de la PR
 
-```bash
-git checkout nom-de-la-branche # basculer sur une autre branche
-```
-
-### 2. Créer une branche de travail
-
-##### ⚠️ Toujours créer sa branche depuis dev.
+Une fois la branche mergée dans dev :
 
 ```bash
 git checkout dev
 git pull origin dev
-git checkout -b feature/prenom
+git checkout ma-branche
+git rebase dev
 ```
 
-> Puis soit:
->
-> on l'envoie directement sur GitHub
->
-```bash
-git push -u origin feature/prenom
-```
+➡️ Objectif : garder ta branche à jour avec dev.
 
-> Soit :
->
+## 2. Docker (base de données locale)
 
-### 3. Cycle de travail
-
-On code notre feature, puis :
+### a. Lancer l’environnement
 
 ```bash
-git add .
-git commit -m "feat: description courte"
-git push
+docker compose up -d
 ```
-### 4. Méthodologie Git
 
-**1 branche = 1 feature**
+### b. Arrêter l’environnement
 
-**Ne jamais travailler directement sur :**
+```bash
+docker compose down
+```
 
-- *main*
-- *prod*
-- *test*
-- *dev*
+### c. Reset complet de la base (⚠️ supprime les données)
 
-> Nommage des branches :
->
-> feature/prenom
->
-> feature/crud-commune
+**A ne faire que si on modifie les modèles**
 
-##### Pull Request (PR)
+```bash
+docker compose down -v
+docker compose up -d
+```
 
-**Pourquoi ?**
+### d. Entrer dans le conteneur MySQL
 
-- relire le code
-- éviter de casser le projet
-- garder un historique propre
+**Si vous voulez faire des commandes SQL sur vos tables (ex : SELECT * FROM t_utilisateurs)
 
-**Comment ?**
+```bash
+docker exec -it digicheese-mysql bash
+```
 
-- depuis GitHub :
+Puis se connecter à MySQL :
 
-source : feature/...
+```bash
+mysql -u group2 -p
+```
 
-cible : dev
+- Mot de passe :
+**digicheese**
 
-<<<<<<< HEAD
-attendre la validation avant merge par le GitMaster
 
-## Résumé : Je crée ma branche → je code → je push → je fais une PR vers dev
+Quitter MySQL :
 
----------------------------------------
-=======
-attendre la validation avant merge par le GitMaster 
->>>>>>> 63710e8e174f58272ab6743aa4f34010fa92c338
+```bash
+exit;
+```
+
+Quitter le conteneur :
+
+```bash
+exit
+```
+
+### e. phpMyAdmin
+
+URL : http://localhost:8080
+
+Serveur : mysql
+
+Utilisateur : group2
+
+Mot de passe : digicheese
+
+⚠️ **Important**
+
+Docker est utilisé uniquement en local pour le développement.
+Chacun a sa base locale, il n’y a aucun environnement distant.
+
+## 3. Lancement de l’API (FastAPI)
+
+### a. Créer / recréer la base depuis les modèles
+
+(à faire après un reset Docker ou modification des modèles)
+
+```bash
+python -m src.utils.create_db
+```
+
+### b. Lancer le backend FastAPI
+
+Depuis la racine du projet :
+
+```bash
+uvicorn src.main:app --reload
+```
+
+### c. Accéder à la documentation Swagger
+
+Swagger UI : http://127.0.0.1:8000/docs
+
+OpenAPI JSON : http://127.0.0.1:8000/openapi.json
+
+
+## ✅ Rappel final
+
+- Git → gestion du code et du travail en équipe
+
+- Docker → base de données locale
+
+- FastAPI / Uvicorn → serveur backend + Swagger

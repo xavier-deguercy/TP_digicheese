@@ -1,42 +1,48 @@
-from pydantic import BaseModel
+# src/schemas/objet_schema.py
+from decimal import Decimal
+from pydantic import BaseModel, Field, ConfigDict
 from typing import Optional
 
 
-# ObjetBase : champs communs
-class ObjetBase(BaseModel):
-    libobj: Optional[str] = None
-    tailleobj: Optional[str] = None
-    puobj: Optional[float] = 0.0
-    poidsobj: Optional[float] = 0.0
-    indispobj: Optional[int] = 0
-    o_imp: Optional[int] = 0
-    o_aff: Optional[int] = 0
-    o_cartp: Optional[int] = 0
-    o_ordre_aff: Optional[int] = 0
+#class ObjetPost(BaseModel):
+class ObjetCreate(BaseModel):
+    nom_obj: str = Field(..., max_length=50)
+    taille_obj: Optional[str] = Field(None, max_length=50)
+    prix_obj: Decimal = Decimal("0")
+    poids_obj: Decimal = Decimal("0")
+    indisp_obj: bool = False
+    points_obj: int = 0                                                  
 
-# ObjetPost : création (sans codobj)
-class ObjetPost(ObjetBase):
-    pass
+class ObjetPatch(BaseModel):
+    """
+    Schéma pour PATCH (mise à jour partielle).
+    -> tout optionnel
+    -> on utilisera model_dump(exclude_unset=True) côté service.
+    """
+    nom_obj: Optional[str] = Field(None, max_length=50)
+    taille_obj: Optional[str] = Field(None, max_length=50)
 
-# ObjetPatch : update partiel (tous optionnels)
-class ObjetPatch(ObjetBase):
-    libobj: Optional[str] = None
-    tailleobj: Optional[str] = None
-    puobj: Optional[float] = None
-    poidsobj: Optional[float] = None
-    indispobj: Optional[int] = None
-    o_imp: Optional[int] = None
-    o_aff: Optional[int] = None
-    o_cartp: Optional[int] = None
-    o_ordre_aff: Optional[int] = None
+    prix_obj: Optional[float] = None 
+    poids_obj: Optional[float] = None 
 
-# ObjetOut : réponse (avec codobj)
-class ObjetOut(ObjetBase):
-    codobj: int
+    indisp_obj: Optional[bool] = None
+    points_obj: Optional[int] = None
 
+class ObjetOut(BaseModel):
+    """
+    Schéma de sortie (GET/POST/PATCH/DELETE).
+    from_attributes=True permet de sérialiser directement un objet SQLAlchemy.
+    """
+    model_config = ConfigDict(from_attributes=True)
 
-#Validations à faire ici :
+    id_objet: int
+    nom_obj: str
+    taille_obj: Optional[str]
 
-#libobj max 50 (Pydantic le fera si tu utilises max_length=50)
+    prix_obj: float
+    poids_obj: float
 
-puobj >= 0, poidsobj >= 0, points >= 0, o_ordre_aff >= 0 (minimum)
+    indisp_obj: bool
+    points_obj: int
+    
+    

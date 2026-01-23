@@ -1,29 +1,20 @@
-
-
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy.orm import relationship
 from .base import Base
 
-
-
-
-
-
-##### Modèle Client de robin #####
-
-class Client(SQLModel, table=True):
+class Client(Base):
     """Table représentant les clients de la fidélisation de la fromagerie."""
-    
     __tablename__ = "t_client"
-    
-    codcli: int | None = Field(default=None, primary_key=True)
-    genrecli: str | None = Field(default=None, max_length=8, nullable=True)
-    nomcli: str | None = Field(default=None, max_length=40, index=True, nullable=True)
-    prenomcli: str | None = Field(default=None, max_length=30, nullable=True)
-    adresse1cli: str | None = Field(default=None, max_length=50, nullable=True)
-    adresse2cli: str | None = Field(default=None, max_length=50, nullable=True)
-    adresse3cli: str | None = Field(default=None, max_length=50, nullable=True)
-    #villecli_id: int | None = Field(default=None, foreign_key="t_communes.id", nullable=True)
-    telcli: str | None = Field(default=None, max_length=10, nullable=True)
-    emailcli: str | None = Field(default=None, max_length=255, nullable=True)
-    portcli: str | None = Field(default=None, max_length=10, nullable=True)
-    newsletter: int | None = Field(default=None, nullable=True)
+
+    id_client = Column(Integer, primary_key=True)
+    email_client = Column(String(255), nullable=True, unique=True)
+    nom_client = Column(String(40), nullable=True)
+    prenom_client = Column(String(30), nullable=True)
+    adresse1_client = Column(Integer, ForeignKey("t_adresse.id_adresse"), nullable=False)
+    adresse2_client = Column(Integer, ForeignKey("t_adresse.id_adresse"), nullable=True)
+    ville_client = Column(String(50), nullable=True)
+    code_postal_client = Column(String(5), nullable=True)
+    telephone_client = Column(String(10), nullable=True)
+
+    adresse1 = relationship("Adresse", foreign_keys=[adresse1_client], back_populates="clients_adresse1")
+    adresse2 = relationship("Adresse", foreign_keys=[adresse2_client], back_populates="clients_adresse2")

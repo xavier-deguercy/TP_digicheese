@@ -48,19 +48,25 @@ CRUD (ajout / modification / suppression / consultation) sur :
 ---
 
 ## 4) Liste des points d’entrée (préparation IHM)
-Base URL : `/api/v1`
 
-### Admin
-- `/admin/communes`
-- `/admin/objets`
-- `/admin/conditionnements`
-- `/admin/poids`
-- `/admin/poids-vignettes`
-- (option) `/admin/utilisateurs`
+**Base URL : `/`** (routes à la racine — pas de préfixe global `/api/v1`).
 
-### OP-colis (option)
-- `/op-colis/clients`
+> Note : dans Swagger, certains endpoints sont regroupés sous des tags « Admin - … ».
+> Il s’agit d’une **classification documentaire** ; ce n’est **pas** un segment d’URL.
+
+### Référentiels / back-office (Admin)
+- Objets : `GET /objets/` · `POST /objets/` · `GET /objets/{objet_id}` · `PATCH /objets/{objet_id}` · `DELETE /objets/{objet_id}`
+- Les autres référentiels suivent le **même pattern CRUD** (chemins exacts visibles dans Swagger) :
+  - conditionnements
+  - poids
+  - poidsv
+  - communes
+  - adresses
+  - rôles
+  - utilisateurs
+  - clients (si exposé)
 
 ### Technique
-- `/health`
-- `/version`
+- `/health` (disponibilité du service)
+- `/version` (version applicative)
+

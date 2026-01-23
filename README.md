@@ -1,21 +1,16 @@
+# 🧀 DIGICHEESE — TP Diginamic (UML + socle dev)
 
-# DIGICHEESE — TP Diginamic (UML + socle dev)
+## 📌 Sommaire
 
-## Équipe projet refonte SI DIGICHEESE
-Thi Thu Hien NGUYEN
+* [1. 🧭 Contexte](#1--contexte)
+* [2. 🎯 Objectifs pédagogiques](#2--objectifs-pédagogiques)
+* [3. 🗂️ Arborescence (principale)](#3--arborescence-principale)
+* [4. 🧑‍🤝‍🧑 Organisation du projet](#4--organisation-du-projet)
+* [5. Guide d'utilisation du projet](#5-guide-dutilisation-du-projet)
 
-Imen KHAMMASSI
+--------------------
 
-Stanislas DELANNOY
-
-Xavier DEGUERCY
-
-
-
-
-
-
-## Contexte
+## 1. 🧭 Contexte
 DIGICHEESE est une fromagerie régionale (≈ 130 salariés), entreprise familiale de plus d’un siècle,
 qui vend ses produits :
 - aux grands distributeurs
@@ -29,7 +24,7 @@ de développement exploitable (architecture, tests, exécution).
 
 ---
 
-## Objectifs pédagogiques
+## 2. 🎯 Objectifs pédagogiques
 - Modéliser un besoin métier (acteurs, cas d’utilisation, scénarios)
 - Produire des diagrammes UML (use case, séquence, activité, classes / ERD selon sujet)
 - Structurer un projet comme un vrai dépôt de développement :
@@ -38,9 +33,7 @@ de développement exploitable (architecture, tests, exécution).
   - tests automatisés de base
   - documentation (fonctionnelle, technique et d’utilisation)
 
----
-
-## Livrables attendus (rappel consignes)
+#### Livrables attendus (rappel consignes)
 - Code Python structuré par projet (**src/** + scripts associés si besoin)
 - Tests : scénarios + scripts (dossier **tests/** + éventuellement scripts d’exécution)
 - Documentation :
@@ -49,7 +42,7 @@ de développement exploitable (architecture, tests, exécution).
 
 ---
 
-## Arborescence (principale)
+## 3. 🗂️ Arborescence (principale)
 - `src/` : code source (structure imposée par le cours)
   - `routes/` : endpoints / contrôleurs
   - `services/` : logique métier
@@ -68,29 +61,16 @@ de développement exploitable (architecture, tests, exécution).
 
 ➡️ Point d’entrée documentation : **`DOC/README.md`**
 
----
+------------
 
-## Pré-requis
-- Python 3.x
-- Git
+## 4. 🧑‍🤝‍🧑 Organisation du projet
 
----
-
-## Installation (Windows — PowerShell / Git Bash)
-Créer l’environnement virtuel :
-```bash
-python -m venv .venv
-```
-------------------------------------
-
-# Organisation projet API
-
-## 1. Résumé du projet
+#### a. Résumé du projet
 
 - Backend API Python + MySQL
 - CRUD (Create Read Update Delete)
 - Documentation Swagger
-- Tests via Pytest / unittest
+- Tests via Pytest
 
 > **MVP attendu**:
 >
@@ -107,8 +87,12 @@ python -m venv .venv
 > Un dossier contenant les scénarii de tests et les scripts
 >
 > Un dossier contenant la documentation technique (contenant l’architecture, les éléments changés selon le cahier des charges fournis, la description des serveurs virtuels python)
+>
+> Le détail du backlog, des rôles et des conventions est dans : DOC/README.md et DOC/UTILISATION/Guide_dev.md.
+>
+> Le périmètre et les règles métier sont dans : DOC/FONC/*.
 
-## 2. Mise en place
+#### b. Mise en place
 
 1. setup GitHub
 2. Création de branches par dev
@@ -119,3 +103,156 @@ python -m venv .venv
 7. Relevé des paramètres (classes, methodes)
 8. Définir les étapes de devs
 9. Assignation des taches (sprint backlog)
+
+## 5. Guide d'utilisation du projet
+
+### 🚀 Quickstart (VS Code Terminal — PowerShell)
+
+> Nous utilisons le terminal intégré de VS Code, généralement PowerShell sous Windows.
+> Si tu utilises **Git Bash**, l’activation de l’environnement virtuel change
+
+### a) 🧰 Pré-requis
+- Python 3.x
+- Git
+- Docker et docker compose
+
+### b) ⬇️ Cloner le dépôt
+```bash
+git clone https://github.com/xavier-deguercy/TP_digicheese.git
+cd TP_digicheese
+```
+
+### c) Créer et activer l’environnement virtuel
+```bash
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+```
+
+#### (Optionnel) Mise à jour de pip
+```bash
+python -m pip install --upgrade pip
+```
+
+### d) ⬇️ Installer les dépendances
+```bash
+pip install -r requirements.txt
+```
+
+### e) 🐳 Démarrer la base de données (Docker)
+Lancer le docker compose :
+```bash
+docker compose up -d
+```
+
+> *Si vous souhaitez reset entièrement la base que vous avez déjà :*
+> ```bash
+> docker compose down -v
+> ```
+> *puis rallumez votre compose avec la commande ci-dessus*
+
+
+### f) 🐬 MySQL
+
+Grâce à ce compose, vous pouvez interagir directement avec votre bdd via mysql avec :
+```bash
+docker exec -it digicheese-mysql bash
+```
+
+Une fois dans le container, vous pouvez accéder à la base avec :
+
+```bash
+mysql -u group2 -p
+password: digicheese
+USE digicheese;
+```
+
+### g) 🧾 phpMyAdmin
+
+Pour une représentation graphique, vous avez également accès à un serveur phpMyAdmin exposé ici :
+
+- URL : http://localhost:8080
+- Serveur : mysql
+- Utilisateur : group2
+- Mot de passe : digicheese
+
+### h) ⚡ Démarrage du serveur FastAPI
+#### Lancer le serveur FastAPI en mode développement (reload auto):
+
+```bash
+uvicorn src.main:app --reload
+```
+
+#### Créer un Admin User et les rôles
+Ouvrir un autre terminal, et lancer la commande :
+
+```bash
+python -m src.utils.create_db
+```
+
+### i) Navigation dans Swagger
+
+**Liste des rôles :**
+  - Admin (id = 1)
+  - OP-COLIS (id = 2)
+  - OP-STOCK (id = 3)
+
+**Rendez-vous sur Swagger** : http://localhost:8000/docs
+
+>Tout en haut de swagger, vous avez une route ```get_api_key```.
+>Vous pouvez récupérer l'api_key de l'admin (**id_user = 1**)
+
+Copier coller cet API_KEY dans l'encart Authorize tout en haut de la fenêtre swagger.
+
+![Authorize](DOC/swagger.png)
+
+> ⚠️ Important — Authentification Swagger
+>
+> L’API est protégée par une authentification Swagger.
+> Après avoir **exécuté le script ci-dessus**, utilisez impérativement le token générée par le script (copier-coller exact) pour accéder aux routes Swagger.
+>
+> 👉 **L’authentification ne fonctionnera pas n'utilisez pas le token.**
+
+Votre session est désormais activée avec le rôle Admin. Vous pouvez maintenant créer un utilisateur, avec un autre rôle, et refaire de même pour utiliser une session OP-COLIS par exemple.
+
+**Recommandation de navigation pour la gestion de client :**
+
+- Créer d'abord une commune
+- Puis créer une adresse
+- Puis enfin, vous pouvez lier votre client à une ou plusieurs adresses
+
+### j) 🧪 Tests automatisés
+
+**Lancer un test entier :**
+
+```bash
+cd tests
+pytest test_feature.py
+```
+
+**Lancer un test en particulier :**
+
+```bash
+cd tests
+pytest test_feature.py -k nom_du_test
+```
+
+### k) Fermer le projet
+
+```bash
+docker compose down #(-v pour supprimer la base)
+```
+
++ 'CTRL + C' sur le terminal du serveur pour fermer le serveur
+
+
+
+
+
+## Équipe & contacts
+
+| Contributeur | LinkedIn | GitHub |
+|---|---|---|
+| Stanislas DELANNOY | [Profil LinkedIn](https://www.linkedin.com/in/stanislas-delannoy-alternance-data/) | [Profil GitHub](https://github.com/stanislasdelannoy) |
+| Imen KHAMMASSI | [Profil LinkedIn](https://www.linkedin.com/in/imen-khammassi-509b06239/) | [Profil GitHub](https://github.com/Imen123988) |
+| Thi Thu Hien NGUYEN | [Profil LinkedIn](https://www.linkedin.com/in/thi-thu-hien-nguyen-17a76263/) | [Profil GitHub](https://github.com/Hiennguyenalice) |
+| Xavier DEGUERCY | [Profil LinkedIn](https://www.linkedin.com/in/xavierdeguercy/) | [Profil GitHub](https://github.com/xavier-deguercy) |
