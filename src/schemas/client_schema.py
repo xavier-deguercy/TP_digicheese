@@ -34,6 +34,7 @@ class ClientOut(ClientBase):
         from_attributes = True
 
 class CommuneOut(BaseModel):
+    """Schéma pour les données d'une commune."""
     id_commune: int
     dep: Optional[str] = None
     cp: Optional[str] = Field(default=None, max_length=5)
@@ -42,6 +43,7 @@ class CommuneOut(BaseModel):
         from_attributes = True
 
 class AdresseOut(BaseModel):
+    """Schéma pour les données d'une adresse."""
     id_adresse: int
     rue: Optional[str] = None
     compAdresse: Optional[str] = None
@@ -51,6 +53,7 @@ class AdresseOut(BaseModel):
         from_attributes = True
 
 class ClientOutDetailed(BaseModel):
+    """Schéma détaillé retourné par l'API, incluant les adresses."""
     id_client: int
     email_client: Optional[EmailStr] = None
     nom_client: Optional[str] = Field(default=None, max_length=40)

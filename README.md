@@ -159,16 +159,25 @@ Pour une représentation graphique, vous avez également accès à un server php
 
 # 8) Démarrage du server FastAPI
 
-Le script de démarrage du server ```src.main``` contient un autre script : ```src.utils.create_db```
-
-C'est ici qu'on créer une instance de notre base.
-Comme les routes sont protégés, on fait un seed de base avec un admin et les différents rôles déjà pré - remplis
-
 ```bash
 uvicorn src.main:app --reload
 ```
 
 # 9) Navigation dans Swagger
+Ouvrir un autre terminal, et lancer la commande :
+
+```bash
+python -c "from src.utils.create_db import seed_roles_and_admin; seed_roles_and_admin()"
+```
+
+#### e. Navigation dans Swagger
+
+**Liste des rôles :**
+  - Admin (id = 1)
+  - OP-COLIS (id = 2)
+  - OP-STOCK (id = 3)
+
+Rendez vous sur Swagger : http://localhost:8000/docs
 
 Tout en haut de swagger, vous avez une route ```get_api_key```.
 Vous pouvez récupérer l'api_key de l'admin (**id_user = 1**)

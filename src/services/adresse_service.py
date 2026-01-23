@@ -4,15 +4,14 @@ from src.schemas.adresse_schema import AdressePatch, AdressePost
 
 
 class AdresseService:
-    """Service class for managing adresse operation.
-    Receive a schema from router and return a dictionary to repository."""
+    """Service pour la gestion des adresses."""
 
     def __init__(self):
         self.repository = AdresseRepository()
 
     def __traitement(self, adresse: dict):
-        return adresse 
-    
+        return adresse
+
     def get_all_adresses(self, db: Session):
         return self.repository.get_all_adresses(db)
 
@@ -23,12 +22,11 @@ class AdresseService:
         new_adresse = new_adresse.model_dump()
         new_adresse = self.__traitement(new_adresse)
         return self.repository.create_adresse(db, new_adresse)
-    
+
     def patch_adresse(self, db: Session, id_adresse: int, adresse: AdressePatch):
         adresse = adresse.model_dump(exclude_unset = True)
         adresse = self.__traitement(adresse)
         return self.repository.patch_adresse(db, id_adresse, adresse)
-    
+
     def delete_adresse(self, db: Session, id_adresse: int):
         return self.repository.delete_adresse(db,id_adresse)
-    

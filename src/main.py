@@ -1,6 +1,6 @@
 # src/main.py
 from fastapi import FastAPI
-from src.utils.create_db import init_db
+from src.utils.create_db import create_tables
 from contextlib import asynccontextmanager
 from dotenv import load_dotenv
 load_dotenv()
@@ -18,9 +18,9 @@ from src.routers.dev_router import router as dev_router
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    init_db()
+    create_tables()
     yield
-
+    
 app = FastAPI(title="DigiCheese API", version="1.0.0", lifespan=lifespan)
 
 app.include_router(dev_router)
