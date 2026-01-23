@@ -3,6 +3,7 @@ from sqlalchemy.orm import Session
 from src.schemas.commune_schema import CommuneInDB, CommunePatch, CommunePost
 from src.services.commune_service import CommuneService
 from src.database import get_db
+from src.utils.dependencies import require_roles
 
 
 """ Reference all commune-related endpoints in the FastAPI application.
@@ -10,7 +11,7 @@ from src.database import get_db
 Receives requestes from the commune router, transform in commune schema and process them using CommuneService"""
 
 # create a router for communes-related endpoints
-router = APIRouter(prefix="/commune", tags=["commune"])
+router = APIRouter(prefix="/commune", tags=["commune"], dependencies=[Depends(require_roles("Admin", "OP-colis"))])
 
 # Initialize the commune service to have access to commune operations
 service = CommuneService()
@@ -43,8 +44,3 @@ def delete_commune(id_commune: int, db: Session=Depends(get_db)):
     if commune is None:
         raise HTTPException(status_code=404, detail="Commune non trouvé")
     return service.delete_commune(db, id_commune)
-
-
-
-
-

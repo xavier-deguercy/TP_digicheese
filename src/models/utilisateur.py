@@ -14,5 +14,6 @@ class Utilisateur(Base):
     hashed_password = Column(String(255), nullable=False)
     date_insc_user = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc))
     id_role = Column(Integer, ForeignKey("t_role.id_role"), nullable=False)
+    api_key = Column(String(64), unique=True, index=True, nullable=True)
 
     role = relationship("Role", back_populates="utilisateurs")
