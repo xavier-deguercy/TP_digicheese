@@ -34,6 +34,11 @@ class UtilisateurOut(UtilisateurBase):
     class Config:
         from_attributes = True
 
+class UtilisateurOutWithApiKey(UtilisateurOut):
+    api_key: Optional[str] = None
+
+    class Config:
+        from_attributes = True
 
 class UtilisateurInDB(UtilisateurOut):
     """MDP haché en base de données."""

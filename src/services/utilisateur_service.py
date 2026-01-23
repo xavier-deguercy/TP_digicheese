@@ -1,3 +1,4 @@
+import secrets
 from sqlalchemy.orm import Session
 from ..repositories.utilisateur_repository import UtilisateurRepository
 from ..schemas.utilisateur import UtilisateurPost, UtilisateurPatch
@@ -14,6 +15,7 @@ class UtilisateurService:
     def __traitement_create(self, data: dict) -> dict:
         pwd = data.pop("password")
         data["hashed_password"] = hash_password(pwd)
+        data["api_key"] = secrets.token_hex(32)
         return data
 
     def __traitement_patch(self, data: dict) -> dict:

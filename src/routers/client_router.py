@@ -1,15 +1,15 @@
 from typing import List
-
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
-
 from ..database import get_db
 from ..schemas.client_schema import ClientOutDetailed, ClientOut, ClientPost, ClientPatch
 from ..services.client_service import ClientService
+from src.utils.dependencies import require_roles
 
 router = APIRouter(
     prefix="/clients",
     tags=["Clients"],
+    dependencies=[Depends(require_roles("Admin", "OP-colis"))]
 )
 
 service = ClientService()

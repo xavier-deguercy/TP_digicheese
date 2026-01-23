@@ -3,6 +3,7 @@ from sqlalchemy.orm import Session
 from src.schemas.adresse_schema import AdresseInDB, AdressePatch, AdressePost
 from src.services.adresse_service import AdresseService
 from src.database import get_db
+from src.utils.dependencies import require_roles
 
 
 """ Reference all adresse-related endpoints in the FastAPI application.
@@ -10,7 +11,7 @@ from src.database import get_db
 Receives requestes from the adresse router, transform in adresse schema and process them using AdresseService"""
 
 # create a router for adresses-related endpoints
-router = APIRouter(prefix="/adresse", tags=["adresse"])
+router = APIRouter(prefix="/adresse", tags=["adresse"], dependencies=[Depends(require_roles("Admin", "OP-colis"))])
 
 # Initialize the adresse service to have access to adresse operations
 service = AdresseService()
@@ -43,8 +44,3 @@ def delete_adresse(id_adresse: int, db: Session=Depends(get_db)):
     if adresse is None:
         raise HTTPException(status_code=404, detail="Adresse non trouvé")
     return service.delete_adresse(db, id_adresse)
-
-
-
-
-

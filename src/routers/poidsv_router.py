@@ -3,10 +3,13 @@ from sqlalchemy.orm import Session
 from src.database import get_db
 from src.schemas.poidsv_schema import PoidsvInDB, PoidsvPatch, PoidsvPost
 from src.services.poidsv_service import PoidsvService
+from src.utils.dependencies import require_roles
 
+
+""" Reference all poidsvignettes-related endpoints in the FastAPI application."""
 
 # Create a router for poids-Vignettes-related endpoints
-router = APIRouter(prefix="/poidsv", tags=["poidsv"])
+router = APIRouter(prefix="/poidsv", tags=["poidsv"], dependencies=[Depends(require_roles("Admin"))])
 
 # Initialize the poids-vignettes service to have access to poids-vignettes operations
 service = PoidsvService()
