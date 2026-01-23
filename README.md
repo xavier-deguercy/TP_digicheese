@@ -103,30 +103,34 @@ de développement exploitable (architecture, tests, exécution).
 ## 5. Guide d'utilisation du projet
 
 ## Quickstart (Windows PowerShell)
-# 1) Pré-requis
+### a) Pré-requis
 - Python 3.x
 - Git
 - Docker et docker compose
 
-# 2) Cloner le dépôt
+### b) Cloner le dépôt
+```bash
 git clone [https://github.com/xavier-deguercy/TP_digicheese.git]
 cd <NOM_DU_DOSSIER_DU_DEPOT>
-
-# 3) Créer et activer l’environnement virtuel
+```
+### c) Créer et activer l’environnement virtuel
+```bash
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
-
-# (Optionnel) Mise à jour de pip
+```
+#### (Optionnel) Mise à jour de pip
+```bash
 python -m pip install --upgrade pip
-
-# 4) Installer les dépendances
+```
+### d) Installer les dépendances
+```bash
 pip install -r requirements.txt
-
-# 5) Démarrer la base de données (Docker)
+```
+### e) Démarrer la base de données (Docker)
 Lancer le docker compose :
-
+```bash
 docker compose up -d
-
+```
 
 > *Si vous souhaitez reset entièrement la base que vous avez déjà :*
 > docker compose down -v
@@ -134,21 +138,21 @@ docker compose up -d
 > *puis rallumez votre compose avec la commande ci-dessus*
 
 
-# 6) MySQL
+### f) MySQL
 
 Grâce a ce compose, vous pouvez interagir directement avec votre bdd via mysql avec :
-
+```bash
 docker exec -it digicheese-mysql bash
-
+```
 
 Une fois dans le container, vous pouvez accéder à la base avec :
-
+```bash
 mysql -u group2 -p
 password: digicheese
 USE digicheese;
+```
 
-
-# 7) phpMyAdmin
+### g) phpMyAdmin
 
 Pour une représentation graphique, vous avez également accès à un server phpMyAdmin exposé ici :
 
@@ -157,20 +161,27 @@ Pour une représentation graphique, vous avez également accès à un server php
 - Utilisateur : group2
 - Mot de passe : digicheese
 
-# 8) Démarrage du server FastAPI
-
+### h) Démarrage du server FastAPI
+#### Lancer le server FastAPI en mode développement (reload auto):
 ```bash
 uvicorn src.main:app --reload
 ```
 
-# 9) Navigation dans Swagger
+#### Créer les tables dans la base de données:
+Ouvrir un autre terminal, et lancer la commande :
+ 
+```bash
+python -m src.utils.create_db
+```
+
+
+### i) Navigation dans Swagger
 Ouvrir un autre terminal, et lancer la commande :
 
 ```bash
 python -c "from src.utils.create_db import seed_roles_and_admin; seed_roles_and_admin()"
 ```
 
-#### e. Navigation dans Swagger
 
 **Liste des rôles :**
   - Admin (id = 1)
@@ -194,7 +205,7 @@ Voter session est désormais activée avec le rôle Admin. Vous pouvez maintenan
 - Puis créer une adresse
 - Puis enfin, vous pouvez lier votre client à une ou plusieurs adresses
 
-# 10) Tests automatisés
+### k) Tests automatisés
 
 **Lancer un test entier :**
 
@@ -210,7 +221,7 @@ cd tests
 pytest test_feature.py -k nom_du_test
 ```
 
-#### g. Fermer le projet
+### l) Fermer le projet
 
 ```bash
 docker compose down #(-v pour supprimer la base)
