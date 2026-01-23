@@ -70,7 +70,7 @@ de développement exploitable (architecture, tests, exécution).
 - Backend API Python + MySQL
 - CRUD (Create Read Update Delete)
 - Documentation Swagger
-- Tests via Pytest / unittest
+- Tests via Pytest
 
 > **MVP attendu**:
 >
@@ -102,51 +102,53 @@ de développement exploitable (architecture, tests, exécution).
 
 ## 5. Guide d'utilisation du projet
 
-#### a. Pré-requis
+## Quickstart (Windows PowerShell)
+# 1) Pré-requis
 - Python 3.x
 - Git
 - Docker et docker compose
 
+# 2) Cloner le dépôt
+git clone [https://github.com/xavier-deguercy/TP_digicheese.git]
+cd <NOM_DU_DOSSIER_DU_DEPOT>
 
-#### b. Installation (Windows — PowerShell / Git Bash)
-Créer l’environnement virtuel :
-
-```bash
+# 3) Créer et activer l’environnement virtuel
 python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+
+# (Optionnel) Mise à jour de pip
+python -m pip install --upgrade pip
+
+# 4) Installer les dépendances
 pip install -r requirements.txt
-```
 
-#### c. Base de données
-
+# 5) Démarrer la base de données (Docker)
 Lancer le docker compose :
 
-```bash
 docker compose up -d
-```
+
 
 > *Si vous souhaitez reset entièrement la base que vous avez déjà :*
-> ```bash
 > docker compose down -v
-> ```
+> 
 > *puis rallumez votre compose avec la commande ci-dessus*
 
-###### 1. MySQL
+
+# 6) MySQL
 
 Grâce a ce compose, vous pouvez interagir directement avec votre bdd via mysql avec :
 
-```bash
 docker exec -it digicheese-mysql bash
-```
+
 
 Une fois dans le container, vous pouvez accéder à la base avec :
 
-```bash
 mysql -u group2 -p
 password: digicheese
 USE digicheese;
-```
 
-###### 2. phpMyAdmin
+
+# 7) phpMyAdmin
 
 Pour une représentation graphique, vous avez également accès à un server phpMyAdmin exposé ici :
 
@@ -155,7 +157,7 @@ Pour une représentation graphique, vous avez également accès à un server php
 - Utilisateur : group2
 - Mot de passe : digicheese
 
-#### d. Démarrage du server FastAPI
+# 8) Démarrage du server FastAPI
 
 Le script de démarrage du server ```src.main``` contient un autre script : ```src.utils.create_db```
 
@@ -166,7 +168,7 @@ Comme les routes sont protégés, on fait un seed de base avec un admin et les d
 uvicorn src.main:app --reload
 ```
 
-#### e. Navigation dans Swagger
+# 9) Navigation dans Swagger
 
 Tout en haut de swagger, vous avez une route ```get_api_key```.
 Vous pouvez récupérer l'api_key de l'admin (**id_user = 1**)
@@ -183,7 +185,7 @@ Voter session est désormais activée avec le rôle Admin. Vous pouvez maintenan
 - Puis créer une adresse
 - Puis enfin, vous pouvez lier votre client à une ou plusieurs adresses
 
-#### f. Tests automatisés
+# 10) Tests automatisés
 
 **Lancer un test entier :**
 
