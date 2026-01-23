@@ -56,6 +56,5 @@ def seed_roles_and_admin():
     finally:
         db.close()
 
-
 if __name__ == "__main__":
     seed_roles_and_admin()
