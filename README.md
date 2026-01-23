@@ -169,6 +169,13 @@ python -c "from src.utils.create_db import seed_roles_and_admin; seed_roles_and_
 
 #### e. Navigation dans Swagger
 
+**Liste des rôles :**
+  - Admin (id = 1)
+  - OP-COLIS (id = 2)
+  - OP-STOCK (id = 3)
+
+Rendez vous sur Swagger : http://localhost:8000/docs
+
 Tout en haut de swagger, vous avez une route ```get_api_key```.
 Vous pouvez récupérer l'api_key de l'admin (**id_user = 1**)
 
