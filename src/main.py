@@ -23,6 +23,7 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(title="DigiCheese API", version="1.0.0", lifespan=lifespan)
 
+app.include_router(dev_router)
 app.include_router(role_router)
 app.include_router(utilisateur_router)
 app.include_router(commune_router)
@@ -32,7 +33,6 @@ app.include_router(poids_router)
 app.include_router(poidsv_router)
 app.include_router(conditionnement_router)
 app.include_router(client_router)
-app.include_router(dev_router)
 
 @app.get("/health")
 def health():
