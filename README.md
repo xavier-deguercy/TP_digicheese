@@ -157,13 +157,14 @@ Pour une représentation graphique, vous avez également accès à un server php
 
 #### d. Démarrage du server FastAPI
 
-Le script de démarrage du server ```src.main``` contient un autre script : ```src.utils.create_db```
-
-C'est ici qu'on créer une instance de notre base.
-Comme les routes sont protégés, on fait un seed de base avec un admin et les différents rôles déjà pré - remplis
-
 ```bash
 uvicorn src.main:app --reload
+```
+
+Ouvrir un autre terminal, et lancer la commande :
+
+```bash
+python -c "from src.utils.create_db import seed_roles_and_admin; seed_roles_and_admin()"
 ```
 
 #### e. Navigation dans Swagger
