@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DIGICHEESE — Admin · Conditionnements</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+  <!-- Includes -->
+  <script src="js/includes.js" defer></script>
+  <!-- Header -->
+  <div data-include="partials/header.html"></div>
+
+  <main class="container">
+    <div class="page-title">
+      <div>
+        <h1>Référentiel — Conditionnements</h1>
+        <p>CRUD connecté à l'API (GET / POST / PATCH / DELETE).</p>
+      </div>
+      <span class="pill warn">A06</span>
+    </div>
+
+    <div id="flash" class="flash hidden">
+      <div class="row">
+        <span class="pill warn" data-flash-pill>INFO</span>
+        <span class="muted" style="font-size:12px;">Conditionnements</span>
+      </div>
+      <div style="margin-top:8px;">
+        <div style="font-weight:700;" data-flash-title></div>
+        <div class="muted" style="margin-top:4px;" data-flash-detail></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="row" style="justify-content:space-between; align-items:end; gap:12px;">
+        <div class="field" style="flex:1; min-width:260px;">
+          <label for="q">Recherche</label>
+          <input id="q" type="text" placeholder="Filtrer par libellé…" />
+          <small>Filtre local (V1).</small>
+        </div>
+        <div class="actions" style="justify-content:flex-end;">
+          <button class="btn ghost" id="btnRefresh">Rafraîchir</button>
+          <button class="btn primary" id="btnCreate">Créer un conditionnement</button>
+        </div>
+      </div>
+
+      <hr class="sep" />
+
+      <table class="table" aria-label="Liste des conditionnements">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Libellé</th>
+            <th>Poids (g)</th>
+            <th>Prix</th>
+            <th>Ordre</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="tbody">
+          <tr><td colspan="6" class="muted">Chargement…</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <!-- Modal Create/Edit -->
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="card">
+      <div class="row" style="justify-content:space-between; align-items:center;">
+        <h2 id="modalTitle" style="margin:0;">Conditionnement</h2>
+        <button class="btn sm ghost" id="btnClose">Fermer</button>
+      </div>
+      <hr class="sep" />
+
+      <form id="formCondit" class="form">
+        <input type="hidden" id="id" />
+
+        <div class="field">
+          <label for="lib">Libellé</label>
+          <input id="lib" type="text" placeholder="Ex : Sachet 250g" required />
+        </div>
+
+        <div class="grid cols-3">
+          <div class="field">
+            <label for="poids">Poids (g)</label>
+            <input id="poids" type="number" min="1" step="1" placeholder="250" />
+            <small>Entier &gt; 0</small>
+          </div>
+
+          <div class="field">
+            <label for="prix">Prix</label>
+            <input id="prix" type="number" min="0" step="0.0001" placeholder="0.0000" />
+            <small>Décimal ≥ 0</small>
+          </div>
+
+          <div class="field">
+            <label for="ordre">Ordre d'affichage</label>
+            <input id="ordre" type="number" min="1" step="1" placeholder="1" />
+            <small>Entier ≥ 1</small>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="btn primary" type="submit" id="btnSave">Enregistrer</button>
+          <button class="btn" type="button" id="btnDelete" style="display:none;">Supprimer</button>
+        </div>
+
+        <small class="muted">
+          Champs attendus : <code>lib_condit</code>, <code>poids_condit</code>, <code>prix_condit</code>, <code>ordre_imp</code>.
+        </small>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/admin-conditionnements.js"></script>
+</body>
+
+<div data-include="partials/footer.html"></div>
+
+
+</html>

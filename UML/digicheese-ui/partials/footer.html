@@ -1,0 +1,81 @@
+<!-- pour afficher le footer commun à toutes les pages  -->
+<!-- <div data-include="partials/footer.html"></div> -->
+
+
+ <footer class="dc-footer">
+  <div class="dc-footer__left">
+    <div class="dc-footer__brand">
+      <span class="dc-footer__logo">🧀</span>
+      <div>
+        <div class="dc-footer__title">DIGICHEESE</div>
+        <div class="dc-footer__subtitle">TP7 — API FastAPI • IHM Admin (V1)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dc-footer__right">
+    <a class="dc-footer__link" target="_blank" rel="noopener"
+       href="https://github.com/xavier-deguercy">
+      GitHub (projet)
+    </a>
+
+    <button class="dc-footer__btn" type="button" aria-expanded="false" id="btnTeam">
+      Équipe & contacts
+    </button>
+  </div>
+
+  <div class="dc-footer__team" id="teamPanel" hidden>
+    <div class="dc-team">
+      <div class="dc-team__row">
+        <span class="dc-team__name">Stanislas DELANNOY</span>
+        <span class="dc-team__links">
+          <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/stanislas-delannoy-alternance-data/">LinkedIn</a>
+          <span class="dc-team__sep">•</span>
+          <a target="_blank" rel="noopener" href="https://github.com/stanislasdelannoy">GitHub</a>
+        </span>
+      </div>
+
+      <div class="dc-team__row">
+        <span class="dc-team__name">Imen KHAMMASSI</span>
+        <span class="dc-team__links">
+          <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/imen-khammassi-509b06239/">LinkedIn</a>
+          <span class="dc-team__sep">•</span>
+          <a target="_blank" rel="noopener" href="https://github.com/Imen123988">GitHub</a>
+        </span>
+      </div>
+
+      <div class="dc-team__row">
+        <span class="dc-team__name">Thi Thu Hien NGUYEN</span>
+        <span class="dc-team__links">
+          <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/thi-thu-hien-nguyen-17a76263/">LinkedIn</a>
+          <span class="dc-team__sep">•</span>
+          <a target="_blank" rel="noopener" href="https://github.com/Hiennguyenalice">GitHub</a>
+        </span>
+      </div>
+
+      <div class="dc-team__row">
+        <span class="dc-team__name">Xavier DEGUERCY</span>
+        <span class="dc-team__links">
+          <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/xavierdeguercy/">LinkedIn</a>
+          <span class="dc-team__sep">•</span>
+          <a target="_blank" rel="noopener" href="https://github.com/xavier-deguercy">GitHub</a>
+        </span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Toggle panneau équipe
+  (function () {
+    const btn = document.getElementById("btnTeam");
+    const panel = document.getElementById("teamPanel");
+    if (!btn || !panel) return;
+
+    btn.addEventListener("click", () => {
+      const isOpen = btn.getAttribute("aria-expanded") === "true";
+      btn.setAttribute("aria-expanded", String(!isOpen));
+      panel.hidden = isOpen;
+    });
+  })();
+</script>

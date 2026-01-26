@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DIGICHEESE — Colis</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- Includes -->
+  <script src="js/includes.js" defer></script>
+  <!-- Header -->
+  <div data-include="partials/header.html"></div>
+
+  
+
+  <main class="container">
+    <div class="page-title">
+      <div>
+        <h1>Création d’un envoi</h1>
+        <p>Composer le colis, vérifier stock, préparer expédition (sans backend).</p>
+      </div>
+      <span class="pill warn">E05–E10 (simplifié)</span>
+    </div>
+
+    <div class="grid cols-2">
+      <section class="card">
+        <div class="row">
+          <div>
+            <h2 style="margin:0;">Contenu du colis</h2>
+            <p style="margin:4px 0 0; color:var(--muted);">Client : Claire Martin • Points disponibles : 120</p>
+          </div>
+          <span class="pill warn">Brouillon</span>
+        </div>
+
+        <hr class="sep" />
+
+        <table class="table" aria-label="Goodies sélectionnés">
+          <thead>
+            <tr><th>Goodie</th><th>Qté</th><th>Points</th><th>Stock</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Mug DIGICHEESE</td><td>1</td><td>40</td><td><span class="pill ok">OK</span></td></tr>
+            <tr><td>Planche à fromage</td><td>1</td><td>60</td><td><span class="pill warn">Faible</span></td></tr>
+          </tbody>
+        </table>
+
+        <div class="actions" style="margin-top:12px;">
+          <span class="btn disabled" aria-disabled="true">Ajouter un goodie</span>
+          <span class="btn disabled" aria-disabled="true">Contrôle stock</span>
+          <span class="pill ok">Stock : OK (démo)</span>
+        </div>
+
+        <hr class="sep" />
+
+        <h2 style="margin:0 0 6px;">Expédition</h2>
+        <div class="form">
+          <div class="field">
+            <label for="adr">Adresse de livraison</label>
+            <textarea id="adr" rows="3" placeholder="Adresse…">12 rue de l’Usine, 34000 Montpellier</textarea>
+            <small>Validation adresse simulée (pas d’appel La Poste).</small>
+          </div>
+          <div class="field">
+            <label for="mode">Mode d’expédition</label>
+            <select id="mode">
+              <option>Lettre suivie</option>
+              <option>Colissimo</option>
+              <option>Point relais</option>
+            </select>
+          </div>
+
+          <div class="actions">
+            <span class="btn disabled" aria-disabled="true">Valider adresse</span>
+            <span class="pill ok">Adresse : OK (démo)</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Récapitulatif & sortie</h2>
+        <p>Validation opérateur + génération étiquette (navigation uniquement).</p>
+
+        <hr class="sep" />
+
+        <table class="table" aria-label="Récapitulatif">
+          <tbody>
+            <tr><th style="width:40%;">Points consommés</th><td>100</td></tr>
+            <tr><th>Points restants</th><td>20</td></tr>
+            <tr><th>Statut</th><td><span class="pill warn">Préparé</span></td></tr>
+            <tr><th>Tracking</th><td>—</td></tr>
+          </tbody>
+        </table>
+
+        <hr class="sep" />
+
+        <div class="actions">
+          <span class="btn disabled" aria-disabled="true">Valider (non fonctionnel)</span>
+          <span class="btn disabled" aria-disabled="true">Générer étiquette (non fonctionnel)</span>
+        </div>
+
+        <hr class="sep" />
+
+        <div class="card" style="background: rgba(255,255,255,.03); border-radius: 14px;">
+          <h2 style="margin:0 0 6px;">Navigation démo</h2>
+          <p style="margin:0; color:var(--muted); font-size:13px;">
+            Simule “étiquette + suivi” en naviguant vers le dossier ou le dashboard.
+          </p>
+          <hr class="sep" />
+          <div class="actions">
+            <a class="btn primary" href="dossier.html">Retour dossier (suivi)</a>
+            <a class="btn" href="dashboard.html">Retour dashboard</a>
+          </div>
+        </div>
+
+        <p class="footer-note">Astuce : si tu veux une page “Étiquette & tracking” dédiée, je te la génère aussi.</p>
+      </section>
+    </div>
+  </main>
+</body>
+
+<div data-include="partials/footer.html"></div>
+
+
+</html>

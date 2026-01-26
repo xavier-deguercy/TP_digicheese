@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DIGICHEESE — Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- Includes -->
+  <script src="js/includes.js" defer></script>
+  <!-- Header -->
+  <div data-include="partials/header.html"></div>
+
+  <main class="container">
+    <div class="page-title">
+      <div>
+        <h1>Tableau de bord</h1>
+        <p>Vue d’ensemble (données fictives).</p>
+      </div>
+      <span class="pill warn">E02</span>
+    </div>
+
+    <div class="grid cols-3">
+      <div class="card">
+        <div class="kpi"><span class="value">12</span><span class="label">Colis en préparation</span></div>
+        <hr class="sep" />
+        <div class="actions">
+          <a class="btn primary" href="recherche.html">Créer / rechercher</a>
+          <span class="btn disabled" aria-disabled="true">Exporter</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="kpi"><span class="value">4</span><span class="label">En attente La Poste</span></div>
+        <hr class="sep" />
+        <div class="actions">
+          <a class="btn" href="colis.html">Voir file d’attente</a>
+          <span class="btn disabled" aria-disabled="true">Relancer</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="kpi"><span class="value">98%</span><span class="label">Livraisons OK (30j)</span></div>
+        <hr class="sep" />
+        <div class="actions">
+          <span class="pill ok">OK</span>
+          <span class="btn disabled" aria-disabled="true">Rapport</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid cols-2" style="margin-top:14px;">
+      <div class="card">
+        <h2>Actions rapides</h2>
+        <p>Accès direct aux parcours principaux.</p>
+        <hr class="sep" />
+        <div class="actions">
+          <a class="btn primary" href="recherche.html">Recherche client / collecteur</a>
+          <a class="btn" href="dossier.html">Ouvrir un dossier client</a>
+          <a class="btn" href="colis.html">Créer un envoi</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>À traiter</h2>
+        <p>Liste illustrative (non interactive).</p>
+        <hr class="sep" />
+        <table class="table" aria-label="Tâches à traiter">
+          <thead>
+            <tr><th>Type</th><th>Référence</th><th>Statut</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Colis</td><td>DC-2026-0012</td><td><span class="pill warn">À valider</span></td></tr>
+            <tr><td>Adresse</td><td>CLT-00481</td><td><span class="pill bad">À corriger</span></td></tr>
+            <tr><td>Transport</td><td>LP-Queue-03</td><td><span class="pill warn">En attente</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <p class="footer-note">Navigation : Dashboard → Recherche → Dossier → Colis.</p>
+  </main>
+</body>
+
+<div data-include="partials/footer.html"></div>
+
+
+</html>

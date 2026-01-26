@@ -1,0 +1,43 @@
+/* Digicheese Admin UI — complément CSS (modal + utilitaires) */
+
+.hidden{ display:none !important; }
+
+.flash{
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,.03);
+  border-radius: 12px;
+  padding: 10px 12px;
+  margin: 12px 0 14px;
+}
+
+.flash .row{ justify-content:space-between; align-items:center; }
+
+.modal{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.55);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding: 20px;
+  z-index: 999;
+}
+.modal .card{
+  width: min(720px, 100%);
+}
+
+.table-actions{
+  display:flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.btn.sm{
+  padding: 7px 10px;
+  border-radius: 10px;
+  font-size: 12px;
+}
+
+.muted{
+  color: var(--muted);
+}

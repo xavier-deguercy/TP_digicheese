@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DIGICHEESE — Admin Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+  <!-- Includes -->
+  <script src="js/includes.js" defer></script>
+  <!-- Header -->
+  <div data-include="partials/header.html"></div>
+
+  <main class="container">
+    <div class="page-title">
+      <div>
+        <h1>Admin Dashboard</h1>
+        <p>V1 : statut API + accès aux référentiels.</p>
+      </div>
+      <span class="pill warn">A01</span>
+    </div>
+
+    <div id="flash" class="flash hidden">
+      <div class="row">
+        <span class="pill warn" data-flash-pill>INFO</span>
+        <span class="muted" style="font-size:12px;">Système</span>
+      </div>
+      <div style="margin-top:8px;">
+        <div style="font-weight:700;" data-flash-title></div>
+        <div class="muted" style="margin-top:4px;" data-flash-detail></div>
+      </div>
+    </div>
+
+    <div class="grid cols-3">
+      <div class="card">
+        <div class="kpi"><span class="value" id="healthStatus">—</span><span class="label">Health API</span></div>
+        <hr class="sep" />
+        <div class="actions">
+          <button class="btn ghost" id="btnHealth">Tester /health</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="kpi"><span class="value">Objets</span><span class="label">Référentiel</span></div>
+        <hr class="sep" />
+        <div class="actions">
+          <a class="btn primary" href="admin-objets.html">Gérer</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="kpi"><span class="value">Conditionnements</span><span class="label">Référentiel</span></div>
+        <hr class="sep" />
+        <div class="actions">
+          <a class="btn primary" href="admin-conditionnements.html">Gérer</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/ui.js"></script>
+  <script>
+    (function(){
+      const cfg = window.DC_CONFIG;
+      const { apiFetch, clearStoredAuthValue } = window.DC_API;
+      const { setFlash, clearFlash } = window.DC_UI;
+
+      document.getElementById("logoutLink").addEventListener("click", (e) => {
+        clearStoredAuthValue();
+      });
+
+      async function checkHealth(){
+        clearFlash();
+        try {
+          const data = await apiFetch(cfg.ENDPOINTS.health, { method: "GET" });
+          document.getElementById("healthStatus").textContent = "OK";
+          setFlash("ok", "API OK", typeof data === "string" ? data : JSON.stringify(data));
+        } catch (err) {
+          document.getElementById("healthStatus").textContent = "KO";
+          const detail = err && err.data ? JSON.stringify(err.data) : (err && err.message) ? err.message : String(err);
+          setFlash("bad", "API KO", detail);
+        }
+      }
+
+      document.getElementById("btnHealth").addEventListener("click", checkHealth);
+      checkHealth();
+    })();
+  </script>
+</body>
+
+
+<div data-include="partials/footer.html"></div>
+
+
+</html>

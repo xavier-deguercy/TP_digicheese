@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DIGICHEESE — Connexion Admin</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+
+  <!-- Includes -->
+  <script src="js/includes.js" defer></script>
+  <!-- Header -->
+  <div data-include="partials/header.html"></div>
+
+  <div class="center-wrap">
+    <div class="card auth-card">
+      <div class="row" style="justify-content:space-between; align-items:center;">
+        <div class="brand">
+          <span>🧀 DIGICHEESE</span>
+          <span class="badge">Admin (API Key)</span>
+        </div>
+        <span class="pill warn">A00</span>
+      </div>
+
+      <hr class="sep" />
+
+      <h2 style="margin:0 0 4px;">Accès administrateur</h2>
+      <p style="margin:0 0 12px; color:var(--muted);">
+        Dans ton projet, l'accès Admin se fait via une <strong>API key</strong> envoyée dans le header
+        <code>X-API-Key</code>.
+      </p>
+
+      <div id="flash" class="flash hidden">
+        <div class="row">
+          <span class="pill warn" data-flash-pill>INFO</span>
+          <span class="muted" style="font-size:12px;">Connexion</span>
+        </div>
+        <div style="margin-top:8px;">
+          <div style="font-weight:700;" data-flash-title></div>
+          <div class="muted" style="margin-top:4px;" data-flash-detail></div>
+        </div>
+      </div>
+
+      <form id="loginForm" class="form" autocomplete="off">
+        <div class="field">
+          <label for="apikey">X-API-Key</label>
+          <input id="apikey" type="text" placeholder="Colle ici la clé admin générée (hex…)" required />
+          <small>
+            Astuce : si tu lances l'API avec <code>DISABLE_AUTH=true</code>, l'IHM peut fonctionner sans clé.
+          </small>
+        </div>
+
+        <div class="actions">
+          <button class="btn primary" type="submit">Enregistrer la clé</button>
+          <a class="btn ghost" href="admin-objets.html" role="button">Aller à Objets</a>
+          <a class="btn" href="dashboard.html" role="button">Retour Opérations</a>
+        </div>
+      </form>
+
+      <p class="footer-note">V1 connectée : Objets / Conditionnements.</p>
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/ui.js"></script>
+  <script>
+    (function(){
+      const { setFlash, clearFlash } = window.DC_UI;
+      const { login } = window.DC_API;
+
+      document.getElementById("loginForm").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        clearFlash();
+
+        const apiKey = document.getElementById("apikey").value.trim();
+        if (!apiKey) {
+          setFlash("warn", "Validation", "La clé est obligatoire.");
+          return;
+        }
+
+        await login(apiKey);
+        setFlash("ok", "Clé enregistrée", "Redirection vers le référentiel Objets…");
+        window.location.href = "admin-objets.html";
+      });
+    })();
+  </script>
+</body>
+
+<div data-include="partials/footer.html"></div>
+
+</html>
