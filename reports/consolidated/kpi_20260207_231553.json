@@ -1,0 +1,139 @@
+{
+  "generated_at": "20260207_231553",
+  "tests": {
+    "status": "NON_VERIFIABLE",
+    "source": null,
+    "error": "file not found"
+  },
+  "coverage": {
+    "status": "NON_VERIFIABLE",
+    "source": null,
+    "error": "file not found"
+  },
+  "pylint": {
+    "status": "OK",
+    "source": "C:\\Users\\xavie\\Dropbox\\projet_perso_xavier\\TP_digicheese\\reports\\raw\\pylint_20260207_222905.json",
+    "score": 6.597938144329897,
+    "top_symbols": [
+      {
+        "symbol": "missing-function-docstring",
+        "count": 141
+      },
+      {
+        "symbol": "trailing-whitespace",
+        "count": 64
+      },
+      {
+        "symbol": "missing-module-docstring",
+        "count": 51
+      },
+      {
+        "symbol": "line-too-long",
+        "count": 33
+      },
+      {
+        "symbol": "missing-class-docstring",
+        "count": 22
+      },
+      {
+        "symbol": "too-few-public-methods",
+        "count": 21
+      },
+      {
+        "symbol": "wrong-import-order",
+        "count": 16
+      },
+      {
+        "symbol": "redefined-builtin",
+        "count": 12
+      }
+    ],
+    "message_count": 392
+  },
+  "radon": {
+    "status": "OK",
+    "source": "C:\\Users\\xavie\\Dropbox\\projet_perso_xavier\\TP_digicheese\\reports\\raw\\radon_20260207_222905.json",
+    "max_complexity": 6,
+    "top": [
+      {
+        "file": "src\\repositories\\objet_repository.py",
+        "name": "patch_objet",
+        "rank": "B",
+        "complexity": 6,
+        "lineno": 26
+      },
+      {
+        "file": "src\\services\\client_service.py",
+        "name": "__validate_adresses",
+        "rank": "A",
+        "complexity": 5,
+        "lineno": 22
+      },
+      {
+        "file": "src\\services\\client_service.py",
+        "name": "__validate_email_unique",
+        "rank": "A",
+        "complexity": 5,
+        "lineno": 29
+      },
+      {
+        "file": "src\\utils\\create_db.py",
+        "name": "seed_roles_and_admin",
+        "rank": "A",
+        "complexity": 4,
+        "lineno": 27
+      },
+      {
+        "file": "src\\utils\\dependencies.py",
+        "name": "get_current_user_api_key",
+        "rank": "A",
+        "complexity": 4,
+        "lineno": 14
+      },
+      {
+        "file": "src\\repositories\\adresse_repository.py",
+        "name": "patch_adresse",
+        "rank": "A",
+        "complexity": 3,
+        "lineno": 22
+      },
+      {
+        "file": "src\\repositories\\conditionnement_repository.py",
+        "name": "patch_conditionnement",
+        "rank": "A",
+        "complexity": 3,
+        "lineno": 29
+      },
+      {
+        "file": "src\\repositories\\objet_repository.py",
+        "name": "ObjetRepository",
+        "rank": "A",
+        "complexity": 3,
+        "lineno": 8
+      },
+      {
+        "file": "src\\repositories\\poidsv_repository.py",
+        "name": "patch_poidsv",
+        "rank": "A",
+        "complexity": 3,
+        "lineno": 23
+      },
+      {
+        "file": "src\\repositories\\poids_repository.py",
+        "name": "patch_poids",
+        "rank": "A",
+        "complexity": 3,
+        "lineno": 23
+      }
+    ]
+  },
+  "k6": {
+    "status": "OK",
+    "source": "C:\\Users\\xavie\\Dropbox\\projet_perso_xavier\\TP_digicheese\\reports\\raw\\k6_20260207_231044.json",
+    "latency_avg_ms": 7.8193809700000045,
+    "latency_max_ms": 35.97937,
+    "latency_p95_ms": 27.834441249999998,
+    "error_rate": null,
+    "throughput_rps": 9.844615188898981
+  }
+}
