@@ -1,0 +1,31 @@
+
+
+===== PAGE 1 =====
+2025-D12 TP7 Lead Dev/DevOps EISI  
+Projet : Développement d’une application 
+informatique  
+ 
+Objectifs finaux pour la notation du Projet :  
+  
+Critères d’évaluation : 
+ 
+• Code source commenté et conforme aux normes de sécurité (ex: OWASP). 
+• Documentation des mécanismes de protection des données et de scalabilité (RGPD, 
+standards). 
+• Outils et guides pour améliorer l’efficacité des développeurs correctement documentés. 
+• Scénarios de tests complets et détaillés, couvrant les fonctionnalités critiques. 
+• Résultats de tests interprétés et corrections appliquées pour fiabilité accrue. 
+• Qualité du code renforcée et suivi des corrections tracées. 
+• KPIs et alertes de monitoring définis et opérationnels. 
+• Rapport final (assisté par IA) pertinent et accessible aux parties prenantes. 
+ 
+Modalités d’évaluation : 
+ 
+• Livraison d’une application optimisée avec un dossier technique comprenant : 
+• Rapport sur pratiques de sécurité intégrées 
+• Guide des outils pour l’efficacité des développeurs 
+• Documentation des mécanismes de sécurité appliqués (RGPD, chiffrement, gestion des 
+accès…) 
+• Rapport sur corrections appliquées pour améliorer la qualité 
+• Monitoring avec indicateurs de performance et alertes 
+• Production écrite collective + restitution orale individuelle 

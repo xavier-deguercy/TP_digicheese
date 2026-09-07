@@ -1,0 +1,298 @@
+
+
+===== PAGE 1 =====
+ 
+1 
+Mini Cahier des charges fonctionnels  
+Refonte SI de la gestion des cadeaux 
+fidélité Fromagerie DIGICHEES 
+ 
+  
+
+===== PAGE 2 =====
+ 
+2 
+I. Contexte de la commande et présentation générale 5 
+A. objectif de départ 5 
+1. client(s) 5 
+II. Introduction 6 
+A. Objet 6 
+B. Notes de l’auteur 6 
+1. À propos de l’application 6 
+2. Destinataires 6 
+3. Portée 7 
+a) Administration (admin) 7 
+b) Gestion des colis (OP-colis) 8 
+c) Gestion des stocks (OP-stocks) 8 
+C. Antériorité : retour sur le système informatique existant 9 
+1. Application de gestion 9 
+a) Description technique de l'application actuelle 9 
+D. Diagramme d’environnement actuel 10 
+1. Diagrammes de l’application proposée 10 
+2. Diagramme de package, dépendant des rôles utilisateurs: 11 
+E. Développement du logiciel 12 
+1. Expression fonctionnelle de l’application 12 
+2. Diagramme de flux 13 
+3. Use case rôle administrateur 14 
+4. Use case rôle gestionnaire de colis 14 
+5. Use case rôle gestionnaire de stock 15 
+
+===== PAGE 3 =====
+ 
+3 
+F. Description fonctionnelle de la base de données. Modélisation. 16 
+ 
+  
+
+===== PAGE 4 =====
+ 
+4 
+Auteurs de ce cahier des charges / groupe d’expression du besoin 
+Auteurs de ce cahier des charges / groupe d’expression du besoin 
+Nom / mél  Qualité / rôle 
+Christophe GERMAIN Chef de Projet Avant Ventes 
+ 
+Historique des modifications et révisions de ce document 
+n° de version  Date Description et circonstances de la modification 
+V 0.1 12/10/22 Brouillon : première version suite à la réunion initiale du groupe 
+d’expression du besoin 
+V 1.0 17/10/22 Première version finalisée 
+V 1.2 18/102022 Version finale 
+V 2.0 19/10/2022 Version pour l’avant vente 
+ 
+Validations  
+n° de version Nom / qualité Date / 
+signature 
+Commentaires et réserves éventuelles 
+V 1.0 Christophe GERMAIN 17/10/22 Validation contenue + ajustements à faire + 
+remarques mises en page 
+ 
+ 
+  
+
+===== PAGE 5 =====
+ 
+5 
+I. CONTEXTE DE LA COMMANDE ET 
+PRÉSENTATION GÉNÉRALE  
+A. OBJECTIF DE DÉPART 
+La TPE de la Fromagerie DIGICHEES a besoin d’une refonte de l’application et 
+de la base données existante qui ont été créés il y a 20 ans et qui ne sont plus à 
+jour et manque d'efficacité. 
+1. CLIENT(S) 
+Nom  mail  Qualité / rôle 
+Fromagerie 
+DIGICHEES 
+contact@DIGICHEES.com Client principal 
+Christophe Germain cgermain@diginamic.fr Directeur DSI 
+  
+
+===== PAGE 6 =====
+ 
+6 
+ 
+II. INTRODUCTION  
+A. OBJET  
+Ce document est un cahier des charges pour la refonte d’un SI dans une PME 
+pour gérer une boutique physique et en ligne à partir de points de fidélités d’une 
+fromagerie nommée « Fromagerie DIGICHEES ». Le nom de domaine désiré est 
+« DIGICHEES.com ».   
+B. NOTES DE L’AUTEUR  
+1. À PROPOS DE L’APPLICATION  
+Aujourd’hui, l’application est centralisée en interne sur Microsoft Access et 
+implémenté en VBA.  L’application consomme entre 50 à 60 Mo. Cette 
+conception pose plusieurs problèmes :   
+o Forte instabilité (bugs réguliers),   
+o Problèmes de maintenance,   
+o Faible possibilité d’évolution de développement,  
+o Manque de fluidité, d’accessibilité et de visibilité pour les 
+utilisateurs.  
+L’objectif est de réaliser une refonte complète d’une application de 
+gestion en prenant en compte les problèmes relevés ci-dessus.  
+2. DESTINATAIRES  
+Ce cahier des charges est à destination de tout prestataire désireux de 
+développer le site Intranet décrit dans les points suivants.  
+
+===== PAGE 7 =====
+ 
+7 
+3. PORTÉE  
+L’objectif est de réaliser un site interne à l’entreprise, destiné aux salariés. 
+Il se divisera en quatre parties :  
+• Authentification : page de connexion du site Internet, accessible à 
+tous les utilisateurs, • Administration : accessible pour les rôles « 
+Admin »,  
+• Gestion des colis : pour la gestion des colis, accessibles pour les 
+rôles « OP-colis », • Gestion des stocks : pour la gestion des 
+stocks, accessibles pour les rôles « OP-stocks », 
+Nous vous avons demandé lors du questionnaire v0.1, la portée de 
+chaque rôle présenté ci-dessus.  
+Nous vous présentons ici les différentes fonctionnalités possibles pour un 
+utilisateur depuis l’interface utilisateurs en accord avec les maquettes 
+finales validées par le client. 
+a) Administration (admin)  
+L’espace administration permettra aux utilisateurs ayant un rôle « Admin » 
+de gérer avec les opérations du CRUD (ajout, modification, suppression) :  
+o Tous les utilisateurs,  
+o Tous les paramètres métiers actuellement en base de données :  
+• t_poids 
+• t_poidsV 
+• t_objet 
+• t_conditionnement 
+• t_commune 
+o La génération d’une impression au format papier. 
+  
+
+===== PAGE 8 =====
+ 
+8 
+b) Gestion des colis (OP-colis) 
+L’espace gestion des colis permettra aux utilisateurs :   
+• La gestion des clients,  
+• La gestion des commandes (CRUD + calcul),  
+• La gestion du conditionnement (calcul final) + liste du 
+conditionnement,  
+• Visualiser la liste client, et de ce fait, la fiche client,  
+• Visualiser les colis en cours + une historisation des mouvements 
+des colis, 
+• Visualiser la liste des emballages,  
+• Visualiser la relation poids/colis,  
+• Visualiser la relation poids-vignette/colis,  
+• Visualiser les différentes statistiques, 
+o Les statistiques s’affichent en fonction d’un intervalle de date 
+au format mois/année, 
+• Le mailing client (procédure de génération du fichier texte),  
+• L’envoi d’emails personnalisés,  
+• La génération d’une impression au format papier.  
+c) Gestion des stocks (OP-stocks)  
+L’espace de gestion des stocks permettra aux utilisateurs d’avoir une 
+meilleure vue globale sur :   
+• La gestion des stocks,  
+• Mise à jour annuel des stocks (à l’aide d’un bouton action),  
+• La génération d’une impression au format papier. 
+Il est important que les trois parties présentées ci-dessus soient pratique 
+et esthétique. 
+ 
+ 
+
+===== PAGE 9 =====
+ 
+9 
+C. ANTÉRIORITÉ : RETOUR SUR LE SYSTÈME 
+INFORMATIQUE EXISTANT 
+1. APPLICATION DE GESTION 
+a) Description technique de l'application actuelle 
+Description technique de l'application 
+actuelle 
+Limites atteintes par l’application 
+aujourd'hui 
+Application a été créée via Access Office 
+2000 il y a plus de 20 ans 
+ 
+Il n'est officiellement pas pris en charge 
+sur Windows Vista ou les versions 
+ultérieures de Windows 
+Mise à jour au fur et mesure dans le temps 
+avec des compétences limitées 
+Le support standard pour Office 2000 a 
+pris fin le 30 juin 2004 et le support 
+étendu a pris fin le 14 juillet 2009 
+Client lourd peu performant en rapport 
+aux technologies actuelles 
+Interface rigide et dépassée 
+Peu/pas de modification et/ou 
+amélioration possibles 
+Design et graphisme mal structuré, 
+inesthétique et peu ergonomique 
+  
+
+===== PAGE 10 =====
+ 
+10 
+D. DIAGRAMME D’ENVIRONNEMENT ACTUEL 
+1. DIAGRAMMES DE L’APPLICATION PROPOSÉE 
+Diagramme du contexte général:
+ 
+ 
+
+
+===== PAGE 11 =====
+ 
+11 
+2. DIAGRAMME DE PACKAGE, DÉPENDANT DES 
+RÔLES UTILISATEURS: 
+ 
+  
+
+
+===== PAGE 12 =====
+ 
+12 
+E. DÉVELOPPEMENT DU LOGICIEL 
+1. EXPRESSION FONCTIONNELLE DE L’APPLICATION 
+La nouvelle application proposée est centrée autour des rôles utilisateurs. 
+Acteurs utilisateurs (3 rôles pouvant être cumulables) : 
+ 
+Rôles Actions Cumulable avec 
+(optionnel) 
+Admin 
+Gère les users, 
+communes, objets 
+(articles), 
+conditionnements, poids, 
+poids vignette 
+ 
+● Opérateur colis 
+● Opérateur stock 
+Opérateur colis 
+Gestion de commande, 
+sors le mailing, sort les 
+stats, crée les clients, 
+interface d’impression 
+ 
+● Admin  
+● Opérateur stock 
+ 
+Opérateur stock 
+Saisie de l’inventaire, 
+gestion stock, interface 
+d’impression 
+ 
+● Admin 
+● Opérateur colis 
+ 
+  
+
+===== PAGE 13 =====
+ 
+13 
+Les figures suivantes permettent d’illustrer les fonctionnalités de la nouvelle application 
+en fonction de ces rôles. 
+2. DIAGRAMME DE FLUX 
+ 
+(Disponible en annexe: /Diagrammes/diagramme-de-flux-commande.png )  
+
+
+===== PAGE 14 =====
+ 
+14 
+3. USE CASE RÔLE ADMINISTRATEUR 
+ 
+(Disponible en annexe: /Diagrammes/Use case diag administration.png) 
+4. USE CASE RÔLE GESTIONNAIRE DE COLIS 
+ 
+
+
+===== PAGE 15 =====
+ 
+15 
+5. USE CASE RÔLE GESTIONNAIRE DE STOCK 
+ 
+
+
+===== PAGE 16 =====
+ 
+16 
+F. DESCRIPTION FONCTIONNELLE DE LA BASE 
+DE DONNÉES. MODÉLISATION. 
+ 

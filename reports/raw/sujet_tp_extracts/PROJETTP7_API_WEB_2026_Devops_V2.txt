@@ -1,0 +1,51 @@
+
+
+===== PAGE 1 =====
+ 2025-D12 TP7 Lead Dev/DevOps EISI 
+ 
+Diginamic - Fiche TP7 Développement d’une application informatique et de son environnement – Créé 
+le 01/2026 - CG 
+ Page : 1 
+  
+ 
+Projet TP7 - Activité 3 : Concevoir et développer une 
+application informatique 
+API BACKEND SWAGGER TESTS 
+Compétences C25, C26, C27 
+ 
+❖ Durées du projet : 5 jours 
+❖ Livrables par un lien Git par groupe de 3 personnes mini : 
+❖ Une branche par développeur et les branches :  
+          test, dev, prod et master  
+❖ Sources python par projet (SOURCES PYTHON, Scripts  
+❖ Mysql)  
+❖ Un dossier avec la documentation technique et d’utilisation 
+(Dans un README.md avec présentation de l’équipe et leur rôle) 
+❖ Un dossier contenant les scénarii de tests et les scripts 
+❖ Un dossier contenant la documentation technique 
+(contenant l’architecture, les éléments changés selon le cahier des 
+charges fournis, la description des serveurs virtuels python)  
+❖ Faire un requirements.txt  
+❖ Les consignes : consignes_projet_dev_2026.pdf 
+  
+
+===== PAGE 2 =====
+ 2025-D12 TP7 Lead Dev/DevOps EISI 
+ 
+Diginamic - Fiche TP7 Développement d’une application informatique et de son environnement – Créé 
+le 01/2026 - CG 
+ Page : 2 
+  
+ 
+❖ A partir du MiniCahierDesChargesFromagerieDigiCheese.pdf 
+❖ Réaliser l’ API Backend en Python avec une base Mysql  
+o Mettre en place les sécurités d’accès et de rôles 
+o CRUD de l’acteur « Administrateur » 
+o CRUD de l’acteur « Opérateur de Colis » : Gestion des 
+commandes 
+o Mettre en place l’ API Swagger pour tester le futur Front 
+o Mettre en place les tests de l’ API Backend avec unittest ou 
+pytest  
+❖ Soutenance le 20/01/2026 avec Christophe Germain 
+❖ Envoyé le REPO Complet mercredi 21/01/2026 19h à Christophe 
+Germain : pseudo germain72 
