@@ -5,6 +5,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from ..models.adresse import Adresse
+from ..models.commande import Commande
 from ..repositories.client_repository import ClientRepository
 from ..schemas.client_schema import ClientPost, ClientPatch
 
@@ -74,5 +75,15 @@ class ClientService:
         client = self.repository.get_by_id(db, id_client)
         if client is None:
             raise HTTPException(status_code=404, detail="Client non trouvé")
+        commande_id = db.scalar(
+            select(Commande.id_commande)
+            .where(Commande.id_client == id_client)
+            .limit(1)
+        )
+        if commande_id is not None:
+            raise HTTPException(
+                status_code=409,
+                detail="Client utilise par une commande",
+            )
         self.repository.delete(db, client)
         return client

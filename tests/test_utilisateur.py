@@ -71,6 +71,21 @@ def test_patch_user_by_id(client: TestClient, role_data, user_data):
     assert response.json()["prenom_user"] == "Jane"
 
 
+def test_patch_user_rejects_null_password(client: TestClient, role_data, user_data):
+    role = client.post(ROLE_ENDPOINT, json=role_data).json()
+    created = client.post(
+        UTILISATEUR_ENDPOINT,
+        json={**user_data, "id_role": role["id_role"]},
+    ).json()
+
+    response = client.patch(
+        f"{UTILISATEUR_ENDPOINT}/{created['id_user']}",
+        json={"password": None},
+    )
+
+    assert response.status_code == 422
+
+
 def test_delete_user_by_id(client: TestClient, role_data, user_data):
     role = client.post(ROLE_ENDPOINT, json=role_data).json()
     role_id = role["id_role"]

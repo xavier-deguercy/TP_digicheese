@@ -5,8 +5,13 @@ from ..database import get_db
 from ..schemas.client_schema import ClientOutDetailed, ClientOut, ClientPost, ClientPatch
 from ..services.client_service import ClientService
 from src.utils.dependencies import require_roles
+from src.utils.roles import ROLE_ADMIN, ROLE_OP_COLIS
 
-router = APIRouter(prefix="/clients", tags=["CRUD Client (OP-Colis, Admin)"], dependencies=[Depends(require_roles("Admin", "OP-colis"))])
+router = APIRouter(
+    prefix="/clients",
+    tags=["CRUD Client (OP-Colis, Admin)"],
+    dependencies=[Depends(require_roles(ROLE_ADMIN, ROLE_OP_COLIS))],
+)
 service = ClientService()
 
 # Get clients

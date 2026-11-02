@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DIGICHEESE — Détails de commande</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+  <script src="js/includes.js" defer></script>
+  <div data-include="partials/header.html"></div>
+
+  <main class="container">
+    <div class="page-title">
+      <div>
+        <h1 id="pageTitle">Détails de commande</h1>
+        <p id="commandeSummary">Chargement de la commande…</p>
+      </div>
+      <div class="actions">
+        <span class="pill warn">MVP-02</span>
+        <a class="btn ghost" href="commandes.html">Retour aux commandes</a>
+      </div>
+    </div>
+
+    <div id="flash" class="flash hidden">
+      <div class="row">
+        <span class="pill warn" data-flash-pill>INFO</span>
+        <span class="muted" style="font-size:12px;">Détails de commande</span>
+      </div>
+      <div style="margin-top:8px;">
+        <div style="font-weight:700;" data-flash-title></div>
+        <div class="muted" style="margin-top:4px;" data-flash-detail></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="row" style="justify-content:space-between; align-items:center; gap:12px;">
+        <div class="row">
+          <span id="commandeState" class="pill warn">Chargement</span>
+          <span id="nbColisState" class="muted">Nombre de colis : —</span>
+        </div>
+        <div class="actions">
+          <button class="btn ghost" id="btnRefresh" type="button">Rafraîchir</button>
+          <button class="btn primary" id="btnCreate" type="button">Ajouter un objet</button>
+        </div>
+      </div>
+
+      <hr class="sep" />
+
+      <table class="table" aria-label="Lignes de la commande">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Objet</th>
+            <th>Quantité</th>
+            <th>Commentaire</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="tbody">
+          <tr><td colspan="5" class="muted">Chargement…</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="card">
+      <div class="row" style="justify-content:space-between; align-items:center;">
+        <h2 id="modalTitle" style="margin:0;">Ligne de commande</h2>
+        <button class="btn sm ghost" id="btnClose" type="button">Fermer</button>
+      </div>
+      <hr class="sep" />
+
+      <form id="formDetail" class="form">
+        <input type="hidden" id="idDetail" />
+        <div class="grid cols-2">
+          <div class="field">
+            <label for="objetDetail">Objet</label>
+            <select id="objetDetail" required></select>
+          </div>
+          <div class="field">
+            <label for="quantiteDetail">Quantité</label>
+            <input id="quantiteDetail" type="number" min="1" step="1" required />
+          </div>
+        </div>
+        <div class="field">
+          <label for="commentaireDetail">Commentaire</label>
+          <textarea id="commentaireDetail" maxlength="1000" rows="4" placeholder="Facultatif"></textarea>
+        </div>
+        <p class="muted">Toute modification d’une ligne remet le nombre de colis à vérifier.</p>
+        <div class="actions">
+          <button class="btn primary" type="submit">Enregistrer</button>
+          <button class="btn" type="button" id="btnDelete" style="display:none;">Supprimer</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/commande-details.js"></script>
+  <div data-include="partials/footer.html"></div>
+</body>
+</html>

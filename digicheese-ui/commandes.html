@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DIGICHEESE — Commandes</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+  <script src="js/includes.js" defer></script>
+  <div data-include="partials/header.html"></div>
+
+  <main class="container">
+    <div class="page-title">
+      <div>
+        <h1>Commandes</h1>
+        <p>Création, préparation, archivage et consultation des commandes.</p>
+      </div>
+      <span class="pill warn">MVP-01</span>
+    </div>
+
+    <div id="flash" class="flash hidden">
+      <div class="row">
+        <span class="pill warn" data-flash-pill>INFO</span>
+        <span class="muted" style="font-size:12px;">Commandes</span>
+      </div>
+      <div style="margin-top:8px;">
+        <div style="font-weight:700;" data-flash-title></div>
+        <div class="muted" style="margin-top:4px;" data-flash-detail></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="row" style="justify-content:space-between; align-items:end; gap:12px;">
+        <div class="field" style="flex:1; min-width:240px;">
+          <label for="q">Recherche</label>
+          <input id="q" type="text" placeholder="ID, client ou date…" />
+        </div>
+        <div class="field" style="min-width:180px;">
+          <label for="statusFilter">État</label>
+          <select id="statusFilter">
+            <option value="active">Actives</option>
+            <option value="archived">Archivées</option>
+            <option value="all">Toutes</option>
+          </select>
+        </div>
+        <div class="actions" style="justify-content:flex-end;">
+          <button class="btn ghost" id="btnRefresh">Rafraîchir</button>
+          <button class="btn primary" id="btnCreate">Créer une commande</button>
+        </div>
+      </div>
+
+      <hr class="sep" />
+
+      <table class="table" aria-label="Liste des commandes">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Date</th>
+            <th>Client</th>
+            <th>Conditionnement</th>
+            <th>Nb colis</th>
+            <th>État</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="tbody">
+          <tr><td colspan="7" class="muted">Chargement…</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="card">
+      <div class="row" style="justify-content:space-between; align-items:center;">
+        <h2 id="modalTitle" style="margin:0;">Commande</h2>
+        <button class="btn sm ghost" id="btnClose" type="button">Fermer</button>
+      </div>
+      <hr class="sep" />
+
+      <form id="formCommande" class="form">
+        <input type="hidden" id="id" />
+
+        <div class="grid cols-3">
+          <div class="field">
+            <label for="dateCommande">Date</label>
+            <input id="dateCommande" type="date" required />
+          </div>
+          <div class="field">
+            <label for="clientCommande">Client</label>
+            <select id="clientCommande" required></select>
+          </div>
+          <div class="field">
+            <label for="conditionnementCommande">Conditionnement</label>
+            <select id="conditionnementCommande"></select>
+            <small>Facultatif à la création.</small>
+          </div>
+        </div>
+
+        <div class="grid cols-3">
+          <div class="field">
+            <label for="nbColis">Nombre de colis</label>
+            <input id="nbColis" type="number" min="1" step="1" placeholder="À renseigner pendant la préparation" />
+            <small>Tout changement de conditionnement remet cette valeur à vide.</small>
+          </div>
+          <div class="field">
+            <label for="timbreClient">Timbre client</label>
+            <input id="timbreClient" type="text" maxlength="100" />
+          </div>
+          <div class="field">
+            <label for="timbreCode">Code timbre</label>
+            <input id="timbreCode" type="text" maxlength="100" />
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="btn primary" type="submit">Enregistrer</button>
+          <button class="btn" type="button" id="btnDelete" style="display:none;">Supprimer</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/commandes.js"></script>
+  <div data-include="partials/footer.html"></div>
+</body>
+</html>

@@ -1,0 +1,1 @@
+﻿OPENAPI_MVP02 collection=get,post item=get,patch,delete post_example=True patch_example=True

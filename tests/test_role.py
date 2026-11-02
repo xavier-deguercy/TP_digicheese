@@ -28,6 +28,13 @@ def test_create_role(client: TestClient, role_data):
     assert data["libelle_role"] == role_data["libelle_role"]
 
 
+@pytest.mark.parametrize("payload", [{}, {"libelle_role": None}, {"libelle_role": ""}])
+def test_create_role_rejects_missing_null_or_empty_label(client: TestClient, payload):
+    response = client.post(ROLE_ENDPOINT, json=payload)
+
+    assert response.status_code == 422
+
+
 def test_get_role_by_id(client: TestClient, role_data):
     """Récupérer un rôle par ID."""
     created = client.post(ROLE_ENDPOINT, json=role_data).json()
@@ -48,6 +55,18 @@ def test_patch_role_by_id(client: TestClient, role_data):
     response: Response = client.patch(f"{ROLE_ENDPOINT}/{role_id}", json=new_data)
     assert response.status_code == 200
     assert response.json()["libelle_role"] == "OP COLIS"
+
+
+@pytest.mark.parametrize("value", [None, "", "   "])
+def test_patch_role_rejects_null_or_empty_label(client: TestClient, role_data, value):
+    created = client.post(ROLE_ENDPOINT, json=role_data).json()
+
+    response = client.patch(
+        f"{ROLE_ENDPOINT}/{created['id_role']}",
+        json={"libelle_role": value},
+    )
+
+    assert response.status_code == 422
 
 
 def test_delete_role_by_id(client: TestClient, role_data):

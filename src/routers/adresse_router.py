@@ -4,8 +4,13 @@ from src.schemas.adresse_schema import AdresseInDB, AdressePatch, AdressePost
 from src.services.adresse_service import AdresseService
 from src.database import get_db
 from src.utils.dependencies import require_roles
+from src.utils.roles import ROLE_ADMIN, ROLE_OP_COLIS
 
-router = APIRouter(prefix="/adresse", tags=["CRUD Adresse (OP-Colis, Admin)"], dependencies=[Depends(require_roles("Admin", "OP-colis"))])
+router = APIRouter(
+    prefix="/adresse",
+    tags=["CRUD Adresse (OP-Colis, Admin)"],
+    dependencies=[Depends(require_roles(ROLE_ADMIN, ROLE_OP_COLIS))],
+)
 service = AdresseService()
 
 @router.get("/", status_code=200, response_model=list[AdresseInDB])

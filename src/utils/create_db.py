@@ -6,19 +6,9 @@ import secrets
 from src.database import engine, SessionLocal
 from src.models.base import Base
 from src.utils.password import hash_password
+from src.utils.roles import DEFAULT_ROLES, ROLE_ADMIN
 
-from src.models.role import Role
-from src.models.utilisateur import Utilisateur
-from src.models.client import Client
-from src.models.commune import Commune
-from src.models.adresse import Adresse
-from src.models.poids import Poids
-from src.models.poidsv import Poidsv
-from src.models.conditionnement import Conditionnement
-from src.models.objet import Objet
-
-DEFAULT_ROLES = ["Admin", "OP-COLIS", "OP-STOCK"]
-
+from src.models import Role, Utilisateur
 
 def create_tables():
     Base.metadata.create_all(bind=engine)
@@ -35,7 +25,9 @@ def seed_roles_and_admin():
         db.commit()
 
         # Seed de l'admin
-        admin_role = db.scalars(select(Role).where(Role.libelle_role == "Admin")).first()
+        admin_role = db.scalars(
+            select(Role).where(Role.libelle_role == ROLE_ADMIN)
+        ).first()
         existing_admin = db.scalars(
             select(Utilisateur).where(Utilisateur.id_role == admin_role.id_role)
         ).first()

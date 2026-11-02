@@ -29,7 +29,7 @@ CRUD principal:
 - Aucun (sprint de fondation technique UI)
 
 Taches:
-- [ ] Auditer l'existant UI (`UML/digicheese-ui`) et lister ce qui est obsolete.
+- [ ] Auditer l'existant UI (`digicheese-ui`) et lister ce qui est obsolete.
 - [ ] Definir nouvelle architecture IHM HTML/CSS (layout, composants, pages).
 - [ ] Poser une base CSS refactorisee (tokens, grille, composants, responsive).
 - [ ] Poser une structure JS propre (config, api client, modules metier, utilitaires).
@@ -42,6 +42,9 @@ Sortie attendue:
 ---
 
 ### [ ] Sprint 1 - CRUD `commande`
+
+Statut MVP-01 : `ACCEPTE_AVEC_RESERVES` le 2026-09-07. Les preuves detaillees sont conservees dans le dossier de gouvernance MVP.
+
 US cibles:
 - `US-W2-A1` CRUD Commande
 - `US-W2-A3` Regles archive/nbColis (partie initiale)
@@ -68,6 +71,9 @@ Sortie attendue:
 ---
 
 ### [ ] Sprint 2 - CRUD `detail_commande`
+
+Statut MVP-02 : `DEVELOPPE_ET_VERIFIE — ACCEPTATION_METIER_A_CONFIRMER`. Aucun AUTO_NEXT vers le lot suivant.
+
 US cibles:
 - `US-W2-A2` CRUD Detail commande
 - `US-W2-A3` Regles archive/nbColis (suite)
@@ -76,19 +82,19 @@ CRUD principal:
 - `details-commandes`
 
 Taches backend:
-- [ ] Model/schema/repository/service/router `detail_commande`.
-- [ ] Validation FK `idCommande` + `idObjet`.
-- [ ] Endpoint de consultation par commande.
-- [ ] Recalcul/controle `nbColis` apres modifications de details.
-- [ ] Tests CRUD + tests integration commande/details.
+- [x] Model/schema/repository/service/router `detail_commande`.
+- [x] Validation FK `idCommande` + `idObjet`.
+- [x] Endpoint de consultation par commande.
+- [x] Remise a verifier de `nbColis` apres modifications de details.
+- [x] Tests CRUD + tests integration commande/details.
 
 Taches UI:
-- [ ] Ecran details d'une commande.
-- [ ] Ajout/modification/suppression ligne detail.
-- [ ] Affichage coherence `nbColis`.
+- [x] Ecran details d'une commande.
+- [x] Ajout/modification/suppression ligne detail.
+- [x] Affichage coherence `nbColis`.
 
 Sortie attendue:
-- [ ] Flux commande + details stable.
+- [x] Flux commande + details stable techniquement ; acceptation metier a confirmer.
 
 ---
 

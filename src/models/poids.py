@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, DECIMAL
+from sqlalchemy import Column, Integer, DECIMAL
 from .base import Base
 
 class Poids(Base) :

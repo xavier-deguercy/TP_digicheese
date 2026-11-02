@@ -14,14 +14,25 @@ Principe:
 
 ### 2.1 Commande
 - Une commande reference un client existant.
-- Le conditionnement peut etre obligatoire ou optionnel selon la regle retenue dans l'API.
-- `bArchive` indique l'etat actif/archive de la commande.
-- `nbColis` doit rester coherent avec les details de commande.
+- Le conditionnement est optionnel a la creation et peut etre renseigne pendant la preparation.
+- `bArchive` indique l'etat actif/archive de la commande. Une commande archivee reste consultable, mais doit etre desarchivee avant modification.
+- L'archivage d'une commande incomplete est autorise et ne confirme pas son expedition.
+- Une commande archivee ne peut pas etre supprimee. Une commande active peut etre supprimee tant qu'elle ne contient aucune ligne de detail.
+- `nbColis` designe le nombre de colis physiques a expedier. Il est saisi manuellement, reste vide tant qu'il est inconnu et doit etre strictement positif lorsqu'il est renseigne.
+- Toute modification du conditionnement ou des lignes de commande remet `nbColis` a vide.
+- Un client ou un conditionnement reference par une commande ne peut pas etre supprime.
 
 ### 2.2 Detail commande
 - Un detail commande reference une commande existante et un objet existant.
 - `quantite` est strictement positive.
 - Un detail invalide ne doit pas casser la coherence globale de la commande.
+- Un meme objet ne peut apparaitre qu'une fois dans une commande ; un doublon est rejete avec `409`.
+- Le commentaire de ligne est facultatif et n'a pas d'effet sur les calculs ou l'archivage.
+- Le champ historique `Colis` est reporte hors de MVP-02.
+- Un objet indisponible ne peut pas etre ajoute. Une ligne existante dont l'objet devient indisponible reste lisible et sa quantite ou son commentaire peut etre corrige.
+- Les lignes d'une commande archivee sont en lecture seule jusqu'au desarchivage.
+- Toute creation, modification ou suppression de ligne remet `nbColis` a vide dans la meme transaction.
+- Une commande ou un objet reference par une ligne ne peut pas etre supprime.
 
 ### 2.3 Prix
 - Un objet ne peut avoir qu'un prix actif (contrainte unique 1-1 par objet).

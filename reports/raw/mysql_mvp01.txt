@@ -1,0 +1,15 @@
+﻿{
+  "database": "MySQL Docker",
+  "authentication": "Admin X-API-Key",
+  "create": 201,
+  "referenced_client_delete": 409,
+  "referenced_conditionnement_delete": 409,
+  "archive": 200,
+  "archived_edit": 409,
+  "unarchive": 200,
+  "conditionnement_change": 200,
+  "nb_colis_after_conditionnement_change": null,
+  "list": 200,
+  "delete": 200,
+  "cleanup": "complete"
+}

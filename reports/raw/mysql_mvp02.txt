@@ -1,0 +1,17 @@
+﻿{
+  "database": "MySQL Docker",
+  "authentication": "Admin X-API-Key",
+  "create_detail": 201,
+  "nb_colis_after_create": null,
+  "duplicate": 409,
+  "unavailable_object": 409,
+  "commande_delete_with_detail": 409,
+  "objet_delete_with_detail": 409,
+  "archive": 200,
+  "archived_detail_edit": 409,
+  "unarchive": 200,
+  "update_detail": 200,
+  "list_by_commande": 200,
+  "delete_detail": 200,
+  "cleanup": "complete"
+}

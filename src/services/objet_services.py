@@ -1,6 +1,9 @@
 # src\services\objet_services.py
 # # creation du service pour les objets
+from fastapi import HTTPException
+from sqlalchemy import select
 from sqlalchemy.orm import Session
+from ..models.detail_commande import DetailCommande
 from ..repositories.objet_repository import ObjetRepository 
 from ..schemas.objet_schema import ObjetCreate, ObjetPatch
 
@@ -30,4 +33,14 @@ class ObjetService:
         return self.repository.patch_objet(db, objet_id, objet)
 
     def delete_objet(self, db: Session, objet_id: int):
+        detail_id = db.scalar(
+            select(DetailCommande.id_detail_commande)
+            .where(DetailCommande.id_objet == objet_id)
+            .limit(1)
+        )
+        if detail_id is not None:
+            raise HTTPException(
+                status_code=409,
+                detail="Objet utilise par une ligne de commande",
+            )
         return self.repository.delete_objet(db, objet_id)

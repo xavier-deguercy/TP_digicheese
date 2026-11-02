@@ -1,7 +1,10 @@
 # src/services/conditionnement_service.py
 
+from fastapi import HTTPException
+from sqlalchemy import select
 from sqlalchemy.orm import Session
 
+from src.models.commande import Commande
 from src.repositories.conditionnement_repository import ConditionnementRepository
 from src.schemas.conditionnement_schema import ConditionnementPost, ConditionnementPatch
 
@@ -36,4 +39,14 @@ class ConditionnementService:
         return self.repository.patch_conditionnement(db, condit_id, donnees)
 
     def delete_conditionnement(self, db: Session, condit_id: int):
+        commande_id = db.scalar(
+            select(Commande.id_commande)
+            .where(Commande.id_conditionnement == condit_id)
+            .limit(1)
+        )
+        if commande_id is not None:
+            raise HTTPException(
+                status_code=409,
+                detail="Conditionnement utilise par une commande",
+            )
         return self.repository.delete_conditionnement(db, condit_id)

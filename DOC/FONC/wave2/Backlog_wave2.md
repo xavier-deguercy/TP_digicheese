@@ -109,23 +109,31 @@ Ordre de livraison recommande:
 
 ## 7) Epics / User Stories
 
-### [ ] EPIC W2-A - Commandes
+### [~] EPIC W2-A - Commandes
 
 `US-W2-A1` CRUD Commande
+
+Statut MVP-01 : `ACCEPTE_AVEC_RESERVES` le 2026-09-07. La reserve sur la suppression d'une commande contenant des lignes sera traitee avec `US-W2-A2`.
+
 - Taches:
-- [ ] Model + schema + repository + service + router `commande`.
-- [ ] Validations: FK client, FK conditionnement optionnelle, type/date, `bArchive`.
-- [ ] Swagger examples pour create/update/get.
+- [x] Model + schema + repository + service + router `commande`.
+- [x] Validations: FK client, FK conditionnement optionnelle, type/date, `bArchive`.
+- [x] Swagger examples pour create/update/get.
 - Criteres d'acceptation:
 1. CRUD complet operationnel.
 2. Erreurs `400/404` sur payload/FK invalides.
 3. Regles role OP-COLIS et Admin appliquees.
 
 `US-W2-A2` CRUD Detail commande
+
+Statut MVP-02 : `DEVELOPPE_ET_VERIFIE — ACCEPTATION_METIER_A_CONFIRMER`.
+
+Regle validee : une seule ligne par couple commande/objet ; doublon rejete avec `409` et contrainte unique en base.
+
 - Taches:
-- [ ] Implementer `detail_commande` avec FK `idCommande` et `idObjet`.
-- [ ] Validation de quantite et coherence FK.
-- [ ] Endpoint liste par commande.
+- [x] Implementer `detail_commande` avec FK `idCommande` et `idObjet`.
+- [x] Validation de quantite et coherence FK.
+- [x] Endpoint liste par commande.
 - Criteres d'acceptation:
 1. CRUD complet operationnel.
 2. Recuperation des details d'une commande possible.
@@ -133,9 +141,9 @@ Ordre de livraison recommande:
 
 `US-W2-A3` Regles archive et `nbColis`
 - Taches:
-- [ ] Definir calcul/controle `nbColis`.
-- [ ] Definir regles d'archivage (`bArchive`) et mise a jour securisee.
-- [ ] Ajouter tests de flux "creation + archive".
+- [x] Definir la saisie et le controle `nbColis` pour le MVP.
+- [x] Definir regles d'archivage (`bArchive`) et mise a jour securisee.
+- [x] Ajouter tests de flux "creation + archive".
 - Criteres d'acceptation:
 1. `nbColis` coherent avec les details.
 2. Archivage protege et traçable.

@@ -112,7 +112,7 @@ de développement exploitable (architecture, tests, exécution).
 > Si tu utilises **Git Bash**, l’activation de l’environnement virtuel change
 
 ### a) 🧰 Pré-requis
-- Python 3.x
+- Python 3.13
 - Git
 - Docker et docker compose
 
@@ -124,7 +124,16 @@ cd TP_digicheese
 
 ### c) Créer et activer l’environnement virtuel
 ```bash
-python -m venv .venv
+py -3.13 -m venv .venv
+.\.venv\Scripts\Activate.ps1
+```
+
+Si le lanceur Windows ne détecte pas Python 3.13, utiliser le runtime géré par
+[`uv`](https://docs.astral.sh/uv/) :
+
+```powershell
+uv python install 3.13
+uv venv --python 3.13 --seed .venv
 .\.venv\Scripts\Activate.ps1
 ```
 
@@ -135,10 +144,23 @@ python -m pip install --upgrade pip
 
 ### d) ⬇️ Installer les dépendances
 ```bash
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
+python -m pip check
 ```
 
-### e) 🐳 Démarrer la base de données (Docker)
+### e) ⚙️ Configurer l'environnement
+
+Copier l'exemple local, puis remplacer le mot de passe factice par celui de votre
+environnement Docker. Le fichier `.env` reste local et ne doit pas être ajouté à Git.
+
+```powershell
+Copy-Item .env.example .env
+```
+
+`DATABASE_URL` est obligatoire. Une variable définie dans le terminal est prioritaire
+sur la valeur de `.env`. Laisser `DISABLE_AUTH=false` hors des tests automatisés.
+
+### f) 🐳 Démarrer la base de données (Docker)
 Lancer le docker compose :
 ```bash
 docker compose up -d
@@ -151,7 +173,7 @@ docker compose up -d
 > *puis rallumez votre compose avec la commande ci-dessus*
 
 
-### f) 🐬 MySQL
+### g) 🐬 MySQL
 
 Grâce à ce compose, vous pouvez interagir directement avec votre bdd via mysql avec :
 ```bash
@@ -166,7 +188,7 @@ password: digicheese
 USE digicheese;
 ```
 
-### g) 🧾 phpMyAdmin
+### h) 🧾 phpMyAdmin
 
 Pour une représentation graphique, vous avez également accès à un serveur phpMyAdmin exposé ici :
 
@@ -175,7 +197,7 @@ Pour une représentation graphique, vous avez également accès à un serveur ph
 - Utilisateur : group2
 - Mot de passe : digicheese
 
-### h) ⚡ Démarrage du serveur FastAPI
+### i) ⚡ Démarrage du serveur FastAPI
 #### Lancer le serveur FastAPI en mode développement (reload auto):
 
 ```bash
@@ -189,7 +211,7 @@ Ouvrir un autre terminal, et lancer la commande :
 python -m src.utils.create_db
 ```
 
-### i) Navigation dans Swagger
+### j) Navigation dans Swagger
 
 **Liste des rôles :**
   - Admin (id = 1)
@@ -220,23 +242,24 @@ Votre session est désormais activée avec le rôle Admin. Vous pouvez maintenan
 - Puis créer une adresse
 - Puis enfin, vous pouvez lier votre client à une ou plusieurs adresses
 
-### j) 🧪 Tests automatisés
+### k) 🧪 Tests automatisés
 
-**Lancer un test entier :**
+**Lancer toute la suite depuis la racine du projet :**
 
-```bash
-cd tests
-pytest test_feature.py
+```powershell
+python -m pytest -q
 ```
 
 **Lancer un test en particulier :**
 
-```bash
-cd tests
-pytest test_feature.py -k nom_du_test
+```powershell
+python -m pytest tests/test_feature.py -k nom_du_test
 ```
 
-### k) Fermer le projet
+Les tests CRUD neutralisent actuellement l'authentification et utilisent SQLite en
+mémoire. Leur réussite ne valide donc pas l'IAM ni l'intégration MySQL.
+
+### l) Fermer le projet
 
 ```bash
 docker compose down #(-v pour supprimer la base)

@@ -12,17 +12,22 @@ from src.database import get_db
 from src.schemas.objet_schema import ObjetCreate, ObjetPatch, ObjetOut
 from src.services.objet_services import ObjetService
 from src.utils.dependencies import require_roles
+from src.utils.roles import ROLE_ADMIN, ROLE_OP_COLIS
 
 # Create a router for objet-related endpoints
 router = APIRouter(
     prefix="/objets",
     tags=["CRUD Objets (Admin)"],
-    dependencies=[Depends(require_roles("Admin"))]
 )
 # Initialize the objet service to have access to objet operations
 service = ObjetService()
 
-@router.get("/", response_model=list[ObjetOut], status_code=200)
+@router.get(
+    "/",
+    response_model=list[ObjetOut],
+    status_code=200,
+    dependencies=[Depends(require_roles(ROLE_ADMIN, ROLE_OP_COLIS))],
+)
 def get_objets(db: Session = Depends(get_db)):
 
     """
@@ -31,7 +36,12 @@ def get_objets(db: Session = Depends(get_db)):
     return service.get_all_objet(db)
 
 
-@router.get("/{objet_id}",status_code=200, response_model=ObjetOut)
+@router.get(
+    "/{objet_id}",
+    status_code=200,
+    response_model=ObjetOut,
+    dependencies=[Depends(require_roles(ROLE_ADMIN, ROLE_OP_COLIS))],
+)
 def get_objet(objet_id: int, db: Session = Depends(get_db)):
 
     # Récupère un objet par son id.
@@ -41,14 +51,24 @@ def get_objet(objet_id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="Objet non trouvé")
     return objet
 
-@router.post("/", status_code=201, response_model=ObjetOut)
+@router.post(
+    "/",
+    status_code=201,
+    response_model=ObjetOut,
+    dependencies=[Depends(require_roles(ROLE_ADMIN))],
+)
 def create_objet(payload: ObjetCreate, db: Session = Depends(get_db)):
     """
     Crée un nouvel objet.
     """
     return service.create_objet(db, payload)
 
-@router.patch("/{objet_id}", response_model=ObjetOut, status_code=200)
+@router.patch(
+    "/{objet_id}",
+    response_model=ObjetOut,
+    status_code=200,
+    dependencies=[Depends(require_roles(ROLE_ADMIN))],
+)
 def patch_objet(objet_id: int, payload: ObjetPatch, db: Session = Depends(get_db)):
     """
     Met à jour partiellement un objet.
@@ -60,7 +80,12 @@ def patch_objet(objet_id: int, payload: ObjetPatch, db: Session = Depends(get_db
     return service.patch_objet(db, objet_id, payload)
 
 
-@router.delete("/{objet_id}", response_model=ObjetOut, status_code=200)
+@router.delete(
+    "/{objet_id}",
+    response_model=ObjetOut,
+    status_code=200,
+    dependencies=[Depends(require_roles(ROLE_ADMIN))],
+)
 def delete_objet(objet_id: int, db: Session = Depends(get_db)):
     """
     Supprime un objet.

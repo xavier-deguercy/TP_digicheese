@@ -1,5 +1,5 @@
 from typing import Optional
-from pydantic import BaseModel, EmailStr, Field
+from pydantic import BaseModel, ConfigDict, EmailStr, Field
 
 
 class ClientBase(BaseModel):
@@ -30,8 +30,7 @@ class ClientOut(ClientBase):
     """Schéma retourné par l'API."""
     id_client: int
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 class CommuneOut(BaseModel):
     """Schéma pour les données d'une commune."""
@@ -39,8 +38,7 @@ class CommuneOut(BaseModel):
     dep: Optional[str] = None
     cp: Optional[str] = Field(default=None, max_length=5)
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 class AdresseOut(BaseModel):
     """Schéma pour les données d'une adresse."""
@@ -49,8 +47,7 @@ class AdresseOut(BaseModel):
     compAdresse: Optional[str] = None
     commune: Optional[CommuneOut] = None
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 class ClientOutDetailed(BaseModel):
     """Schéma détaillé retourné par l'API, incluant les adresses."""
@@ -64,5 +61,4 @@ class ClientOutDetailed(BaseModel):
     adresse1: Optional[AdresseOut] = None
     adresse2: Optional[AdresseOut] = None
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)

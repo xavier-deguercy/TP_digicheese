@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict, field_validator
 from typing import Optional
 
 class AdresseBase(BaseModel):
@@ -16,12 +16,18 @@ class AdressePatch(BaseModel):
     """Schema for updating an existing adresse."""
     rue: Optional[str] = None
     compAdresse: Optional[str] = None
-    id_commune: Optional[str] = None
+    id_commune: Optional[int] = None
+
+    @field_validator("id_commune")
+    @classmethod
+    def id_commune_cannot_be_null(cls, value: Optional[int]) -> int:
+        if value is None:
+            raise ValueError("id_commune ne peut pas etre null")
+        return value
 
 
 class AdresseInDB(AdresseBase):
     """Schema for adresse data stored in the database."""
     id_adresse: int
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)

@@ -1,7 +1,6 @@
 services:
   mysql:
     image: mysql:8.0
-    container_name: digicheese-mysql
     restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: root
@@ -12,6 +11,12 @@ services:
       - "3308:3306"
     volumes:
       - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -p$${MYSQL_ROOT_PASSWORD} --silent"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+      start_period: 20s
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -20,7 +25,8 @@ services:
     environment:
       PMA_HOST: mysql
     depends_on:
-      - mysql
+      mysql:
+        condition: service_healthy
 
 volumes:
   mysql_data:

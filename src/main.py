@@ -16,7 +16,8 @@ from src.routers.poids_router import router as poids_router
 from src.routers.poidsv_router import router as poidsv_router
 from src.routers.conditionnement_router import router as conditionnement_router
 from src.routers.client_router import router as client_router
-from src.routers.dev_router import router as dev_router
+from src.routers.commande_router import router as commande_router
+from src.routers.detail_commande_router import router as detail_commande_router
 
 load_dotenv()
 
@@ -41,7 +42,6 @@ app.add_middleware(
 )
 
 # Routers
-app.include_router(dev_router)
 app.include_router(utilisateur_router)
 app.include_router(role_router)
 app.include_router(commune_router)
@@ -51,6 +51,8 @@ app.include_router(objet_router)
 app.include_router(poids_router)
 app.include_router(poidsv_router)
 app.include_router(conditionnement_router)
+app.include_router(commande_router)
+app.include_router(detail_commande_router)
 
 
 @app.get("/health")

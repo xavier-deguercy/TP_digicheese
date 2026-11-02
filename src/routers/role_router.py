@@ -5,8 +5,13 @@ from ..database import get_db
 from ..services.role_service import RoleService
 from ..schemas.role import RolePost, RolePatch, RoleOut
 from src.utils.dependencies import require_roles
+from src.utils.roles import ROLE_ADMIN
 
-router = APIRouter(prefix="/roles", tags=["CRUD Rôles (Admin)"], dependencies=[Depends(require_roles("Admin"))])
+router = APIRouter(
+    prefix="/roles",
+    tags=["CRUD Rôles (Admin)"],
+    dependencies=[Depends(require_roles(ROLE_ADMIN))],
+)
 service = RoleService()
 
 # Get roles

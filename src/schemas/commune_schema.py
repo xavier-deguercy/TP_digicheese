@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 from typing import Optional
 
 class CommuneBase(BaseModel):
@@ -21,8 +21,7 @@ class CommuneInDB(CommuneBase):
     """Schema for commune data stored in the database."""
     id_commune: int
     
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
         
 

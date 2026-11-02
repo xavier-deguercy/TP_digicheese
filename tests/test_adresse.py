@@ -6,12 +6,17 @@ import pytest
 ADRESSE_ENDPOINT = "/adresse"
 
 @pytest.fixture
-def adresse_data():
+def adresse_data(client: TestClient):
     """Données de test pour créer une adresse."""
+    commune = client.post(
+        "/commune",
+        json={"dep": "34", "cp": "34000", "ville": "Montpellier"},
+    )
+    assert commune.status_code == 201, commune.text
     return {
         "rue": "Rue des Lila",
         "compAdresse": "RDC",
-        "id_commune": 1
+        "id_commune": commune.json()["id_commune"],
     }
 
 
@@ -58,6 +63,34 @@ def test_patch_adresse_by_id(client: TestClient, adresse_data  ):
     response: Response = client.patch(f"{ADRESSE_ENDPOINT}/1", json=new_data)
     assert response.status_code == 200
     assert response.json()["compAdresse"] == "première étage"
+
+
+def test_patch_adresse_commune_uses_integer_fk(client: TestClient, adresse_data):
+    created = client.post(ADRESSE_ENDPOINT, json=adresse_data).json()
+    commune = client.post(
+        "/commune",
+        json={"dep": "75", "cp": "75001", "ville": "Paris"},
+    )
+    assert commune.status_code == 201, commune.text
+
+    response = client.patch(
+        f"{ADRESSE_ENDPOINT}/{created['id_adresse']}",
+        json={"id_commune": commune.json()["id_commune"]},
+    )
+
+    assert response.status_code == 200, response.text
+    assert response.json()["id_commune"] == commune.json()["id_commune"]
+
+
+def test_patch_adresse_rejects_null_commune(client: TestClient, adresse_data):
+    created = client.post(ADRESSE_ENDPOINT, json=adresse_data).json()
+
+    response = client.patch(
+        f"{ADRESSE_ENDPOINT}/{created['id_adresse']}",
+        json={"id_commune": None},
+    )
+
+    assert response.status_code == 422
 
 
 def test_delete_adresse_by_id(client: TestClient, adresse_data):

@@ -4,6 +4,7 @@ from src.schemas.commune_schema import CommuneInDB, CommunePatch, CommunePost
 from src.services.commune_service import CommuneService
 from src.database import get_db
 from src.utils.dependencies import require_roles
+from src.utils.roles import ROLE_ADMIN, ROLE_OP_COLIS
 
 
 """ Reference all commune-related endpoints in the FastAPI application.
@@ -11,7 +12,11 @@ from src.utils.dependencies import require_roles
 Receives requestes from the commune router, transform in commune schema and process them using CommuneService"""
 
 # create a router for communes-related endpoints
-router = APIRouter(prefix="/commune", tags=["CRUD Commune (OP-Colis, Admin)"], dependencies=[Depends(require_roles("Admin", "OP-colis"))])
+router = APIRouter(
+    prefix="/commune",
+    tags=["CRUD Commune (OP-Colis, Admin)"],
+    dependencies=[Depends(require_roles(ROLE_ADMIN, ROLE_OP_COLIS))],
+)
 
 # Initialize the commune service to have access to commune operations
 service = CommuneService()

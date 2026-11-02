@@ -1,0 +1,947 @@
+{
+  "execution_date": "2026-09-05",
+  "timezone": "Europe/Paris",
+  "scope": "J1 documentation and skill import; no application runtime tests",
+  "inventory": {
+    "execution_date": "2026-09-05",
+    "head": "6790d40902c32f207923c8d174169e280cddadc9",
+    "branch": "xavier",
+    "source_files": 59,
+    "test_files": 13,
+    "test_functions": 48,
+    "routes": [
+      {
+        "file": "src/main.py",
+        "line": 56,
+        "method": "GET",
+        "path": "/health"
+      },
+      {
+        "file": "src/routers/adresse_router.py",
+        "line": 11,
+        "method": "GET",
+        "path": "/"
+      },
+      {
+        "file": "src/routers/adresse_router.py",
+        "line": 15,
+        "method": "GET",
+        "path": "/{id_adresse}"
+      },
+      {
+        "file": "src/routers/adresse_router.py",
+        "line": 22,
+        "method": "POST",
+        "path": "/"
+      },
+      {
+        "file": "src/routers/adresse_router.py",
+        "line": 26,
+        "method": "PATCH",
+        "path": "/{id_adresse}"
+      },
+      {
+        "file": "src/routers/adresse_router.py",
+        "line": 33,
+        "method": "DELETE",
+        "path": "/{id_adresse}"
+      },
+      {
+        "file": "src/routers/client_router.py",
+        "line": 14,
+        "method": "GET",
+        "path": "/"
+      },
+      {
+        "file": "src/routers/client_router.py",
+        "line": 20,
+        "method": "GET",
+        "path": "/{id_client}"
+      },
+      {
+        "file": "src/routers/client_router.py",
+        "line": 26,
+        "method": "POST",
+        "path": "/"
+      },
+      {
+        "file": "src/routers/client_router.py",
+        "line": 32,
+        "method": "PATCH",
+        "path": "/{id_client}"
+      },
+      {
+        "file": "src/routers/client_router.py",
+        "line": 38,
+        "method": "DELETE",
+        "path": "/{id_client}"
+      },
+      {
+        "file": "src/routers/commune_router.py",
+        "line": 19,
+        "method": "GET",
+        "path": "/"
+      },
+      {
+        "file": "src/routers/commune_router.py",
+        "line": 23,
+        "method": "GET",
+        "path": "/{id_commune}"
+      },
+      {
+        "file": "src/routers/commune_router.py",
+        "line": 30,
+        "method": "POST",
+        "path": "/"
+      },
+      {
+        "file": "src/routers/commune_router.py",
+        "line": 34,
+        "method": "PATCH",
+        "path": "/{id_commune}"
+      },
+      {
+        "file": "src/routers/commune_router.py",
+        "line": 41,
+        "method": "DELETE",
+        "path": "/{id_commune}"
+      },
+      {
+        "file": "src/routers/conditionnement_router.py",
+        "line": 31,
+        "method": "GET",
+        "path": "/"
+      },
+      {
+        "file": "src/routers/conditionnement_router.py",
+        "line": 36,
+        "method": "GET",
+        "path": "/{condit_id}"
+      },
+      {
+        "file": "src/routers/conditionnement_router.py",
+        "line": 44,
+        "method": "POST",
+        "path": "/"
+      },
+      {
+        "file": "src/routers/conditionnement_router.py",
+        "line": 49,
+        "method": "PATCH",
+        "path": "/{condit_id}"
+      },
+      {
+        "file": "src/routers/conditionnement_router.py",
+        "line": 57,
+        "method": "DELETE",
+        "path": "/{condit_id}"
+      },
+      {
+        "file": "src/routers/dev_router.py",
+        "line": 10,
+        "method": "GET",
+        "path": "/api-key/{user_id}"
+      },
+      {
+        "file": "src/routers/objet_router.py",
+        "line": 25,
+        "method": "GET",
+        "path": "/"
+      },
+      {
+        "file": "src/routers/objet_router.py",
+        "line": 34,
+        "method": "GET",
+        "path": "/{objet_id}"
+      },
+      {
+        "file": "src/routers/objet_router.py",
+        "line": 44,
+        "method": "POST",
+        "path": "/"
+      },
+      {
+        "file": "src/routers/objet_router.py",
+        "line": 51,
+        "method": "PATCH",
+        "path": "/{objet_id}"
+      },
+      {
+        "file": "src/routers/objet_router.py",
+        "line": 63,
+        "method": "DELETE",
+        "path": "/{objet_id}"
+      },
+      {
+        "file": "src/routers/poids_router.py",
+        "line": 18,
+        "method": "GET",
+        "path": "/"
+      },
+      {
+        "file": "src/routers/poids_router.py",
+        "line": 23,
+        "method": "GET",
+        "path": "/{poids_id}"
+      },
+      {
+        "file": "src/routers/poids_router.py",
+        "line": 31,
+        "method": "POST",
+        "path": "/"
+      },
+      {
+        "file": "src/routers/poids_router.py",
+        "line": 36,
+        "method": "PATCH",
+        "path": "/{poids_id}"
+      },
+      {
+        "file": "src/routers/poids_router.py",
+        "line": 44,
+        "method": "DELETE",
+        "path": "/{poids_id}"
+      },
+      {
+        "file": "src/routers/poidsv_router.py",
+        "line": 17,
+        "method": "GET",
+        "path": "/"
+      },
+      {
+        "file": "src/routers/poidsv_router.py",
+        "line": 22,
+        "method": "GET",
+        "path": "/{poidsv_id}"
+      },
+      {
+        "file": "src/routers/poidsv_router.py",
+        "line": 30,
+        "method": "POST",
+        "path": "/"
+      },
+      {
+        "file": "src/routers/poidsv_router.py",
+        "line": 35,
+        "method": "PATCH",
+        "path": "/{poidsv_id}"
+      },
+      {
+        "file": "src/routers/poidsv_router.py",
+        "line": 43,
+        "method": "DELETE",
+        "path": "/{poidsv_id}"
+      },
+      {
+        "file": "src/routers/role_router.py",
+        "line": 14,
+        "method": "GET",
+        "path": "/"
+      },
+      {
+        "file": "src/routers/role_router.py",
+        "line": 20,
+        "method": "GET",
+        "path": "/{role_id}"
+      },
+      {
+        "file": "src/routers/role_router.py",
+        "line": 29,
+        "method": "POST",
+        "path": "/"
+      },
+      {
+        "file": "src/routers/role_router.py",
+        "line": 35,
+        "method": "PATCH",
+        "path": "/{role_id}"
+      },
+      {
+        "file": "src/routers/role_router.py",
+        "line": 44,
+        "method": "DELETE",
+        "path": "/{role_id}"
+      },
+      {
+        "file": "src/routers/utilisateur_router.py",
+        "line": 13,
+        "method": "GET",
+        "path": "/"
+      },
+      {
+        "file": "src/routers/utilisateur_router.py",
+        "line": 18,
+        "method": "GET",
+        "path": "/{user_id}"
+      },
+      {
+        "file": "src/routers/utilisateur_router.py",
+        "line": 27,
+        "method": "POST",
+        "path": "/"
+      },
+      {
+        "file": "src/routers/utilisateur_router.py",
+        "line": 33,
+        "method": "PATCH",
+        "path": "/{user_id}"
+      },
+      {
+        "file": "src/routers/utilisateur_router.py",
+        "line": 42,
+        "method": "DELETE",
+        "path": "/{user_id}"
+      }
+    ],
+    "tables": [
+      {
+        "file": "src/models/adresse.py",
+        "line": 6,
+        "name": "t_adresse"
+      },
+      {
+        "file": "src/models/client.py",
+        "line": 7,
+        "name": "t_client"
+      },
+      {
+        "file": "src/models/commune.py",
+        "line": 6,
+        "name": "t_commune"
+      },
+      {
+        "file": "src/models/conditionnement.py",
+        "line": 10,
+        "name": "t_conditionnement"
+      },
+      {
+        "file": "src/models/objet.py",
+        "line": 9,
+        "name": "t_objet"
+      },
+      {
+        "file": "src/models/poids.py",
+        "line": 6,
+        "name": "t_poids"
+      },
+      {
+        "file": "src/models/poidsv.py",
+        "line": 6,
+        "name": "t_poidsv"
+      },
+      {
+        "file": "src/models/role.py",
+        "line": 7,
+        "name": "t_role"
+      },
+      {
+        "file": "src/models/utilisateur.py",
+        "line": 8,
+        "name": "t_utilisateur"
+      }
+    ],
+    "syntax_errors": [],
+    "environment": {
+      "python_executable": "C:\\Python314\\python.exe",
+      "python_version": "3.14.7",
+      "venv_base_exists": false,
+      "global_module_presence": {
+        "pytest": false,
+        "fastapi": false,
+        "sqlalchemy": false,
+        "email_validator": false
+      }
+    },
+    "empty_docs": [
+      "DOC/FONC/README.md",
+      "DOC/UTILISATION/FAQ.md",
+      "DOC/UTILISATION/Guide_Utilisateur.md"
+    ],
+    "env_example_present": false,
+    "env_tracked": true
+  },
+  "skill_import": {
+    "execution_date": "2026-09-05",
+    "source": "C:\\Users\\xavie\\Documents\\Codex\\2026-09-03\\bo\\outputs\\equipe-agents-generique",
+    "source_version": "1.2.0",
+    "source_package_date": "2026-09-04",
+    "installed_skill": "equipe-projet-dsi",
+    "mode": "local adaptation with unchanged bundled source",
+    "file_count": 29,
+    "files": [
+      {
+        "path": "agents/APOLLO.md",
+        "sha256": "2cb686f10e1c13189142a38075fc7527c2ae7e88a207a781cee23d1f42ba6c56"
+      },
+      {
+        "path": "agents/ARES.md",
+        "sha256": "b4f311fd09acea5eb09f913de63bfe45a7922b5fbee83894cbddf7e85d47621b"
+      },
+      {
+        "path": "agents/ARGOS.md",
+        "sha256": "6433697c785c2f1f97297e712c097838fedd0cd27912b0bea42ef1a64c18e653"
+      },
+      {
+        "path": "agents/ATHENA.md",
+        "sha256": "d9102ed5c10e7395704216d8f2b1f18c6ea88603999b9ddae054b98351ac7c99"
+      },
+      {
+        "path": "agents/CERBERUS.md",
+        "sha256": "efd2d9f177ac0915c6a31aa079e210b35c837943837672bceb42653d7beeb6ba"
+      },
+      {
+        "path": "agents/DAEDALUS.md",
+        "sha256": "333f1bb29e8124c5c14bce454ae7afa6b0968c6996d6c62a8c3a89f98fa748eb"
+      },
+      {
+        "path": "agents/HEPHAESTOS.md",
+        "sha256": "ee7fd42d783b8b5331f00403866cb70b6bc5de0bc3f305ad7cce3fae54e0fbd3"
+      },
+      {
+        "path": "checks/validate-team.ps1",
+        "sha256": "4264f1b42fe3692895cbcc9f18134f2f69914e55b5d6cf551eec3781fd717889"
+      },
+      {
+        "path": "dossiers/01_CADRAGE_FAISABILITE_TEMPLATE.md",
+        "sha256": "0be15658062b9cd2f3ed28f6799dad28e1c486b2e4fe688575d9d419c302714b"
+      },
+      {
+        "path": "dossiers/02_CONCEPTION_PLANIFICATION_TEMPLATE.md",
+        "sha256": "f3a1d1097a4f8786b586aa41de85b3b450a858d24f4dfb1069949a457e82dc57"
+      },
+      {
+        "path": "dossiers/03_VERIFICATION_VALIDATION_TEMPLATE.md",
+        "sha256": "eac6d2671881297e97d29ed4c29a10203a47abfa014c50acd9d11f53c03ec5f8"
+      },
+      {
+        "path": "dossiers/04_MISE_EN_SERVICE_RUN_TEMPLATE.md",
+        "sha256": "4ad7eae4cec385d16425bf06640c607d7a51b503434ac16dccb5e4bf55bd9f32"
+      },
+      {
+        "path": "dossiers/05_CLOTURE_REX_TEMPLATE.md",
+        "sha256": "d6151e2b028e9ced7df46bda650dbe1fa87987b5bc70e11550b7c33d0e4dcbee"
+      },
+      {
+        "path": "README.md",
+        "sha256": "b4660f67b7e42aaa67ea540b687bad0e8de0d87c6a8e38cf62d67269c6d57cf5"
+      },
+      {
+        "path": "reports/CONTROL_REPORT.md",
+        "sha256": "4f31c8ed0e91b927cb96fe87cbde55b3c92014a6f45f87e49f5ada3ec528dfb0"
+      },
+      {
+        "path": "reports/DEMONSTRATION.md",
+        "sha256": "37e68f56a698f95d7eb2b46fb80297f276cf12c366896b09e95672f190d19d3a"
+      },
+      {
+        "path": "reports/PROCESS_ASSURANCE_PLAN.md",
+        "sha256": "d15718c411f2d583c776ed24dfc00df5e6aaa07244d1f4f044d3cd4867f0dbc2"
+      },
+      {
+        "path": "shared/DECISIONS.md",
+        "sha256": "3feda54e1eeb374128b6b73a78e411b032cfeac58d64faaf9aab0335d04320fc"
+      },
+      {
+        "path": "shared/MANDATORY_CONTROLS.md",
+        "sha256": "ab796cbbeaa28152421881cd9a75caf971d9fe359eb0908f8f10d80a0bbacc2e"
+      },
+      {
+        "path": "shared/MODULE_CATALOG.md",
+        "sha256": "bb3a2aac6c15317d76d61dbc28c3b54cf24a4556288027487cdf1d6056d05f07"
+      },
+      {
+        "path": "shared/OPEN_QUESTIONS.md",
+        "sha256": "05e6b8c145897f50b74d7ef9985d20eb86154a04c86d12018fe7020555f63f80"
+      },
+      {
+        "path": "shared/PROJECT_CONTEXT.md",
+        "sha256": "e8001397108ccecd80c45158470e5dbde24a82e1f8cbdae2de324f964adc437c"
+      },
+      {
+        "path": "shared/PROJECT_GOVERNANCE.md",
+        "sha256": "b746859e18d08c2126f8d562c101c75394954f255d501d41a890276e85e239f8"
+      },
+      {
+        "path": "shared/PROJECT_LIFECYCLE.md",
+        "sha256": "ef79234468bd2fbe06804cfded3a7fa270ec3b9cd8d027bf4d7695bb74df2d75"
+      },
+      {
+        "path": "shared/RISKS.md",
+        "sha256": "eecdaccbf783249be16e16cd7be290e00b6cb75012c3d9c597f697e581d4d697"
+      },
+      {
+        "path": "shared/TEAM_CONTRACT.md",
+        "sha256": "c3de562e9eb51dba180f64e5bccf5d2dfff92dfd89447c8e6fcf6eee30ea93c1"
+      },
+      {
+        "path": "tasks/COPROJ_FLASH_REPORT_TEMPLATE.md",
+        "sha256": "8c5ec7f3eb7543ffe95c098072c1922a54cedaf1c8513ccadf65c64dc9c43a90"
+      },
+      {
+        "path": "tasks/TASK_TEMPLATE.md",
+        "sha256": "c0ee8af290793e8553ff2769f84156202f6d533f28dfb120b6a598fc51ff7095"
+      },
+      {
+        "path": "ZEUS.md",
+        "sha256": "af50c5eb098bd0fe08a744823af1b358ec0a288b7ae793ea11b78466888606eb"
+      }
+    ]
+  },
+  "team_static_validation": {
+    "Date": "2026-09-04",
+    "Passed": 31,
+    "Failed": 0,
+    "Checks": [
+      {
+        "Check": "Fichiers attendus",
+        "Passed": true,
+        "Detail": "27/27 présents"
+      },
+      {
+        "Check": "UTF-8 strict",
+        "Passed": true,
+        "Detail": "28 fichiers lus; invalides : 0"
+      },
+      {
+        "Check": "Caractères de remplacement",
+        "Passed": true,
+        "Detail": "Fichiers concernés : 0"
+      },
+      {
+        "Check": "Date cohérente",
+        "Passed": true,
+        "Detail": "Écarts : 0"
+      },
+      {
+        "Check": "Version fonctionnelle 1.2.0",
+        "Passed": true,
+        "Detail": "Écarts : 0"
+      },
+      {
+        "Check": "Frontmatter Markdown",
+        "Passed": true,
+        "Detail": "Écarts : 0"
+      },
+      {
+        "Check": "Tables Markdown cohérentes",
+        "Passed": true,
+        "Detail": "Lignes incohérentes : 0"
+      },
+      {
+        "Check": "Contrat commun référencé",
+        "Passed": true,
+        "Detail": "Écarts spécialistes : 0"
+      },
+      {
+        "Check": "Gouvernance référencée",
+        "Passed": true,
+        "Detail": "Écarts spécialistes : 0"
+      },
+      {
+        "Check": "Cycle projet référencé",
+        "Passed": true,
+        "Detail": "Écarts spécialistes : 0"
+      },
+      {
+        "Check": "Catalogue modules référencé",
+        "Passed": true,
+        "Detail": "Écarts spécialistes : 0"
+      },
+      {
+        "Check": "Contrôles obligatoires référencés",
+        "Passed": true,
+        "Detail": "Écarts spécialistes : 0"
+      },
+      {
+        "Check": "Sortie et relais standardisés",
+        "Passed": true,
+        "Detail": "Écarts spécialistes : 0"
+      },
+      {
+        "Check": "Absence de délégation directe",
+        "Passed": true,
+        "Detail": "Motifs détectés : 0"
+      },
+      {
+        "Check": "Découplage du projet source",
+        "Passed": true,
+        "Detail": "Contrats historiques détectés : 0"
+      },
+      {
+        "Check": "Jalons J1 à J8",
+        "Passed": true,
+        "Detail": "Manquants : 0"
+      },
+      {
+        "Check": "Niveaux autorisation",
+        "Passed": true,
+        "Detail": "Manquants : 0"
+      },
+      {
+        "Check": "Cycle de décision",
+        "Passed": true,
+        "Detail": "Manquants : 0"
+      },
+      {
+        "Check": "Autorité PMO explicite",
+        "Passed": true,
+        "Detail": "PMO propriétaire; ZEUS assistant; décisions humaines"
+      },
+      {
+        "Check": "Cycle de vie complet",
+        "Passed": true,
+        "Detail": "Phases manquantes : 0"
+      },
+      {
+        "Check": "Maîtrise des baselines",
+        "Passed": true,
+        "Detail": "Écart visible et changement formalisé"
+      },
+      {
+        "Check": "Profil SOCLE plus modules",
+        "Passed": true,
+        "Detail": "Modules manquants : 0"
+      },
+      {
+        "Check": "Screenings RGPD et SSI",
+        "Passed": true,
+        "Detail": "Screenings systématiques et Label avant J6"
+      },
+      {
+        "Check": "COPROJ et cadence explicite",
+        "Passed": true,
+        "Detail": "Bimensuel conservé à confirmer sans interprétation silencieuse"
+      },
+      {
+        "Check": "Source PPM unique",
+        "Passed": true,
+        "Detail": "Saisir une fois et réutiliser"
+      },
+      {
+        "Check": "Ancien cycle retiré",
+        "Passed": true,
+        "Detail": "Fichiers avec G0-G5 : 0"
+      },
+      {
+        "Check": "Dossiers consolidés sans doublons",
+        "Passed": true,
+        "Detail": "Anciens modèles présents : 0"
+      },
+      {
+        "Check": "Références Markdown internes",
+        "Passed": true,
+        "Detail": "Non résolues : 0"
+      },
+      {
+        "Check": "Inconnues préservées",
+        "Passed": true,
+        "Detail": "Marqueurs et périmètre fermé"
+      },
+      {
+        "Check": "Scénario de démonstration",
+        "Passed": true,
+        "Detail": "J1-J8, profil, contrôles et boucle de reprise"
+      },
+      {
+        "Check": "Plan assurance comportementale",
+        "Passed": true,
+        "Detail": "Scénarios manquants : 0"
+      }
+    ],
+    "ExecutionDate": "2026-09-05"
+  },
+  "skill_quick_validation": {
+    "date": "2026-09-05",
+    "result": "Skill is valid!",
+    "independent_behavioral_validation": false
+  },
+  "preservation": {
+    "original_file_count": 237,
+    "changed_files": [],
+    "missing_files": [],
+    "head_before": "6790d40902c32f207923c8d174169e280cddadc9",
+    "head_after": "6790d40902c32f207923c8d174169e280cddadc9",
+    "branch_after": "xavier",
+    "index_sha256_before": "bc17edcaa0a34ccfb1542ba61ae27a4715da8ef8d69c919b09d7a53e42a4d457",
+    "index_sha256_after": "bc17edcaa0a34ccfb1542ba61ae27a4715da8ef8d69c919b09d7a53e42a4d457",
+    "original_file_sha256": {
+      ".env": "08cfcdac07a432f82a560b3fa54bf4d23d21940139f92b8e690515a61accd47a",
+      ".github/workflows/quality.yml": "2c734e83d5c3c7ff2760fa8ef52dc94e30cb8d6decd04e243652424ed7a59f5e",
+      ".gitignore": "e0e61700bc9d607d4d499d19511c1feec15cf0afb025930074537a907eb40a33",
+      ".obsidian/app.json": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      ".obsidian/appearance.json": "d00244879367fa48b6e32f6af9bbd4318846b3f5b8ad8d3783c7d9a0d14f26e1",
+      ".obsidian/core-plugins.json": "763cf20a921fd9955735b278006820b90b207b2fc04d9e79ca648279c7c14276",
+      ".obsidian/graph.json": "70a68d96588b030023f8c2e9bfd0eb0e0d213a08604e18c400ef87a34dffe8b1",
+      ".obsidian/workspace.json": "b15ac20f3436fc7b9ac76439903228f0b9c887ba6d8047ced261bddea3bcaf96",
+      "DOC/Doc_Confluence/000-DDG-Plan de projet.pdf": "a19729089dd905ba627fb78968d783df9958664ac8ccbe23282f323520d87241",
+      "DOC/Doc_Confluence/2026 – C. GERMAIN – 2025-D12 & 2025-D18.pdf": "600682257296ab5ee22366cbaa5add3bffc97d8d83c6321e77728b27fabe3cc5",
+      "DOC/Doc_Confluence/DDG-Modèle _ documentation de décision-060226-082631.pdf": "9d1d874fac99984e9550e0ee928a0ab6f2547aaf1983f2c30ec790d85bda22d4",
+      "DOC/Doc_Confluence/DDG-Modèle _ notes de réunion-060226-082715.pdf": "f8a3a61b702228d3640701f0fa9efabd5a09c6d0544bd23d4e55520d18825a02",
+      "DOC/Doc_Confluence/Projet DIGICHEESE — Gestion de projet/DDG-000 - Projet DIGICHEESE — Gestion de projet (cadre & plan)-060226-083028.pdf": "c379295bd403825a7fe04d56f4196bb2feda607cde843368e519ec51c036fb9d",
+      "DOC/Doc_Confluence/Projet DIGICHEESE — Gestion de projet/DDG-001 - Cadrage du projet.pdf": "7ebfba455a94048ad3a82371d9de7a9c5e109bbb50bf36c5d3b27d69136c8817",
+      "DOC/Doc_Confluence/Projet DIGICHEESE — Gestion de projet/DDG-002 - Identification des acteurs et rôles projet.pdf": "2616b59e64787b2ae126e1e2bf67ab8e73ce121da01779870b1d21a9d22c3478",
+      "DOC/Doc_Confluence/Projet DIGICHEESE — Gestion de projet/DDG-003 - domaines macro-périmètre .pdf": "34bd248e613a4882a180ec7ee24a59ba30b4e70dcb0b6750827e68bf43b90835",
+      "DOC/Doc_Confluence/Projet DIGICHEESE — Gestion de projet/DDG-004 - Décomposition du projet en Epics (structure du backlog).pdf": "ee2c35c7fd572cd2b8f153d343884ae6a6afcf68f9274094670bb090b9693c1b",
+      "DOC/Doc_Confluence/Projet DIGICHEESE — Gestion de projet/DDG-005 – Backlog détaillé.pdf": "b2b50ba18854d787eb562c4468220e3149301ef8c715e23b9883efd0e3ac4d08",
+      "DOC/Doc_Confluence/Projet DIGICHEESE — Gestion de projet/DDG-006 – Organisation Agile.pdf": "00545146c8aa5cccee9dda262a3328a3724f623646fb8e24ddf0db893fd6ccb1",
+      "DOC/Doc_Confluence/Projet DIGICHEESE — Gestion de projet/DDG-007 – Suivi & Collaboration.pdf": "9f909c44cc334b076db64fbe5bc413d209fa3044d79f53a7f556f5496784448e",
+      "DOC/Doc_Confluence/Projet DIGICHEESE — Gestion de projet/DDG-008 – Qualité & Validation.pdf": "1d23e346d7263c13e0bfe0e04e47c8caa1882c58eb94fe9fa4162e0e26f69ac6",
+      "DOC/Doc_Confluence/Projet DIGICHEESE — Gestion de projet/DDG-009 — Rétrospective et amélioration continue.pdf": "746b86bb2d2df2f4020609a141c56927cd73ca7600f4d27437bb9787a83bd24d",
+      "DOC/Doc_Confluence/Projet DIGICHEESE — Gestion de projet/DDG-010 — Itération (Sprint) _ Développement CRUD Admin + Socle API.pdf": "7550499b76fd3faf3d5e47aa64d42c4c593801bbd6570a67cd84f282ae176823",
+      "DOC/FONC/Projet_python_PMP_draft.pdf": "0221453ee71844a57c7281e5374e9c19925efc1b22d4bee5e9ba972f6b578728",
+      "DOC/FONC/README.md": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "DOC/FONC/wave1/001_consignes.md": "749de09bb2060c09670592e2566be8e06b5bed03422509e65ec63222cf6f408d",
+      "DOC/FONC/wave1/Backlog.md": "89916ec9a3668dbb43a1bef14c4a4fdab4e89cd6a04be06ad3b3bb71321be2c6",
+      "DOC/FONC/wave1/Contexte_Objectifs.md": "4ecda7874a4fcd9af54acfd47c4ab981cf5c667b8f2c68742c0f4672be21eb64",
+      "DOC/FONC/wave1/Parcours_Utilisateur.md": "2e7595136dbe60f9267906d4f43d9a744cfab978ee19d7e411e3774ac3c42c3e",
+      "DOC/FONC/wave1/Perimetre_In_Out.md": "1a41068e79fe256c254eee3bc4664aa6773c61b3469ed52fb9ee2a277ab1bee6",
+      "DOC/FONC/wave1/README.md": "2c4f0e310cda46c36a0a63e65eebad19914f3215cc35e5c32e51ec0630f479b3",
+      "DOC/FONC/wave1/Regles_Metier.md": "d8a67ca7d502d658274e93ca51f3b555b57abef0e4c3c0e6f0332968a1167f1a",
+      "DOC/FONC/wave1/creation_arbo.md": "dd23f2cf60d6f54e78f46eb46fc07243d2fd2e858835c8c93a46416fe13f0fbd",
+      "DOC/FONC/wave2/001_consignes_wave2.md": "e0b90636bce53cbb556c5b6ad0fa36193dce1f598a1ab605aac0b4890c27b12b",
+      "DOC/FONC/wave2/Backlog_wave2.md": "49854483767fba6d862c6ed14f3facdeab979a9f808244b9231eaec2450342ea",
+      "DOC/FONC/wave2/Contexte_Objectifs_wave2.md": "5d6ac71b6830c7f2dfe98f205899cdab2e3b64e6d088ce1db2a17ee29629ab69",
+      "DOC/FONC/wave2/Parcours_Utilisateur_wave2.md": "2980cac1cc8af50aa5626fdbc9331845ed72c4fde041240f563856ee164b96f4",
+      "DOC/FONC/wave2/Perimetre_In_Out_wave2.md": "c6fcb37b72c3b31817ea049c73c0399e6ab0e3a903479e4ec85334f4a18678ba",
+      "DOC/FONC/wave2/README.md": "1432b7e8e8bde6192c0be17c09dfabf3e484bab1ae83055b741ede49427378fe",
+      "DOC/FONC/wave2/README_wave2.md": "1364058c9a02623ba5ae9ca2e4f003d7b721c2f170fe111fe178d5959c83b016",
+      "DOC/FONC/wave2/Regles_Metier_wave2.md": "8658f3b0d160eb26d83e889d368e97d3fcab6591f67eb434f6bc644ca7f4ac5c",
+      "DOC/FONC/wave2/creation_arbo_wave2.md": "f9f95e455b8a93ce70bb7041ebe9413c55eaa6485a77587aca381322ba7591c6",
+      "DOC/FONC/wave2/sprint_wave2.md": "482a5e2c982daa3d8138508f5fa9676c29f459f12e32a1513956aad161122351",
+      "DOC/README.md": "de8d7196c4d0f6d0dae03ec1c9340a1bd9b38af71c5b409ab1097dd252559669",
+      "DOC/TECH/Architecture.md": "b1ed312cbc47f54892df870ce63bd25eeccb4ed2e99cbf8fbceb100c413ba13a",
+      "DOC/TECH/Changements_CDC.md": "93d6f7fbf931dc440f3cf0228efaf1ba5866caf15144a03193cb337744d923bc",
+      "DOC/TECH/Pipeline_Qualite_Tests.md": "d9094082f4ee5758902b6910e9f6411e3d01d101a118fc7720c17f1ae8742860",
+      "DOC/TECH/Serveurs_Virtuels_Python.md": "ee968ff84ed8709fb7d954f1b6cb4240660f0b9f01bffed6077bc52101c2b044",
+      "DOC/UTILISATION/FAQ.md": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "DOC/UTILISATION/Guide_Utilisateur.md": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "DOC/UTILISATION/Guide_dev.md": "b47d523c7497e27d600dea80295acf4c2f8497568b5f98cf755cd5f8375740b5",
+      "DOC/swagger.png": "99bcbd2129ff86dc5060ae0e0ad0b4d8d32f00192890d23894b1afd7d15b7ae7",
+      "MEMOIRE_CHECKLIST_TP7_DATA_DEVOPS.md": "966323e6d794d92555ee843cc46ca0ce8c125bb4ccf1c22bda45781fd18d4b8a",
+      "Presentation_DIGICHEESE_Groupe2.pdf": "a9470d120c4b1e5b6c12364d86800bf8c4eb8b2c2c2165ccdfbea0d4ce71114a",
+      "README.md": "1853bf7da5ae409b9b530448eeaadfe272985a19daa3451ffb0efa7fd06cba9a",
+      "Rapport_Qualité_Logicielle.md": "593ed42240806937e7b8eb4c6b91acb35e98dc059ebe5ceb2e4c3ed746943fd7",
+      "Rapport_TP3_Dette_Perf_CICD.md": "815d74c52ac2da334e2e6b27d0754d119a9b38bb0ad5d5f9fafc9788a77d1dea",
+      "UML/Cours/01_UML - Généralités.pdf": "660e980caf757f5a3f89d7fbfd99c861042be2e5a64122fb92c976c68421d9e5",
+      "UML/Cours/02_UML - Vue d’ensemble.pdf": "c67987e71dc5dcb099f833c7bdac2a58a589082e21d9f839e9101284d49c9069",
+      "UML/Cours/03_UML - Mod struct élément - statique-v.pdf": "8714f699780c0c4d9e59c14c17b97b15c1b921821dd8902e5d8a73d79a07429b",
+      "UML/Cours/04_UML - Mod struct élément - dynamique SEQ.pdf": "a648d5b2cafee4c14ba65651a70a11953676979eeea6e9805fefbe4674e89458",
+      "UML/Cours/05_UML - Diagramme cas utilisation et Activite-v.pdf": "4b9b8d614ac8e49ac03b051dc0375d4f0990f1385f0020d6fb1116488433881d",
+      "UML/Cours/Annexe_Guide de notation UML.pdf": "800f74a209bedb26732adea481b77f861d95db7951d44c2df7b0e6376a8878d0",
+      "UML/Cours/sujet_tp/MiniCahierDesChargesFromagerieDigiCheese.pdf": "4f8d82dc112655f7f947d36aaeea1f8ffd292cb7a67b359b9fe71d85ed444383",
+      "UML/Cours/sujet_tp/PROJETTP7_API_WEB_2026_Data.pdf": "77b6a4025b7e6ad9bdaa4892f9d7b31791017a8e4aebf325459e3a77ba60a760",
+      "UML/Cours/sujet_tp/PROJETTP7_API_WEB_2026_Devops_V2.pdf": "dbe97b8937ead777e51282e4061a0e26e9efe0a45660a94d0d2ccb4241e044d2",
+      "UML/Cours/sujet_tp/consignes_projet_dev_2026.pdf": "4cfd3f1fe8bc4c4fb7364025bdcfb4661ca539cff9422413660085354be0eb3a",
+      "UML/Cours/sujet_tp/consignes_projet_dev_2026_Devops.pdf": "4cfd3f1fe8bc4c4fb7364025bdcfb4661ca539cff9422413660085354be0eb3a",
+      "UML/DIGICHEESE_Gestion_des_colis_draft_xavier_deguercy.pdf": "5ad1dfe63d520ddd6d3c77b33750a0e11bb6047e1ba5b965e38a80ca004b1971",
+      "UML/DIGICHEESE_Gestion_des_colis_draft_xavier_deguercy.pptx": "0e4040659818a4ee12286f2fb17675b31bf0a8f94e005536e3fdb76d9d7afc6f",
+      "UML/README.md": "965d09da2ca05744607f32f5ccdbd2d78baeacf2ad8dc0abb9d3d758f3076139",
+      "UML/UML/001  DIGICHEESE — Acteurs_et_Rôles.md": "232995fab05affed2124b15a68fb2d28c1c8096bd3578cb4ea255155e7568099",
+      "UML/UML/002  DIGICHEESE — interactions_acteurs.png": "a93186998dd5f77d1b6e0329e222ebfad9e9246eafe837ead9860529c5ab122c",
+      "UML/UML/002  DIGICHEESE — interactions_acteurs.puml": "95cdc71de098c97bf0f07294d8ac85a8f3dfc25f7858a4ec3e15153e36731102",
+      "UML/UML/003  DIGICHEESE — description — UC Administration & Pilotage.md": "ced7850966a47798292d15790e7d6fc23a775156ed21acd23a1b7d033a2c62e1",
+      "UML/UML/003  DIGICHEESE — pseudocode — UC Administration & Pilotage.puml": "4ab812d86dc64fd87ae329ef0cdef3265d2de79eecf39474cc01b7639ca7187e",
+      "UML/UML/003 DIGICHEESE  — diagramme — UC Gestion des colis.png": "a0c034b2aa4d7396b36e24af8d990a07b9dfa9b267bc538a573bd6c40469dd47",
+      "UML/UML/003 DIGICHEESE  — pseudocode — UC Gestion des colis.puml": "b2e8352a8fbb41b22a9dfb0aaa418f9f4034311d2cf6d0408ba42cca4d737fe0",
+      "UML/UML/003 DIGICHEESE — Administration & Pilotage.puml": "a6bd555925e405d4a27e980960c24c99c3ca73c1cb24df31e29e757a14acba2e",
+      "UML/UML/003 DIGICHEESE — description — Système de gestion des colis.md": "3ffd53664d1be220584fe498519fc38d78d27e68356adf1ccd4ef61e325fbb7f",
+      "UML/UML/003 DIGICHEESE — diagramme — Administration & Pilotage.png": "3d332c13bc8b85b50a9b2337eac17f3ca728f4de8f145dd38c52b032d22ee2d1",
+      "UML/UML/004 DIGICHEESE — Activité_gestion_des_ colis_(workflow).png": "51779f5067b18e7f43ced6995f6cee309397bc7e586b176fe2ef0e353c3debb9",
+      "UML/UML/004 DIGICHEESE — Pseudocode — Diagramme de séquence full.puml": "b3acaab51b7a88f2bb4315eacafb54d1a67bb35aeeab295399f948f593622e82",
+      "UML/UML/004 DIGICHEESE — Séquence_gestion_des_colis avec suivit.png": "a9dfa039f273b07c077877c1ba14fd88ff591b7e14a83562172d3a1f0a0be2c2",
+      "UML/UML/004 DIGICHEESE — Séquence_gestion_des_colis full.png": "d0e5dcb567b2dd74d0107ee19aeffa9e9c06215f28f0bd4fb659025cb5f9014f",
+      "UML/UML/004 DIGICHEESE — Séquence_gestion_des_colis(scénario nominal).png": "a88bc3a65ea51f968ece46277bb8fcf461d165a8adec9a5fac8b5b7e49dca1e5",
+      "UML/UML/004 DIGICHEESE — pseudocode — Diagramme d’activité.puml": "a76e8df04eac36d2f3a42158942eab761644b6a5437c08f8c6c8c9eec0bec225",
+      "UML/UML/004 DIGICHEESE — scenario — parcours utilisateur gestion de colis.md": "60e5f94aea08254fc25394452ee57ffd6438853c5eb088b3a6753ca58667426e",
+      "UML/UML/004full.png": "d0e5dcb567b2dd74d0107ee19aeffa9e9c06215f28f0bd4fb659025cb5f9014f",
+      "UML/UML/005 DIGICHEESE — Diagramme de classe.md": "db81b650d23e134f624ebc48b10f382fa3d2a571447a6bc454accb0c70cf8129",
+      "UML/UML/005 DIGICHEESE — Diagramme de classes.png": "666c94413d63cd949b5dc8333857c0cb46ca8398d62856dd105042e715327b6f",
+      "UML/UML/005 DIGICHEESE — Pseudocode — Diagramme de classe.puml": "d874deddc68880b4ded27f2f7886025521d525929a3e0ac545416f194eedb6fb",
+      "UML/digicheese-ui/README.md": "b8c76e4c050e54e01f045cfe6ac705c944a620881073e91ac8db37197565008e",
+      "UML/digicheese-ui/admin-conditionnements.html": "096e52a6236582aaa5501acabfbf74ca20ebf5399c7a0451b5f86b958f166046",
+      "UML/digicheese-ui/admin-dashboard.html": "e8a40f8413b1b9b8fcaafa91f9f385192e049fedce9130b7973502397ca4ad37",
+      "UML/digicheese-ui/admin-objets.html": "63fa975f09e920e1abeac5dfea7e9c2a009b663565bdbe73237bef23e1b46b45",
+      "UML/digicheese-ui/colis.html": "d9d1e540a78d231ee5ae791d573072c10b1e90dac6ed11ff46b49e8e0befdc07",
+      "UML/digicheese-ui/css/admin.css": "ab3e35242017dbdf9338112966a2fc353568dac7febd2d52560767c813b71a3e",
+      "UML/digicheese-ui/css/style.css": "4a6c2e656b3022537bbe4d069fd191d7130e8340d5f626d8d0a7cde3f7d95038",
+      "UML/digicheese-ui/dashboard.html": "301bd5ed6a8eeaadf8476e8dc850e1307537b2ba2767ee1dbcdee89aef6aa477",
+      "UML/digicheese-ui/dossier.html": "fa53ab940300080eb33aee45b3118dfc3a82ee57cdd11e6c84ba4653a3cb10e4",
+      "UML/digicheese-ui/js/admin-conditionnements.js": "e133306bcb70348f51fd5a0e3ea81fc84f5950ebeed6b738f2b3a4ca50b51a99",
+      "UML/digicheese-ui/js/admin-objets.js": "dee707d4af7f1ea13e22455364f26c0799666560bc48fb84e4b4453c9758b760",
+      "UML/digicheese-ui/js/api.js": "5056cfb6f2e1fcc35d5a39ba12cf7a138550cd7fe9bc88d800bba2f56946d6b3",
+      "UML/digicheese-ui/js/config.js": "507aefbc4992f4e9fb62914b20cbd8728d63a5ed978bad28d87acbb090c94d10",
+      "UML/digicheese-ui/js/includes.js": "cbf0a655f2d1cab6974be5e344b6a940d84f182b18b958d430d958373f07d5f5",
+      "UML/digicheese-ui/js/ui.js": "74ecc4ed2a3ab81a63a7aad6f07f7e1cfcff3b74b6acbb00b135dc1934fc5f8c",
+      "UML/digicheese-ui/legacy/colis.html": "aff459ed21c481583723170ce1a6ef6d0e676ca0019d6b9f8d04dcc334e6b21a",
+      "UML/digicheese-ui/legacy/css/style.css": "e56e206fa991d78684fed24d6651d4e4c8a6980b56f2bf2692348db2bf70e79f",
+      "UML/digicheese-ui/legacy/dashboard.html": "a5c14eeacba3a291c8c1545939d1534c2c753c8d6faddad697f151cb52693338",
+      "UML/digicheese-ui/legacy/dossier.html": "56eb0f987b55ff850ee6985ac25484189c5a1fe91586e49458c13bcb2a385f85",
+      "UML/digicheese-ui/legacy/login.html": "a0c2e1fa4f669a6d33f96591fdb920f78938554b0a3b182f864edecf3c3d83f6",
+      "UML/digicheese-ui/login.html": "ef8544dbb8f78074d661dea3f383e68c3ae9f5d9b7ba4c8c4fb401eb350e13f9",
+      "UML/digicheese-ui/partials/footer.html": "bc4521eb516e5c10ce007d44381937ca12f763af13f0847f29ebd59619289ae4",
+      "UML/digicheese-ui/partials/header.html": "a2f07e6be9a2687876069b4468740fd8e03f6c92eabdbc62137951cf452d40a1",
+      "UML/digicheese-ui/recherche.html": "ddbc5698233a47751ecc9348a76ea245a334f32378025609a46c482be4f3fb7c",
+      "UML/sujet/ExempleScenario.pdf": "78b97b7f6eafec041d996c58436f4aec55f404a94d0078bcfcb6a4419e8b2dc4",
+      "UML/sujet/LA FROMAGERIE DIGICHEESE V1.0.pdf": "b789629f8859b18c915836d4fd1d0cb8e650dfe6e77b99bedc72362ae5cc3eb6",
+      "UML/sujet/description.MD": "4f3cf9c59828615ff4da91baaa2a7d2aa30cb8a1d898fb243cbe7162f77ed10e",
+      "database/modelisation_base_digicheese_wave2.md": "bede03c4344cfcfeb14454fb9172e4f7c38d3678dfa30af1370617f259344aca",
+      "database/modelisation_base_digicheese_wave2.sql": "efc50721bf3e0fa57363530ae23f98c62d9f576427bd9a8366a675674e44a5a2",
+      "docker-compose.yml": "33ebcac02fae881b423004c4aa7ff69ed34ead53369e24ff74803e27ae97ad9d",
+      "perf/k6_full_20260207_224821.js": "a75ecfb4ad46e52fb733bed57f5d0b6669516972b86c38d1e2ccf665805ab018",
+      "perf/k6_full_20260207_231044.js": "a75ecfb4ad46e52fb733bed57f5d0b6669516972b86c38d1e2ccf665805ab018",
+      "perf/k6_smoke_20260207_224821.js": "b14dfc9206d7f4e116b2b65a42d191ff4b2382c24c6cd2849c5966051ac461be",
+      "perf/k6_smoke_20260207_231044.js": "b14dfc9206d7f4e116b2b65a42d191ff4b2382c24c6cd2849c5966051ac461be",
+      "perf/k6_template.js": "b64123d915d76f75352935e30ce64866a21c054a7a71aa0a0dea19f4fe6ddc70",
+      "reports/consolidated/kpi_20260207_225729.json": "07d4e3a8c9bd42c4b70817991d448ecaa70a3d240fb23f6b29c587577e4646af",
+      "reports/consolidated/kpi_20260207_225729.md": "827f4019083f6ce5e590adcedd3ed6c2ff859434b7db70caafe536f2fb3e2acb",
+      "reports/consolidated/kpi_20260207_231553.json": "691158bcabd8d67a933216dd59d334e31592131b1d41c2631053747588abd186",
+      "reports/consolidated/kpi_20260207_231553.md": "16aab9406c380f82578aa64074a49867a510bb40c687f9263c1c20dc94524284",
+      "reports/consolidated/phase0_existing_20260207_182614.md": "0e9dbe73c2ff7e9f63a57e0327f4cc87ae22a0cf5aec13f803f7c911ced1b794",
+      "reports/consolidated/phase1_setup_20260207_182923.md": "fb7e020187ff1f1d715ae666fe8b005caf67ac16c518814c96dfe3993f0e2381",
+      "reports/consolidated/phase2_test_campaign_20260207_221839.md": "752b97fafc8dc3693fed199e5746dbb2be16b58e2c4589478ad637dfb1537b65",
+      "reports/consolidated/phase3_tests_unit_20260207_222231.md": "9109cbfe73677dcd05271495c310bb6b2e793054620cf40a3066caed83c0aef4",
+      "reports/consolidated/phase4_tp3_1_debt_20260207_222905.md": "5ba642771276e2888e29d8a76b1a7ccc7a9b8d4de2a479dd0ceea6551a0057d9",
+      "reports/consolidated/phase5_perf_20260207_224821.md": "0d3a87846e594e295c1e0319a0a25d160ebd1a75b34ce1117903b36f89404a54",
+      "reports/consolidated/phase5_perf_20260207_231044.md": "a3618d2d5d7243a49bcd1b1751015dba8f2e000fc12b2c29396acdba28bd1299",
+      "reports/consolidated/phase6_ci_20260207_225301.md": "00d0c361c35c35d1f25f97ced8d55daca912aa9cafa65149a3c4a95b2064cb63",
+      "reports/consolidated/phase6_ci_20260207_231603.md": "594d627308f5b7df5b83847b48083a4f929eaafa407fe16d5bda38838c92e891",
+      "reports/consolidated/template_tp3_1_kpi_debt.md": "2b5b1cbd55820d9f7119c929e568c161815aaec8788e68e2422d9f912683a23c",
+      "reports/consolidated/template_tp3_2_kpi_perf.md": "97f3ee80f94080ab4059883b21bcc8db7366b9e2df0bdfa468e356cdd89eef22",
+      "reports/raw/flake8_20260207_222905.log": "55535b8c81e678f666e686e10b4061c675bacf498ddb5f96f86772b647296629",
+      "reports/raw/k6_20260207_231044.json": "27195a527f2b3e3f9cba703e041dc6f3306b63362a7fdde249e6245f9207c46e",
+      "reports/raw/k6_run_20260207_231044.log": "2c7491d61e040c1438a7e378a7c01886efae7a9bdc11d2cc091f317c46aedc3f",
+      "reports/raw/pylint_20260207_222905.json": "733671b4f01f324be0cad2eb9bc64b7edfcea7fa51a9cc74ec0f27356cdccbd2",
+      "reports/raw/pytest_20260207_222231.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reports/raw/pytest_cov_20260207_222231.log": "4541ed2ce8e47c2966d20b7c3ac3baae8992221468ff59abcd18f4dc8a849c27",
+      "reports/raw/radon_20260207_222905.json": "01e050ee33d37d2c1d6951fed348e0cef3a4331fa94f44162ae54a6d536e0f18",
+      "reports/raw/sujet_tp_extracts/MiniCahierDesChargesFromagerieDigiCheese.txt": "fcbfa401a81c67f642fb7551642c9e92419fcdb3f01c22f91060a057be136791",
+      "reports/raw/sujet_tp_extracts/PROJETTP7_API_WEB_2026_Data.txt": "a863a4e52382d3ac77acb3c48d357ea6ed1feab72b0f5fa1eff7c50e0e31c304",
+      "reports/raw/sujet_tp_extracts/PROJETTP7_API_WEB_2026_Devops_V2.txt": "3d97f93a7c5b9f1ee55e657e220d131a612fb9655fef9a3e9f5ed8dd2cf77bb5",
+      "reports/raw/sujet_tp_extracts/consignes_projet_dev_2026.txt": "ec3d958eb69b8359b7dd524eb0f0b0f99ed6577df51769b1a3f9d364431a7c96",
+      "reports/raw/sujet_tp_extracts/consignes_projet_dev_2026_Devops.txt": "ec3d958eb69b8359b7dd524eb0f0b0f99ed6577df51769b1a3f9d364431a7c96",
+      "reports/raw/uvicorn_20260207_231044.err.log": "f9a15788932f41a90c7e0d83bd04b80107edf7765880324cf650e26aa6f55bff",
+      "reports/raw/uvicorn_20260207_231044.health.log": "19d8c9921b99c82d78c985136a5e28f6382011641fb6160c0c1a7573a402ea66",
+      "reports/raw/uvicorn_20260207_231044.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reports/raw/uvicorn_20260207_231044.pid": "1f9dbf612410a4ccdcbd829442c32534979f7bad5e4736cf1e6c38ce32413e09",
+      "requirements.txt": "1d9f5ab4dbd52d59bae479d60017e5b87caa64b3ae7cdd3820d59e28a7a18489",
+      "src/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/database.py": "cf0bc795b1d0bf16f137d76c10d303ea168a96c68204efae0325a3798857b41b",
+      "src/main.py": "15aa3c528f5c95ad118e160aa63c8b5ca9edee7df5296714cf4f691075a1d6dd",
+      "src/models/__init__.py": "52b248b3704b836ba76a5ae9ca46a50194565b0175360f09f68fb2d45ef9d374",
+      "src/models/adresse.py": "66b90838c7eefd9267de9a73d5d3287282539d3d538a3525b66fff0574497b15",
+      "src/models/base.py": "4eb47607ffd343910a9eab0e8bb6ed8cad946b798a1bb401897e1ff387bfedeb",
+      "src/models/client.py": "6a844aa666d6570b2220c2eb7c43038a7d8028fa6312e6972b62e70041a14b80",
+      "src/models/commune.py": "570c95636bf4bf97a0c0c11b26955b350744e8dc7c5f49ad509d99c2abbb8f21",
+      "src/models/conditionnement.py": "4f42d8c855c002b96bd01298fd8001bd7325520d64853980f367cf4577d2affb",
+      "src/models/objet.py": "f521038a887cb2974e1b8673fb1b19d6ab8a5a68a95497b26eade612f918add7",
+      "src/models/poids.py": "469cda52e599e6676e22067c141e9790f02a8c588ec67445d81499fe33ed6934",
+      "src/models/poidsv.py": "c95ed0548c56182646a07b9c4d7277985be4b4e132b6d4f020332418cde0e64d",
+      "src/models/role.py": "ade424fbc9e175c2986ff026e46df02f49c61b51c5ef2605b4436537807a000b",
+      "src/models/utilisateur.py": "4a13b9e7014c2cd2570de062638581b508e48db2de630cb59f0ba5080a4c80ef",
+      "src/repositories/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/repositories/adresse_repository.py": "0e4684f4935c85215d74b2a0f037c5f4b6416b0101ba5be1394c9f6f907a3a9d",
+      "src/repositories/client_repository.py": "14ff8c77a05641adf78cbca163ba3a41470bf7c951cb3c30ecbe143648d68443",
+      "src/repositories/commune_repository.py": "756c43bee3a5ff501b3b633e8002c0e2863e6b51966d854319e827892f7404fd",
+      "src/repositories/conditionnement_repository.py": "03e05780d7e4824e450bc6ed7f7b9325c867501e40755012c45f13c1b96b0295",
+      "src/repositories/objet_repository.py": "58414b14965141fa1c340ef860c271998165fa931600e01de4e659a95e96c03f",
+      "src/repositories/poids_repository.py": "9a580fed079d7c0b44d1371cdfa4b66d5cebb296d89264dac8900d435bfd0712",
+      "src/repositories/poidsv_repository.py": "e3ee03f1670ff5e20c62aa2c1aac77ef8fea8e2b6dfaf2830cb708c1e85a5854",
+      "src/repositories/role_repository.py": "e59d62e124dfef5a25a1b2ab304a09106212003595cc494b01e142041e79b29e",
+      "src/repositories/utilisateur_repository.py": "d0b77abf3656f5073ae1981dfb5685ee3cf63da0223d58791e0f2663c30a4f24",
+      "src/routers/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/routers/adresse_router.py": "30b817c72f3135e964f3c573671661f57f0ed65003ec20c16ddd4d33fd7212cd",
+      "src/routers/client_router.py": "e1dc551acb65e1fc8056c9998f421ba7aa4d38ef37e57b1aed11237fa7dd2f40",
+      "src/routers/commune_router.py": "32ccca433248d5ba1cf1a81cdea0e52927a69c51e2fe3f15f85bb154bc0891de",
+      "src/routers/conditionnement_router.py": "204881dc64f16321593cb92be5fc25f49a1e3cfcd82e103069e6d1399a9b6958",
+      "src/routers/dev_router.py": "f072e30919e87e0eac8abddc2c6352105f876c5aff32c7049230b9f1ce333828",
+      "src/routers/objet_router.py": "b576358f71bfca89f7888e607372cd67b11925e6c8afe70b3b4f8fc5019d9f71",
+      "src/routers/poids_router.py": "a7c3028d691c8d9226666ed5a53c98e1b11858e40cf28e6a00b530da327b637c",
+      "src/routers/poidsv_router.py": "f418a0c1c8b9b8cecbc8e5c199a8c7ba2d757e99c73cd3f99824fb268e4f00e8",
+      "src/routers/role_router.py": "aae257a8b6426c5d7530da2aa63a69a8efa6de29d1e888e38948b8094949736b",
+      "src/routers/utilisateur_router.py": "d62604d458e4bf9b93a6ba48fe0f17a32881e8778b1f4827841c3a6ae503925e",
+      "src/schemas/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/schemas/adresse_schema.py": "ab5d57e35b705b0278c8edd83e82aaaf05db89fa1d4e6da747e265ea3ed67a7c",
+      "src/schemas/client_schema.py": "74c7cca8c72ecb95f4e8808b9b54bcb036f673808b304d59db012e2619bcd826",
+      "src/schemas/commune_schema.py": "a18fa5a630f775752e89b38d9d51fd7665747f79008af0214b5cd3409615be4e",
+      "src/schemas/conditionnement_schema.py": "9f7b594c08c0905e2fbb500a05ae6e7b9cac98cb75417488b90a24e0ea913535",
+      "src/schemas/objet_schema.py": "10d033c845f3a1e67bd1b1abb6ab8098c379bb02ce9865008d2ff4f245c4de25",
+      "src/schemas/poids_schema.py": "79cde4a8bd2e4346307a43f6221dc8e53fe7d5df90e9026f4e79f2be6053bc16",
+      "src/schemas/poidsv_schema.py": "0832c8093a0f2effa97e8090e52c6f625ca20132610fdcba8f536797de5bf579",
+      "src/schemas/role.py": "01682b2666b5931a9e5b9f3269e9c8ccbca13944c2b6d369912713fe2056e589",
+      "src/schemas/utilisateur.py": "530ef98dc0483a8b7aee993a79a4cfa044969320333b512d2d0fdedf034883f6",
+      "src/services/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/services/adresse_service.py": "4f8f6b681e59cfab8ddb3c5f906145b42207685a0d3d5e6e8e5d9a43b5bc3d0e",
+      "src/services/client_service.py": "35d79c753ccf56ca1489212b5ef3e7058ef43bb0ff1fe39830e23889a2678948",
+      "src/services/commune_service.py": "c0b556ef2ac2fc2cadd8279a0f1fdf7007a5a4493b64bf2b74e06af684bd211e",
+      "src/services/conditionnement_services.py": "82f3757a0970bef7fdefa23a4019b3fbbf9fa40e85344d9580270f0826a25f2e",
+      "src/services/objet_services.py": "28dc33837cda881b683fb369d4f5671ca5727ba0aaa9586d74c4d97efc7841ad",
+      "src/services/poids_service.py": "f519da50443a010f8af4276b0a8ecf4ce74f8ed5d59a335cbca73eeda89b053f",
+      "src/services/poidsv_service.py": "9dc588e598b34236334d365f3197321c385746bae003752c60951d15d02f526f",
+      "src/services/role_service.py": "dce26c0e6b8a250253c7ec43089ec907e6353cc08c71521cad2aa0c8c369f826",
+      "src/services/utilisateur_service.py": "02bbf2b331481d1971d20f207dcaafdbe3df2ad00a3db4c544064134f40ea7b5",
+      "src/utils/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/utils/create_db.py": "6acece1485a2f4ac9db13ee932346429167d745b7566b9dc93cadfbbaf3996ea",
+      "src/utils/dependencies.py": "96f6b7fd69e7e3a64def678e5dbc00e04956225a3c761c49707e35c012173d44",
+      "src/utils/password.py": "b77310eec033a7a1643f13889177e93e3714246eafa2239dae8590aad8b28c7f",
+      "tests/README_tests.md": "0c4ca5fc0f77e2c36d749cc9e0a652d341d4c73dcf881643fa8e463ea1f5ef7b",
+      "tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tests/conftest.py": "293bf1e12af1c149cb0246c5ab7a4c31cea3aba1a456f2f0618c48928b68f06f",
+      "tests/demo_swagger_CRUD_Objet.mp4": "dc1aad84e41c3463741648916a63122d3a6c33f623eb0989a82679f577c2924b",
+      "tests/markers.md": "524bf203b31d3a5adff0b6467cf1cf4f4848092b21d1c38a417586eb2a2fda8d",
+      "tests/test_adresse.py": "1f4a5fcb03623e920a5366ccdddc3fc2b8b7b18550f46458024401cccc61d776",
+      "tests/test_client.py": "1e3a4822988d3469106fb3905d751ed78ff1e3550246af22969be403f78039b3",
+      "tests/test_commune.py": "0edd60a7daf320c41829bb8a03d9a5e330fb65bb7e108fca416e5765fffedcd1",
+      "tests/test_conditionnement_crud.py": "8a0302e6b2da39d1a74ba623a5777d426ea18552c6d6581a24033dbe65437481",
+      "tests/test_dependencies.py": "3f3207eb40c7cd123df62c20b19cc77c08606558b168445440784669fe8718a5",
+      "tests/test_health.py": "e397c95008fbb8cf469dbcdce7bf79ca9bd155d73a80d4217ef24d89be415f85",
+      "tests/test_objet_crud.py": "d2f89b774849f74b4af03288763beb45c74ee15d6abd055a5e6333728a5137bb",
+      "tests/test_password_utils.py": "31e62f2344af09b5ab980379373198adca1cefc9c0916b754c41498e84ea73ba",
+      "tests/test_poids.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tests/test_poidsv.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tests/test_role.py": "8e44d6abe7e8184ffc3d9f4f4dabf3352f0f902934e024c63dccce5b5e6440dc",
+      "tests/test_utilisateur.py": "74df7e95162dd2e2060f438ad9538ee03bcc68fb306426250abfe4e9c47663de",
+      "tests/test_utilisateur_service_unit.py": "dd1c7bb78a031f6c3e4f109b02f4392e18397df0dff880553d179a5400f121a9",
+      "tools/collect_kpi.py": "ed5789ca3addd3c663bbe213d702fa0812febdbdc48a9740512b4e31ead9ebee"
+    }
+  },
+  "agent_execution": {
+    "ATHENA": "READY",
+    "ARGOS": "usage_limit_no_verdict",
+    "CERBERUS": "VERIFIED_documentary_9_of_9_criteria",
+    "ZEUS": "completed_import_and_J1_documentation_ARGOS_fallback_disclosed"
+  },
+  "application_tests": "not_executed",
+  "general_team_behavioral_tests": "not_executed",
+  "document_checks": {
+    "execution_date": "2026-09-05",
+    "checked_docs": 3,
+    "local_links_valid": true,
+    "source_files_identical": 29,
+    "baseline_files_checked": 237,
+    "ui_metadata_valid_utf8": true,
+    "problems": [],
+    "local_links_checked": 41,
+    "finalization": "review incorporated; only status and report consolidation after independent review"
+  },
+  "independent_review": {
+    "date": "2026-09-05",
+    "agent": "CERBERUS",
+    "mission": "DIGICHEESE-J1-CERBERUS-20260905",
+    "verdict": "VERIFIED",
+    "scope": "skill import and J1 documentary deliverable",
+    "criteria_passed": 9,
+    "criteria_failed": 0,
+    "source_files_checked": 29,
+    "baseline_files_checked": 237,
+    "package_checks_passed": 31,
+    "package_checks_failed": 0,
+    "local_links_checked": 41,
+    "substantive_corrections_required": false,
+    "application_runtime_validated": false
+  },
+  "delivered_markdown_sha256": {
+    "01_CADRAGE_FAISABILITE.md": "f5c51822295fa2f60949ac6b62cec20080aaad0159ae0f6efc07a3060400363e",
+    "CONTROLE_J1.md": "cf3a70dcc4a98ab007c7b8e43e0455e2473eae10ad4f37b5f013df79999931ed",
+    "MISSION_J1.md": "5569dfb810b85ffa3a9655b6d32c85ad5d4f0ac344d0b30ab73b0f136332cf9f"
+  }
+}

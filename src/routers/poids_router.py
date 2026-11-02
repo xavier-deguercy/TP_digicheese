@@ -4,13 +4,14 @@ from src.database import get_db
 from src.schemas.poids_schema import PoidsInDB, PoidsPatch, PoidsPost
 from src.services.poids_service import PoidsService
 from src.utils.dependencies import require_roles
+from src.utils.roles import ROLE_ADMIN
 
 
 """ Reference all poids-related endpoints in the FastAPI application."""
 
 
 # Create a router for poids-related endpoints
-router = APIRouter(prefix="/poids", tags=["CRUD Poids (Admin)"], dependencies=[Depends(require_roles("Admin"))])
+router = APIRouter(prefix="/poids", tags=["CRUD Poids (Admin)"], dependencies=[Depends(require_roles(ROLE_ADMIN))])
 
 # Initialize the poids service to have access to poids operations
 service = PoidsService()

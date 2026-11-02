@@ -17,12 +17,12 @@ Ce dossier centralise la documentation du projet **DIGICHEESE** réalisé dans l
 ## Index
 
 ### 1) Documentation fonctionnelle (`DOC/FONC/`)
-- [Contexte & objectifs](./FONC/Contexte_Objectifs.md)
-- [Périmètre IN/OUT (IHM hors scope)](./FONC/Perimetre_In_Out.md)
-- [Règles métier](./FONC/Regles_Metier.md)
-- [Parcours utilisateur (via Swagger)](./FONC/Parcours_Utilisateur.md)
-- [Backlog (épics, US, priorités, DoD)](./FONC/Backlog.md)
-- [Arborescence & organisation documentaire](./FONC/creation_arbo.md)
+- [Contexte & objectifs](./FONC/wave1/Contexte_Objectifs.md)
+- [Périmètre IN/OUT (IHM hors scope du TP initial)](./FONC/wave1/Perimetre_In_Out.md)
+- [Règles métier](./FONC/wave1/Regles_Metier.md)
+- [Parcours utilisateur (via Swagger)](./FONC/wave1/Parcours_Utilisateur.md)
+- [Backlog (épics, US, priorités, DoD)](./FONC/wave1/Backlog.md)
+- [Arborescence & organisation documentaire](./FONC/wave1/creation_arbo.md)
 
 ### 2) Documentation technique (`DOC/TECH/`)
 - [Architecture (couches, modules, conventions)](./TECH/Architecture.md)
